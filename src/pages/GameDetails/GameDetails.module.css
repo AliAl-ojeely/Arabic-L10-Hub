@@ -1,0 +1,139 @@
+.detailsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    color: var(--text-primary);
+}
+
+.backLink {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    transition: color var(--transition-speed);
+}
+
+.backLink:hover {
+    color: var(--accent-hover);
+}
+
+.headerSection {
+    display: flex;
+    gap: 3rem;
+    background-color: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #1a1a1a;
+    margin-bottom: 3rem;
+}
+
+.posterWrapper {
+    flex: 0 0 300px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
+}
+
+.posterImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.infoWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.gameTitle {
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.techTags {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #1a1a1a;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid #333;
+}
+
+.downloadButton {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: var(--border-radius);
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    transition: all var(--transition-speed);
+    align-self: flex-start;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.downloadButton:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-3px);
+}
+
+.gallerySection h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #1a1a1a;
+    padding-bottom: 1rem;
+}
+
+.screenshotsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.screenshot {
+    width: 100%;
+    border-radius: var(--border-radius);
+    border: 1px solid #1a1a1a;
+    transition: transform var(--transition-speed);
+    cursor: zoom-in;
+}
+
+.screenshot:hover {
+    transform: scale(1.03);
+    border-color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .headerSection {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .posterWrapper {
+        flex: 0 0 auto;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .downloadButton {
+        align-self: stretch;
+    }
+}
