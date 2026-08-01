@@ -1,16 +1,81 @@
-# React + Vite
+# منصة التعريب الاحترافية - Arabic L10 Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## نظرة عامة
 
-Currently, two official plugins are available:
+منصة مستقلة وغير ربحية تم إنشاؤها لتكون أرشيفًا وملاذًا آمنًا لباتشات وتعديلات تعريب الألعاب (Mods). تهدف المنصة إلى حفظ جهود المعربين المستقلين وتوفير وصول سهل ومستقر لملفات التوطين وتعديلات الألعاب بعيدًا عن الاعتماد على المنصات الخارجية.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## مميزات المنصة
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **محتوى مستقل وآمن**
+  - أرشيف دائم يضمن بقاء باتشات التعريب متاحة للجميع دون خطر الضياع.
 
-## Expanding the ESLint configuration
+- **بدون إعلانات**
+  - المنصة مجانية بالكامل وخالية من الإعلانات المزعجة أو الروابط الربحية المختصرة.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **دعم متعدد الأنظمة**
+  - توفير ملفات وتعديلات متوافقة مع نظام Windows وأنظمة التشغيل المختلفة مثل Linux.
+
+- **عرض تفاعلي للصور**
+  - معرض صور مصغرة لكل لعبة مع نافذة عرض مكبرة وإمكانية التنقل بين الصور بسهولة.
+
+- **واجهة عصرية**
+  - تصميم متجاوب وسريع مبني باستخدام React وموجه بالكامل لدعم اللغة العربية.
+
+---
+
+## 🛠️ التقنيات المستخدمة
+
+- **React.js** — لبناء واجهة مستخدم حديثة وسريعة.
+- **React Router v6** — لإدارة التنقل بين صفحات الموقع.
+- **CSS Modules** — لتنظيم وتنسيق المكونات بشكل احترافي ومعزول.
+- **GitHub Pages** — لاستضافة الموقع مجانًا وباستقرار.
+
+---
+
+## هيكل المشروع
+
+```text
+src/
+├── components/       # المكونات الأساسية المشتركة (شريط التنقل، التذييل)
+├── pages/            # صفحات الموقع (الرئيسية، المعرض، التفاصيل، عن المشروع، تواصل)
+├── services/         # خدمات جلب وإدارة بيانات الألعاب والتعريبات
+├── models/           # النماذج البرمجية للبيانات (Translation Model)
+├── App.jsx           # المكون الرئيسي وتوجيه المسارات
+└── App.css           # التنسيق العام وحركات الانتقال
+```
+
+---
+
+## تشغيل المشروع محليًا
+
+### 1. استنساخ المستودع
+
+```bash
+git clone https://github.com/your-username/games-translations.git
+```
+
+### 2. الدخول إلى مجلد المشروع
+
+```bash
+cd games-translations
+```
+
+### 3. تثبيت الحزم المطلوبة
+
+```bash
+npm install
+```
+
+### 4. تشغيل خادم التطوير
+
+```bash
+npm run dev
+```
+
+---
+
+## ترخيص المشروع
+
+هذا المشروع مفتوح المصدر ومتاح تحت رخصة الاستخدام الشخصي والمجتمعي، ويهدف إلى خدمة اللاعبين والمعربين والمطورين العرب، مع الحفاظ على حقوق أصحاب الأعمال الأصلية وعدم استخدام المنصة لأي أغراض ربحية.
