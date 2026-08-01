@@ -394,6 +394,17 @@
     }
 
     .navButton {
-        display: none;
+        display: flex;
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+    
+    .rightButton {
+        right: 15px;
+    }
+    
+    .leftButton {
+        left: 15px;
     }
 }
