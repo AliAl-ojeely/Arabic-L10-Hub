@@ -26,7 +26,7 @@ export const fetchTranslationsData = async () => {
             id: 2,
             folderName: 'Hollow Knight Silksong',
             title: 'Hollow Knight: Silksong',
-            releaseYear: '2026',
+            releaseYear: '2025',
             translator: 'علي العجيلي', // المُعرّب
             appVersion: '1.0.29909', // أخذت رقم النسخة من اسم ملف الـ rar الذي أرفقته
             description: 'تعريب شامل للعبة المنتظرة Hollow Knight: Silksong. تم العمل على ترجمة الحوارات، القوائم، والأوصاف بدقة عالية مع الحفاظ على روح القصة والأسماء لتناسب سياق عالم اللعبة الساحر.',
@@ -41,6 +41,26 @@ export const fetchTranslationsData = async () => {
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp'],
             technologies: ['BepInEx', 'Harmony', 'توطين النصوص'],
             downloadFile: 'Hollow-Knight-Silksong-v1.5-Arabic-Patch.rar'
+        },
+        {
+            id: 3,
+            folderName: 'Gothic 1 Remake',
+            title: 'Gothic 1 Remake',
+            releaseYear: '2026', // يمكنك تعديل السنة إذا لزم الأمر
+            translator: 'ناصر النمر',
+            appVersion: 'v1.0', // قم بتعديلها لنسخة اللعبة المتوافقة معك
+            description: 'تعريب شامل للعبة تقمص الأدوار الكلاسيكية المنتظرة Gothic 1 Remake. تم التركيز على ترجمة الحوارات العميقة، واجهة المستخدم، ووصف العناصر بدقة لضمان اندماجك الكامل في عالم اللعبة المظلم وتفاصيله.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
+                'استخدم برنامج 7-Zip أو WinRAR لفك الضغط عن الملف.',
+                'انسخ جميع الملفات المستخرجة والصقها داخل المسار الرئيسي لتثبيت اللعبة.',
+                'وافق على استبدال الملفات عند ظهور نافذة التأكيد.',
+                'شغل اللعبة واستمتع بتجربة الـ RPG باللغة العربية!'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp'], // 6 صور كما في المجلد
+            technologies: ['توطين النصوص', 'تعديل الخطوط'],
+            downloadFile: 'Gothic 1 Remake-Arabic-Patch.7z' // اسم الملف مطابق للصورة تماماً
         }
     ];
 
