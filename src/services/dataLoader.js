@@ -66,7 +66,7 @@ export const fetchTranslationsData = async () => {
             id: 4,
             folderName: 'SpongeBob SquarePants Titans of the Tide',
             title: 'SpongeBob SquarePants: Titans of the Tide',
-            releaseYear: '2026',
+            releaseYear: '2025',
             translator: 'علي العجيلي',
             appVersion: 'v1.0',
             description: 'تعريب كامل وشامل للعبة المغامرات الممتعة SpongeBob SquarePants: Titans of the Tide. تم ترجمة الحوارات، القوائم، والنصوص بالكامل لضمان تجربة ممتعة ومفهومة لعشاق سبونج بوب بجميع الأعمار.',
@@ -81,6 +81,66 @@ export const fetchTranslationsData = async () => {
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp'],
             technologies: ['توطين النصوص', 'تعديل الواجهة'],
             downloadFile: 'SpongeBob SquarePants Titans of the Tide-Arabic-Patch.7z'
+        },
+        {
+            id: 5,
+            folderName: 'The Mound - Omen of Cthulhu',
+            title: 'The Mound - Omen of Cthulhu',
+            releaseYear: '2026',
+            translator: 'علي العجيلي',
+            appVersion: 'v1.0',
+            description: 'تعريب احترافي وشامل للعبة الرعب والغموض The Mound - Omen of Cthulhu. تم ترجمة القصة، الحوارات، والمستندات بدقة عالية لتعيش أجواء الرعب النفسي والقصص الغامضة بكل تفاصيلها بالعربية.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
+                'استخدم برنامج 7-Zip أو WinRAR لفك الضغط عن الملف.',
+                'انسخ جميع الملفات الناتجة والصقها داخل مجلد تثبيت اللعبة الرئيسي.',
+                'وافق على استبدال الملفات عند ظهور نافذة التأكيد.',
+                'شغل اللعبة واستمتع بتجربة الرعب باللغة العربية!'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp'],
+            technologies: ['توطين النصوص', 'تعديل الواجهة'],
+            downloadFile: 'The Mound Omen of Cthulhu-Arabic-Patch.7z'
+        },
+        {
+            id: 6,
+            folderName: 'Eriksholm - The Stolen Dream',
+            title: 'Eriksholm: The Stolen Dream',
+            releaseYear: '2026',
+            translator: 'علي العجيلي',
+            appVersion: 'v1.0',
+            description: 'تعريب شامل للعبة التخفي والمغامرة Eriksholm: The Stolen Dream. يشمل التعريب ترجمة دقيقة للحوارات، القوائم، والنصوص لضمان اندماجك الكامل في عالم اللعبة وكشف أسرار مدينة إريكشهولم.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
+                'استخدم برنامج 7-Zip أو WinRAR لفك الضغط عن الملف.',
+                'انسخ جميع الملفات المستخرجة والصقها داخل المسار الرئيسي لتثبيت اللعبة.',
+                'وافق على استبدال الملفات عند ظهور نافذة التأكيد.',
+                'شغل اللعبة واستمتع بالتجربة باللغة العربية!'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp'],
+            technologies: ['توطين النصوص', 'تعديل الخطوط'],
+            downloadFile: 'Eriksholm - The Stolen Dream-Arabic-Patch.7z'
+        },
+        {
+            id: 7,
+            folderName: 'This Bed We Made',
+            title: 'This Bed We Made',
+            releaseYear: '2023',
+            translator: 'علي العجيلي',
+            appVersion: 'v1.0',
+            description: 'تعريب احترافي وشامل للعبة التحقيق والغموض This Bed We Made. تدور أحداث القصة في خمسينيات القرن الماضي حول خادمة في فندق ترتدي ثوب التحقيق لكشف الأسرار، والتعريب يغطي الحوارات، القوائم، والمستندات بالكامل.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
+                'استخدم برنامج 7-Zip أو WinRAR لفك الضغط عن الملف.',
+                'انسخ جميع الملفات الناتجة والصقها داخل مجلد تثبيت اللعبة الرئيسي.',
+                'وافق على استبدال الملفات عند ظهور نافذة التأكيد.',
+                'شغل اللعبة واستمتع بتجربة التحقيق باللغة العربية!'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp'],
+            technologies: ['توطين النصوص', 'تعديل الواجهة'],
+            downloadFile: 'This Bed We Made - Arabic.7z'
         }
     ];
 
