@@ -1,0 +1,110 @@
+.footer {
+    background-color: var(--surface-color);
+    border-top: 1px solid var(--surface-color-light);
+    padding: 1.5rem 2rem 1rem;
+    margin-top: auto;
+}
+
+.footerContent {
+    max-width: 1200px;
+    margin: 0 auto 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.brand {
+    text-align: left;
+}
+
+.brand h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.3rem 0;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.brand span {
+    color: var(--accent-color);
+}
+
+.brand p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.contact {
+    text-align: right;
+}
+
+.contact h4 {
+    color: var(--text-primary);
+    margin: 0 0 0.8rem 0;
+    font-size: 1.1rem;
+}
+
+.socialLinks {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.linkItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--surface-color-light);
+    transition: all var(--transition-speed) ease;
+}
+
+.linkItem:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.linkItem svg {
+    width: 18px;
+    height: 18px;
+}
+
+.copyright {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 1rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .footerContent {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .brand,
+    .contact {
+        text-align: center;
+    }
+
+    .socialLinks {
+        justify-content: center;
+    }
+}

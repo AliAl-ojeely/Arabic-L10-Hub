@@ -3,84 +3,188 @@
     margin: 0 auto;
     padding: 3rem 2rem;
     color: var(--text-primary);
+    min-height: calc(100vh - 200px);
 }
 
+.loadingState,
+.errorState {
+    text-align: center;
+    padding: 5rem 2rem;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+}
+
+/* ========================================== */
+/* زر العودة للتعريبات (تصميم حديث) */
+/* ========================================== */
 .backLink {
-    display: inline-block;
-    margin-bottom: 2rem;
-    color: var(--accent-color);
-    font-weight: bold;
-    transition: color var(--transition-speed);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    border: 1px solid var(--surface-color-light);
+    border-radius: 30px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.backLink svg {
+    transition: transform 0.3s ease;
 }
 
 .backLink:hover {
-    color: var(--accent-hover);
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
 }
 
+.backLink:hover svg {
+    transform: translateX(5px);
+}
+
+/* === القسم العلوي === */
 .headerSection {
     display: flex;
-    gap: 3rem;
+    gap: 4rem;
     background-color: var(--surface-color);
-    padding: 2rem;
+    padding: 3rem;
     border-radius: var(--border-radius);
-    border: 1px solid #1a1a1a;
-    margin-bottom: 3rem;
-}
-
-.posterWrapper {
-    flex: 0 0 300px;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
-}
-
-.posterImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    border: 1px solid var(--surface-color-light);
+    margin-bottom: 4rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .infoWrapper {
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+/* تنسيق العنوان وسنة الإصدار */
+.titleHeader {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
 }
 
 .gameTitle {
-    font-size: 2.5rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
+    font-size: 2.8rem;
+    margin: 0;
     color: var(--text-primary);
+}
+
+.releaseYear {
+    background-color: rgba(37, 99, 235, 0.1);
+    color: var(--accent-color);
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 1px solid var(--accent-color);
+}
+
+/* ========================================== */
+/* تنسيقات المُعرب والنسخة المتوافقة */
+/* ========================================== */
+.metaDataBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.2rem;
+    border-radius: var(--border-radius);
+    border-right: 4px solid var(--accent-color);
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.metaLabel {
+    color: var(--text-secondary);
+    font-weight: bold;
+    font-size: 1.1rem;
+    min-width: 140px;
+}
+
+.metaValue {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* تنسيق كتل التفاصيل (الوصف والتثبيت) */
+.detailsBlock {
+    margin-bottom: 2.5rem;
+}
+
+.detailsBlock h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--surface-color-light);
+    display: inline-block;
 }
 
 .description {
     font-size: 1.1rem;
     line-height: 1.8;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin: 0;
 }
 
-.techTags {
-    display: flex;
-    gap: 0.8rem;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
+/* تنسيق قائمة التثبيت */
+.installList {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    padding-right: 1.5rem;
+    margin: 0;
+    font-size: 1.1rem;
 }
 
-.tag {
-    background-color: #1a1a1a;
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    border: 1px solid #333;
+.installList li {
+    margin-bottom: 0.6rem;
+}
+
+.installList li:last-child {
+    margin-bottom: 0;
+}
+
+.posterWrapper {
+    flex: 0 0 320px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    border: 1px solid #222;
+    align-self: flex-start;
+}
+
+.posterImage {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .downloadButton {
     display: inline-block;
     background-color: var(--accent-color);
     color: white;
-    padding: 1rem 2.5rem;
+    padding: 1rem 3rem;
     border-radius: var(--border-radius);
     font-size: 1.2rem;
     font-weight: bold;
@@ -95,36 +199,184 @@
     transform: translateY(-3px);
 }
 
+/* === قسم الصور المصغرة === */
 .gallerySection h2 {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid #1a1a1a;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--surface-color-light);
     padding-bottom: 1rem;
 }
 
-.screenshotsGrid {
+.thumbnailsGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
-.screenshot {
-    width: 100%;
+.thumbnailWrapper {
+    position: relative;
     border-radius: var(--border-radius);
-    border: 1px solid #1a1a1a;
-    transition: transform var(--transition-speed);
-    cursor: zoom-in;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    cursor: pointer;
+    border: 1px solid var(--surface-color-light);
 }
 
-.screenshot:hover {
-    transform: scale(1.03);
+.thumbnailWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.thumbnailWrapper:hover img {
+    transform: scale(1.1);
+}
+
+/* === تأثيرات التكبير (Zoom Icon) الاحترافية === */
+.zoomIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.zoomIcon svg {
+    transform: scale(0.3);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.thumbnailWrapper:hover .zoomIcon {
+    opacity: 1;
+}
+
+.thumbnailWrapper:hover .zoomIcon svg {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* === نافذة العرض (Modal & Slideshow) === */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modalControls {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    gap: 1.5rem;
+    z-index: 10000;
+}
+
+.iconButton {
+    background: transparent;
+    border: 1px solid #444;
+    color: white;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.iconButton:hover {
+    background: #222;
+    border-color: white;
+}
+
+.activePlay {
+    background-color: var(--accent-color);
     border-color: var(--accent-color);
 }
 
-@media (max-width: 768px) {
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 2rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.navButton:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.rightButton {
+    right: 3%;
+}
+
+.leftButton {
+    left: 3%;
+}
+
+.modalImageContainer {
+    position: relative;
+    max-width: 75vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fullImage {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    user-select: none;
+}
+
+.imageCounter {
+    margin-top: 15px;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+}
+
+/* تجاوب للموبايل */
+@media (max-width: 992px) {
     .headerSection {
-        flex-direction: column;
-        gap: 1.5rem;
+        flex-direction: column-reverse;
+        padding: 2rem;
     }
 
     .posterWrapper {
@@ -135,5 +387,13 @@
 
     .downloadButton {
         align-self: stretch;
+    }
+
+    .modalImageContainer {
+        max-width: 95vw;
+    }
+
+    .navButton {
+        display: none;
     }
 }

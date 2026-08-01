@@ -5,7 +5,7 @@ const Navbar = () => {
     return (
         <nav className={styles.navbar}>
             <div className={styles.logo}>
-                Arabic <span>Hub</span>
+                Arabic L10 <span>Hub</span>
             </div>
 
             <ul className={styles.navLinks}>
