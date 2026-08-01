@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -7,11 +8,23 @@ const Footer = () => {
         <footer className={styles.footer}>
             <div className={styles.footerContent}>
 
+                {/* قسم الشعار والنبذة */}
                 <div className={styles.brand}>
                     <h3>Arabic L10 <span>Hub</span></h3>
                     <p>منصتك الأولى لتعريب الألعاب وتعديلاتها.</p>
                 </div>
 
+                {/* قسم روابط الصفحات (بدون عنوان روابط سريعة) */}
+                <div className={styles.quickLinksSection}>
+                    <ul className={styles.pageLinks}>
+                        <li><Link to="/">الرئيسية</Link></li>
+                        <li><Link to="/translations">التعريبات</Link></li>
+                        <li><Link to="/about">عن المشروع</Link></li>
+                        <li><Link to="/contact">تواصل معي</Link></li>
+                    </ul>
+                </div>
+
+                {/* قسم التواصل الاجتماعي */}
                 <div className={styles.contact}>
                     <h4>تواصل معي</h4>
 
