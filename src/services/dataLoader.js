@@ -20,7 +20,8 @@ export const fetchTranslationsData = async () => {
             coverImage: 'poster.webp',
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp'],
             technologies: ['توطين النصوص', 'تعديل الخطوط'],
-            downloadFile: 'Partisans1941-Arabic-Patch.7z'
+            downloadFile: 'Partisans1941-Arabic-Patch.7z',
+            addedDate: '2026-07-29',
         },
         {
             id: 2,
@@ -40,7 +41,8 @@ export const fetchTranslationsData = async () => {
             coverImage: 'poster.webp',
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp'],
             technologies: ['BepInEx', 'Harmony', 'توطين النصوص'],
-            downloadFile: 'Hollow-Knight-Silksong-v1.5-Arabic-Patch.rar'
+            downloadFile: 'Hollow-Knight-Silksong-v1.5-Arabic-Patch.rar',
+            addedDate: '2026-07-11'
         },
         {
             id: 3,
@@ -48,7 +50,7 @@ export const fetchTranslationsData = async () => {
             title: 'Gothic 1 Remake',
             releaseYear: '2026', // يمكنك تعديل السنة إذا لزم الأمر
             translator: 'علي العجيلي',
-            appVersion: 'v1.0', // قم بتعديلها لنسخة اللعبة المتوافقة معك
+            appVersion: 'v170775', // قم بتعديلها لنسخة اللعبة المتوافقة معك
             description: 'تعريب شامل للعبة تقمص الأدوار الكلاسيكية المنتظرة Gothic 1 Remake. تم التركيز على ترجمة الحوارات العميقة، واجهة المستخدم، ووصف العناصر بدقة لضمان اندماجك الكامل في عالم اللعبة المظلم وتفاصيله.',
             installationSteps: [
                 'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
@@ -60,7 +62,8 @@ export const fetchTranslationsData = async () => {
             coverImage: 'poster.webp',
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp'], // 6 صور كما في المجلد
             technologies: ['توطين النصوص', 'تعديل الخطوط'],
-            downloadFile: 'Gothic 1 Remake-Arabic-Patch.7z' // اسم الملف مطابق للصورة تماماً
+            downloadFile: 'Gothic 1 Remake-Arabic-Patch.7z',
+            addedDate: '2026-07-22'
         },
         {
             id: 4,
@@ -68,7 +71,7 @@ export const fetchTranslationsData = async () => {
             title: 'SpongeBob SquarePants: Titans of the Tide',
             releaseYear: '2025',
             translator: 'علي العجيلي',
-            appVersion: 'v1.0',
+            appVersion: 'v1.4',
             description: 'تعريب كامل وشامل للعبة المغامرات الممتعة SpongeBob SquarePants: Titans of the Tide. تم ترجمة الحوارات، القوائم، والنصوص بالكامل لضمان تجربة ممتعة ومفهومة لعشاق سبونج بوب بجميع الأعمار.',
             installationSteps: [
                 'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
@@ -80,7 +83,8 @@ export const fetchTranslationsData = async () => {
             coverImage: 'poster.webp',
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp'],
             technologies: ['توطين النصوص', 'تعديل الواجهة'],
-            downloadFile: 'SpongeBob SquarePants Titans of the Tide-Arabic-Patch.7z'
+            downloadFile: 'SpongeBob SquarePants Titans of the Tide-Arabic-Patch.7z',
+            addedDate: '2026-07-24'
         },
         {
             id: 5,
@@ -88,7 +92,7 @@ export const fetchTranslationsData = async () => {
             title: 'The Mound - Omen of Cthulhu',
             releaseYear: '2026',
             translator: 'علي العجيلي',
-            appVersion: 'v1.0',
+            appVersion: 'v34308',
             description: 'تعريب احترافي وشامل للعبة الرعب والغموض The Mound - Omen of Cthulhu. تم ترجمة القصة، الحوارات، والمستندات بدقة عالية لتعيش أجواء الرعب النفسي والقصص الغامضة بكل تفاصيلها بالعربية.',
             installationSteps: [
                 'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
@@ -100,7 +104,8 @@ export const fetchTranslationsData = async () => {
             coverImage: 'poster.webp',
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp'],
             technologies: ['توطين النصوص', 'تعديل الواجهة'],
-            downloadFile: 'The Mound Omen of Cthulhu-Arabic-Patch.7z'
+            downloadFile: 'The Mound Omen of Cthulhu-Arabic-Patch.7z',
+            addedDate: '2026-07-29'
         },
         {
             id: 6,
@@ -108,7 +113,7 @@ export const fetchTranslationsData = async () => {
             title: 'Eriksholm: The Stolen Dream',
             releaseYear: '2026',
             translator: 'علي العجيلي',
-            appVersion: 'v1.0',
+            appVersion: 'v1.4',
             description: 'تعريب شامل للعبة التخفي والمغامرة Eriksholm: The Stolen Dream. يشمل التعريب ترجمة دقيقة للحوارات، القوائم، والنصوص لضمان اندماجك الكامل في عالم اللعبة وكشف أسرار مدينة إريكشهولم.',
             installationSteps: [
                 'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
@@ -120,7 +125,8 @@ export const fetchTranslationsData = async () => {
             coverImage: 'poster.webp',
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp'],
             technologies: ['توطين النصوص', 'تعديل الخطوط'],
-            downloadFile: 'Eriksholm - The Stolen Dream-Arabic-Patch.7z'
+            downloadFile: 'Eriksholm - The Stolen Dream-Arabic-Patch.7z',
+            addedDate: '2026-07-18'
         },
         {
             id: 7,
@@ -128,7 +134,7 @@ export const fetchTranslationsData = async () => {
             title: 'This Bed We Made',
             releaseYear: '2023',
             translator: 'علي العجيلي',
-            appVersion: 'v1.0',
+            appVersion: 'v1.5.2',
             description: 'تعريب احترافي وشامل للعبة التحقيق والغموض This Bed We Made. تدور أحداث القصة في خمسينيات القرن الماضي حول خادمة في فندق ترتدي ثوب التحقيق لكشف الأسرار، والتعريب يغطي الحوارات، القوائم، والمستندات بالكامل.',
             installationSteps: [
                 'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
@@ -140,7 +146,8 @@ export const fetchTranslationsData = async () => {
             coverImage: 'poster.webp',
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp'],
             technologies: ['توطين النصوص', 'تعديل الواجهة'],
-            downloadFile: 'This Bed We Made - Arabic.7z'
+            downloadFile: 'This Bed We Made - Arabic.7z',
+            addedDate: '2026-07-28'
         }
     ];
 

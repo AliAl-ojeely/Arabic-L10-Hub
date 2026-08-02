@@ -27,12 +27,19 @@ const Home = () => {
     // تشغيل الـ Hook بسرعة 80 للكتابة، 50 للحذف، و2000 مللي ثانية للتوقف
     const typedText = useTypingRotate(typingWords, 80, 50, 2000);
 
-    // جلب أحدث الألعاب
     useEffect(() => {
         const loadLatestGames = async () => {
             try {
                 const data = await fetchTranslationsData();
-                setLatestGames(data.slice(0, 3));
+
+                // 1. ترتيب الألعاب من الأحدث إلى الأقدم بناءً على حقل addedDate
+                const sortedData = data.sort((a, b) => {
+                    return new Date(b.addedDate) - new Date(a.addedDate);
+                });
+
+                // 2. أخذ أول 3 ألعاب فقط بعد الترتيب لعرضها في الرئيسية
+                setLatestGames(sortedData.slice(0, 3));
+
             } catch (error) {
                 console.error("لم يتم العثور على بيانات الألعاب", error);
             }

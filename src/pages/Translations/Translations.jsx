@@ -10,7 +10,13 @@ const Translations = () => {
     useEffect(() => {
         const loadData = async () => {
             const data = await fetchTranslationsData();
-            setGames(data);
+
+            // ترتيب الألعاب من الأحدث للأقدم بناءً على حقل تاريخ الإضافة
+            const sortedData = data.sort((a, b) => {
+                return new Date(b.addedDate) - new Date(a.addedDate);
+            });
+
+            setGames(sortedData);
             setLoading(false);
         };
 

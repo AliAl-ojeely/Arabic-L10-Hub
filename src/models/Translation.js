@@ -11,7 +11,8 @@ export default class Translation {
         coverImage,
         screenshots = [],
         technologies = [],
-        downloadFile = 'patch.zip'
+        downloadFile = 'patch.zip',
+        addedDate
     }) {
         this.id = id;
         this.folderName = folderName;
@@ -22,6 +23,7 @@ export default class Translation {
         this.appVersion = appVersion;
         this.installationSteps = installationSteps;
         this.technologies = technologies;
+        this.addedDate = addedDate;
 
         const baseUrl = import.meta.env.BASE_URL;
         const basePath = `${baseUrl}games/${folderName}`;
