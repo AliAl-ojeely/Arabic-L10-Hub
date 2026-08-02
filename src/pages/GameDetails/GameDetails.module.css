@@ -14,9 +14,6 @@
     color: var(--text-secondary);
 }
 
-/* ========================================== */
-/* زر العودة للتعريبات (تصميم حديث) */
-/* ========================================== */
 .backLink {
     display: inline-flex;
     align-items: center;
@@ -50,7 +47,6 @@
     transform: translateX(5px);
 }
 
-/* === القسم العلوي === */
 .headerSection {
     display: flex;
     gap: 4rem;
@@ -69,7 +65,6 @@
     justify-content: center;
 }
 
-/* تنسيق العنوان وسنة الإصدار */
 .titleHeader {
     display: flex;
     align-items: center;
@@ -94,9 +89,6 @@
     border: 1px solid var(--accent-color);
 }
 
-/* ========================================== */
-/* تنسيقات المُعرب والنسخة المتوافقة */
-/* ========================================== */
 .metaDataBlock {
     display: flex;
     flex-direction: column;
@@ -127,7 +119,6 @@
     font-weight: 500;
 }
 
-/* تنسيق كتل التفاصيل (الوصف والتثبيت) */
 .detailsBlock {
     margin-bottom: 2.5rem;
 }
@@ -148,7 +139,6 @@
     margin: 0;
 }
 
-/* تنسيق قائمة التثبيت */
 .installList {
     color: var(--text-secondary);
     line-height: 1.8;
@@ -199,7 +189,6 @@
     transform: translateY(-3px);
 }
 
-/* === قسم الصور المصغرة === */
 .gallerySection h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
@@ -234,7 +223,6 @@
     transform: scale(1.1);
 }
 
-/* === تأثيرات التكبير (Zoom Icon) الاحترافية === */
 .zoomIcon {
     position: absolute;
     top: 0;
@@ -266,7 +254,6 @@
     opacity: 1;
 }
 
-/* === نافذة العرض (Modal & Slideshow) === */
 .modalOverlay {
     position: fixed;
     top: 0;
@@ -370,9 +357,10 @@
     color: var(--text-secondary);
     font-size: 1.1rem;
     letter-spacing: 2px;
+    direction: ltr;
+    display: inline-block;
 }
 
-/* تجاوب للموبايل */
 @media (max-width: 992px) {
     .headerSection {
         flex-direction: column-reverse;
@@ -389,22 +377,44 @@
         align-self: stretch;
     }
 
+    .modalControls {
+        top: 15px;
+        right: 15px;
+        gap: 0.6rem;
+    }
+
+    .iconButton {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+
     .modalImageContainer {
-        max-width: 95vw;
+        max-width: 100%;
+        width: 100%;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .fullImage {
+        max-width: 94%;
+        max-height: 75vh;
+        margin: 0 auto;
+        display: block;
     }
 
     .navButton {
-        display: flex;
-        width: 45px;
-        height: 45px;
-        font-size: 1.5rem;
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+        background: rgba(0, 0, 0, 0.35);
+        border: none;
     }
-    
+
     .rightButton {
-        right: 15px;
+        right: 5px;
     }
-    
+
     .leftButton {
-        left: 15px;
+        left: 5px;
     }
 }
