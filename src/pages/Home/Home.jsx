@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchTranslationsData } from '../../services/dataLoader';
+import { useTypingRotate } from '../../hooks/useTypingRotate'; // استدعاء التأثير الحركي
 import styles from './Home.module.css';
 
 // مصفوفة تعليقات Reddit الحقيقية المأخوذة من مجتمع اللاعبين
@@ -14,6 +15,17 @@ const redditReviews = [
 const Home = () => {
     const [latestGames, setLatestGames] = useState([]);
     const [currentReview, setCurrentReview] = useState(0);
+
+    // العبارات المتحركة للعنوان الرئيسي
+    const typingWords = [
+        'مركز توطين وتعديل الألعاب',
+        'مكتبة شاملة لتعريبات الألعاب',
+        'أحدث الباتشات والتعديلات الحصرية',
+        'منصتك الأولى للألعاب المعربة'
+    ];
+
+    // تشغيل الـ Hook بسرعة 80 للكتابة، 50 للحذف، و2000 مللي ثانية للتوقف
+    const typedText = useTypingRotate(typingWords, 80, 50, 2000);
 
     // جلب أحدث الألعاب
     useEffect(() => {
@@ -42,8 +54,10 @@ const Home = () => {
             {/* القسم الأول: Hero Section */}
             <section className={styles.heroSection}>
                 <div className={styles.heroContent}>
+                    {/* العنوان المتحرك الجديد */}
                     <h1 className={styles.title}>
-                        مركز <span>توطين وتعديل الألعاب</span>
+                        <span className={styles.typingText}>{typedText}</span>
+                        <span className={styles.cursor}>|</span>
                     </h1>
                     <p className={styles.subtitle}>
                         ارتقِ بتجربتك وانغمس في عوالم الألعاب بلغتك الأم. نوفر لك باتشات تعريب دقيقة، وتعديلات (Mods) آمنة ومتوافقة مع مختلف أنظمة التشغيل، مجهزة لتثبيتها بكل سهولة لضمان تجربة لعب متكاملة.
@@ -140,14 +154,12 @@ const Home = () => {
                 <div className={styles.carouselWrapper}>
                     <div
                         className={styles.carouselTrack}
-                        /* المعادلة الرياضية لدفع العناصر يميناً في بيئة الـ RTL */
                         style={{ transform: `translateX(${currentReview * 100}%)` }}
                     >
                         {redditReviews.map((review) => (
                             <div key={review.id} className={styles.reviewSlide}>
                                 <div className={styles.reviewCard}>
                                     <div className={styles.redditUser}>
-                                        {/* أيقونة مشابهة لـ Reddit */}
                                         <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
                                             <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-2.5-11.5c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm5 0c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm-2.5 5c-1.933 0-3.5-1.119-3.5-2.5h7c0 1.381-1.567 2.5-3.5 2.5z" />
                                         </svg>
@@ -159,7 +171,6 @@ const Home = () => {
                         ))}
                     </div>
 
-                    {/* النقاط السفلية لمعرفة مكان التعليق الحالي */}
                     <div className={styles.carouselDots}>
                         {redditReviews.map((_, index) => (
                             <button
