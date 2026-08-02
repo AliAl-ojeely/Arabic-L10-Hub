@@ -17,6 +17,7 @@ function App() {
         return !hasVisited;
     });
 
+    // 1. التأثير الخاص بشاشة التحميل
     useEffect(() => {
         if (isAppLoading) {
             const timer = setTimeout(() => {
@@ -27,6 +28,11 @@ function App() {
             return () => clearTimeout(timer);
         }
     }, [isAppLoading]);
+
+    // 2. التأثير الجديد الخاص بالتمرير للأعلى (Scroll to Top)
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.pathname]); // يعمل هذا التأثير في كل مرة يتغير فيها رابط الصفحة
 
     if (isAppLoading) {
         return (
