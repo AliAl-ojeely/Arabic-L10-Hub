@@ -7,14 +7,17 @@ import styles from './GameDetails.module.css';
 const GameDetails = () => {
     const { folderName } = useParams();
 
-    // 1. الحالات (States)
     const [game, setGame] = useState(null);
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
 
-    // 2. جلب البيانات
+    // States الخاصة بحركة اللمس (Swipe)
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
+    const minSwipeDistance = 50;
+
     useEffect(() => {
         const loadGameDetails = async () => {
             const allGames = await fetchTranslationsData();
@@ -25,7 +28,6 @@ const GameDetails = () => {
         loadGameDetails();
     }, [folderName]);
 
-    // 3. دوال التحكم بالنافذة المنبثقة
     const openModal = (index) => {
         setCurrentIndex(index);
         setIsModalOpen(true);
@@ -47,7 +49,26 @@ const GameDetails = () => {
         setCurrentIndex((prev) => (prev === 0 ? game.screenshots.length - 1 : prev - 1));
     }, [game]);
 
-    // 4. التأثيرات (التشغيل التلقائي واختصارات لوحة المفاتيح)
+    // دوال تتبع حركة الإصبع
+    const onTouchStart = (e) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) nextImage();
+        if (isRightSwipe) prevImage();
+    };
+
     useEffect(() => {
         let interval;
         if (isPlaying && isModalOpen && game?.screenshots?.length > 0) {
@@ -70,8 +91,8 @@ const GameDetails = () => {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [isModalOpen, nextImage, prevImage, closeModal]);
 
-    // 5. حالات التحميل والخطأ
     if (loading) return <div className={styles.loadingState}>جاري تحميل التفاصيل...</div>;
+
     if (!game) return (
         <div className={styles.errorState}>
             <h2>عذراً، لم يتم العثور على هذه اللعبة!</h2>
@@ -79,14 +100,11 @@ const GameDetails = () => {
         </div>
     );
 
-    // استخراج المتغيرات ليكون كود الـ JSX نظيفاً (تمت إضافة المترجم والنسخة)
     const { title, description, releaseYear, translator, appVersion, installationSteps, downloadUrl, coverImage, screenshots } = game;
 
-    // 6. واجهة المستخدم (JSX)
     return (
         <div className={styles.detailsContainer}>
 
-            {/* زر العودة المحسّن */}
             <Link to="/translations" className={styles.backLink}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -95,18 +113,13 @@ const GameDetails = () => {
                 العودة للتعريبات
             </Link>
 
-            {/* --- القسم العلوي: التفاصيل والبوستر --- */}
             <div className={styles.headerSection}>
-
-                {/* التفاصيل (يمين) */}
                 <div className={styles.infoWrapper}>
-
                     <div className={styles.titleHeader}>
                         <h1 className={styles.gameTitle}>{title}</h1>
                         <span className={styles.releaseYear}>{releaseYear}</span>
                     </div>
 
-                    {/* --- القسم الجديد الخاص بالمعرب والنسخة --- */}
                     <div className={styles.metaDataBlock}>
                         <div className={styles.metaItem}>
                             <span className={styles.metaLabel}>المُعرّب:</span>
@@ -139,14 +152,11 @@ const GameDetails = () => {
                     </a>
                 </div>
 
-                {/* البوستر (يسار) */}
                 <div className={styles.posterWrapper}>
                     <img src={coverImage} alt={title} className={styles.posterImage} />
                 </div>
-
             </div>
 
-            {/* --- قسم الصور المصغرة --- */}
             {screenshots && screenshots.length > 0 && (
                 <div className={styles.gallerySection}>
                     <h2>صور من داخل التعريب</h2>
@@ -168,8 +178,6 @@ const GameDetails = () => {
                 </div>
             )}
 
-            {/* --- النافذة المنبثقة للصور (Modal) --- */}
-            {/* --- النافذة المنبثقة للصور (Modal باستخدام Portal) --- */}
             {isModalOpen && createPortal(
                 <div className={styles.modalOverlay} onClick={closeModal}>
 
@@ -203,7 +211,14 @@ const GameDetails = () => {
                         </svg>
                     </button>
 
-                    <div className={styles.modalImageContainer} onClick={(e) => e.stopPropagation()}>
+                    {/* === هنا تم إضافة أحداث اللمس === */}
+                    <div
+                        className={styles.modalImageContainer}
+                        onClick={(e) => e.stopPropagation()}
+                        onTouchStart={onTouchStart}
+                        onTouchMove={onTouchMove}
+                        onTouchEnd={onTouchEnd}
+                    >
                         <img
                             src={screenshots[currentIndex]}
                             alt={`عرض مكبر ${currentIndex + 1}`}
@@ -215,7 +230,7 @@ const GameDetails = () => {
                     </div>
 
                 </div>,
-                document.body // هذا هو السطر السحري الذي ينقل النافذة خارج الصفحة
+                document.body
             )}
         </div>
     );

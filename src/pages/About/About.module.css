@@ -8,6 +8,7 @@
 
 .header {
     text-align: center;
+    /* توسيط عنوان الصفحة */
     margin-bottom: 4rem;
 }
 
@@ -26,6 +27,8 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
+    align-items: center;
+    /* يضمن توسيط الأقسام داخلياً */
 }
 
 .section {
@@ -34,6 +37,13 @@
     border-radius: var(--border-radius);
     border: 1px solid var(--surface-color-light);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* هذا السطر يقوم بتوسيط العنوان والنص داخل الكرت */
+    text-align: center;
+    /* إجبار النص على التمركز في المنتصف */
 }
 
 .section h2 {
@@ -51,4 +61,36 @@
     line-height: 1.9;
     color: var(--text-secondary);
     margin: 0;
+    max-width: 750px;
+    /* تحديد عرض أقصى للنص ليكون مريحاً للعين ولا يمتد كثيراً */
+}
+
+/* ========================================= */
+/* تجاوب الجوال (Mobile Responsiveness)      */
+/* ========================================= */
+@media (max-width: 768px) {
+    .aboutContainer {
+        padding: 3rem 1.5rem;
+    }
+
+    .header h1 {
+        font-size: 2.2rem;
+    }
+
+    .header p {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 2rem 1.5rem;
+    }
+
+    .section h2 {
+        font-size: 1.5rem;
+    }
+
+    .section p {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
 }
