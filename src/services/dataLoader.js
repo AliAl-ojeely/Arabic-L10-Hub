@@ -148,6 +148,28 @@ export const fetchTranslationsData = async () => {
             technologies: ['توطين النصوص', 'تعديل الواجهة'],
             downloadFile: 'This Bed We Made - Arabic.7z',
             addedDate: '2026-07-28'
+        },
+        {
+            id: 8, // تأكد من تعديل الرقم ليكون التسلسل الصحيح في مصفوفتك
+            folderName: 'The Relic First Guardian',
+            title: 'The Relic: First Guardian',
+            releaseYear: '2026', // يمكنك تحديث السنة إذا كانت متوفرة
+            translator: 'علي العجيلي',
+            appVersion: 'v1.0', // يمكنك كتابة رقم النسخة المتوافقة لاحقاً
+            description: 'لعبة The Relic: First Guardian هي لعبة تقمص أدوار وأكشن (ARPG) مظلمة ومحمومة تأخذ اللاعبين في رحلة ملحمية مليئة بالتحديات. تم تطويرها بواسطة استوديو Project Cloud Games ونشرها بواسطة Perp Games. التعريب يشمل ترجمة كاملة لجميع جداول النصوص (النطاقات، العناصر، الأسماء، المهام، الرونز والمهارات) لتوفير تجربة ممتعة وواضحة.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط (rar) من الزر أدناه.',
+                'استخدم برنامج WinRAR لفك الضغط واستخراج الملفات: zArabic_P.pak و zArabic_P.ucas و zArabic_P.utoc.',
+                'توجه إلى مسار تثبيت اللعبة الأساسي، وادخل إلى المسار التالي: ProjectCloudGame\\Content\\Paks\\',
+                'قم بإنشاء مجلد جديد باسم "~mods" داخل مجلد الـ Paks (إذا لم يكن موجوداً مسبقاً).',
+                'انسخ ملفات التعريب الثلاثة والصقها داخل مجلد "~mods".',
+                'شغل اللعبة واستمتع! (ملاحظة: لإلغاء التعريب والعودة للغة الأصلية، فقط قم بحذف هذه الملفات من المجلد).'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp'],
+            technologies: ['توطين النصوص', 'تعديل الواجهة'],
+            downloadFile: 'The Relic First Guardian (Arabic).rar',
+            addedDate: '2026-08-05'
         }
     ];
 
