@@ -362,21 +362,98 @@
 }
 
 @media (max-width: 992px) {
+    .detailsContainer {
+        padding: 2rem 1rem;
+        /* تقليل الحواف الجانبية لتجنب التمدد */
+    }
+
     .headerSection {
         flex-direction: column-reverse;
-        padding: 2rem;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+        /* مسافة متناسقة بين البوستر والمعلومات */
+    }
+
+    .infoWrapper {
+        align-items: center;
+        /* توسيط جميع العناصر أفقياً */
+        text-align: center;
+        width: 100%;
+    }
+
+    .titleHeader {
+        justify-content: center;
+        flex-direction: column;
+        /* جعل العنوان وسنة الإصدار فوق بعضهما */
+        gap: 1rem;
+    }
+
+    .gameTitle {
+        font-size: 2.2rem;
+        /* تصغير الخط قليلاً لمنع خروجه عن حدود الشاشة */
+        word-wrap: break-word;
+        /* إجبار الكلمات الطويلة جداً على النزول لسطر جديد */
+        text-align: center;
+    }
+
+    .metaDataBlock {
+        width: 100%;
+        align-items: center;
+        /* توسيط النصوص داخل المربع */
+        border-right: none;
+        /* إزالة الخط الجانبي في الجوال لأنه غير متناسق مع التوسيط */
+        border-bottom: 3px solid var(--accent-color);
+        /* إضافة خط سفلي بدلاً منه كشكل جمالي */
+        padding: 1.5rem 1rem;
+    }
+
+    .metaItem {
+        flex-direction: column;
+        /* جعل التسمية والقيمة فوق بعضهما */
+        gap: 0.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .metaItem:last-child {
+        margin-bottom: 0;
+    }
+
+    .metaLabel {
+        min-width: auto;
+    }
+
+    .detailsBlock {
+        width: 100%;
+    }
+
+    .detailsBlock h3 {
+        display: block;
+        text-align: center;
+        /* توسيط العناوين الفرعية */
+    }
+
+    .description,
+    .installList {
+        text-align: right;
+        /* إبقاء النصوص الطويلة لليمين لسهولة القراءة في العربية */
     }
 
     .posterWrapper {
         flex: 0 0 auto;
-        max-width: 300px;
+        max-width: 250px;
+        /* تصغير البوستر قليلاً ليتناسب مع الشاشات الصغيرة */
         margin: 0 auto;
     }
 
     .downloadButton {
         align-self: stretch;
+        /* جعل زر التحميل بعرض الشاشة بالكامل */
+        margin-top: 1rem;
     }
 
+    /* ==================================== */
+    /* === إعدادات نافذة عرض الصور (Modal) === */
+    /* ==================================== */
     .modalControls {
         top: 15px;
         right: 15px;
