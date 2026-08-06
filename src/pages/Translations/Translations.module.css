@@ -11,7 +11,7 @@
     align-items: center;
     border-bottom: 2px solid #1a1a1a;
     padding-bottom: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -32,6 +32,70 @@
     font-size: 1.1rem;
 }
 
+/* ========================================= */
+/* === تنسيقات شريط البحث === */
+/* ========================================= */
+.searchContainer {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.searchInputWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+.searchIcon {
+    position: absolute;
+    right: 20px;
+    /* بما أن الموقع عربي، الأيقونة تكون في اليمين */
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    pointer-events: none;
+    /* لمنع الأيقونة من إعاقة النقر على حقل الإدخال */
+}
+
+.searchInput {
+    width: 100%;
+    padding: 1.2rem 1.2rem 1.2rem 3rem;
+    padding-right: 3.5rem;
+    /* ترك مساحة للأيقونة في اليمين */
+    font-size: 1.1rem;
+    border-radius: 30px;
+    border: 1px solid var(--surface-color-light);
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    outline: none;
+    transition: all var(--transition-speed) ease;
+    font-family: inherit;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.searchInput:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.searchInput::placeholder {
+    color: var(--text-secondary);
+}
+
+.noResults {
+    text-align: center;
+    padding: 5rem 2rem;
+    background-color: var(--surface-color);
+    border: 1px dashed var(--surface-color-light);
+    border-radius: var(--border-radius);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
+
+/* ========================================= */
+/* === تنسيقات شبكة الألعاب === */
+/* ========================================= */
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -98,6 +162,16 @@
 
     .pageTitle {
         font-size: 2rem;
+    }
+
+    .searchInput {
+        font-size: 1rem;
+        padding: 1rem 1rem 1rem 1rem;
+        padding-right: 3rem;
+    }
+
+    .searchIcon {
+        right: 15px;
     }
 
     .gridContainer {
