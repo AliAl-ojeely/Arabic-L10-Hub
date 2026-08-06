@@ -170,6 +170,26 @@ export const fetchTranslationsData = async () => {
             technologies: ['توطين النصوص', 'تعديل الواجهة'],
             downloadFile: 'The Relic First Guardian (Arabic).rar',
             addedDate: '2026-08-05'
+        },
+        {
+            id: 9, // تأكد من تعديل الرقم التسلسلي ليكون التالي في مصفوفتك
+            folderName: 'Beast of Reincarnation',
+            title: 'Beast of Reincarnation',
+            releaseYear: '2026',
+            translator: 'علي العجيلي',
+            appVersion: 'v1.0.5.0',
+            description: 'تعريب شامل للعبة Beast of Reincarnation، يغطي ترجمة القوائم، الحوارات، والنصوص الداخلية بالكامل لتوفير تجربة استثنائية وممتعة للاعب العربي.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
+                'استخرج الملفات باستخدام أحد برامج فك الضغط (مثل 7-Zip أو WinRAR).',
+                'توجه إلى مسار تثبيت اللعبة الأساسي وضع ملفات التعريب في المجلد المخصص للمودز (Mods) الخاص باللعبة.',
+                'شغل اللعبة واستمتع بالتعريب بالكامل.'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp'],
+            technologies: ['توطين النصوص', 'تعريب القوائم'],
+            downloadFile: 'Beast of Reincarnation-(Arabic).7z',
+            addedDate: '2026-08-06'
         }
     ];
 
