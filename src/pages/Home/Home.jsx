@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchTranslationsData } from '../../services/dataLoader';
-import { useTypingRotate } from '../../hooks/useTypingRotate'; // استدعاء التأثير الحركي
+import { useTypingRotate } from '../../hooks/useTypingRotate';
 import styles from './Home.module.css';
 
-// مصفوفة تعليقات Reddit الحقيقية المأخوذة من مجتمع اللاعبين
 const redditReviews = [
     { id: 1, user: "u/Disastrous_Tip_7759", text: "شكرا اخي حبيت ان اخبرك ان تعريبك هو الوحيد اللي يعمل على نسخه لينكس من اللعبة بدون مشاكل" },
     { id: 2, user: "u/BadOrange8", text: "ممتاز يا شيخ الله يباركلك ❤️ رغم ان اللعبة لها اكثر من تعريب بس ما توقعت احد يعربها لنا بشكل يدوي" },
@@ -14,9 +13,9 @@ const redditReviews = [
 
 const Home = () => {
     const [latestGames, setLatestGames] = useState([]);
+    const [totalGamesCount, setTotalGamesCount] = useState(0); // حالة لتخزين إجمالي عدد الألعاب
     const [currentReview, setCurrentReview] = useState(0);
 
-    // العبارات المتحركة للعنوان الرئيسي
     const typingWords = [
         'مركز توطين وتعديل الألعاب',
         'مكتبة شاملة لتعريبات الألعاب',
@@ -24,30 +23,29 @@ const Home = () => {
         'منصتك الأولى للألعاب المعربة'
     ];
 
-    // تشغيل الـ Hook بسرعة 80 للكتابة، 50 للحذف، و2000 مللي ثانية للتوقف
     const typedText = useTypingRotate(typingWords, 80, 50, 2000);
 
     useEffect(() => {
-        const loadLatestGames = async () => {
+        const loadHomeData = async () => {
             try {
                 const data = await fetchTranslationsData();
 
-                // 1. ترتيب الألعاب من الأحدث إلى الأقدم بناءً على حقل addedDate
+                // حفظ العدد الإجمالي للألعاب
+                setTotalGamesCount(data.length);
+
                 const sortedData = data.sort((a, b) => {
                     return new Date(b.addedDate) - new Date(a.addedDate);
                 });
 
-                // 2. أخذ أول 3 ألعاب فقط بعد الترتيب لعرضها في الرئيسية
                 setLatestGames(sortedData.slice(0, 3));
 
             } catch (error) {
                 console.error("لم يتم العثور على بيانات الألعاب", error);
             }
         };
-        loadLatestGames();
+        loadHomeData();
     }, []);
 
-    // مؤقت التمرير التلقائي للتعليقات (10 ثواني = 10000 ملي ثانية)
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentReview((prev) => (prev === redditReviews.length - 1 ? 0 : prev + 1));
@@ -58,10 +56,8 @@ const Home = () => {
     return (
         <div className={styles.homeContainer}>
 
-            {/* القسم الأول: Hero Section */}
             <section className={styles.heroSection}>
                 <div className={styles.heroContent}>
-                    {/* العنوان المتحرك الجديد */}
                     <h1 className={styles.title}>
                         <span className={styles.typingText}>{typedText}</span>
                         <span className={styles.cursor}>|</span>
@@ -80,12 +76,9 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* القسم الثاني: مميزات الباتشات */}
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>لماذا تختار تعريباتنا؟</h2>
                 <div className={styles.featuresGrid}>
-
-                    {/* البطاقة الأولى: توطين احترافي */}
                     <div className={styles.featureCard}>
                         <div className={styles.iconWrapper}>
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -98,7 +91,6 @@ const Home = () => {
                         <p>صياغة دقيقة للنصوص والحوارات لتتناسب مع سياق اللعبة وتوفر تجربة اندماج كاملة بعيداً عن الترجمة الحرفية.</p>
                     </div>
 
-                    {/* البطاقة الثانية: تثبيت آمن وسهل */}
                     <div className={styles.featureCard}>
                         <div className={styles.iconWrapper}>
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -109,7 +101,6 @@ const Home = () => {
                         <p>ملفات مجهزة بعناية ومضغوطة لتكون جاهزة للفك والنقل المباشر إلى مسار اللعبة دون المساس بملفات النظام الأساسية.</p>
                     </div>
 
-                    {/* البطاقة الثالثة: دعم التحديثات */}
                     <div className={styles.featureCard}>
                         <div className={styles.iconWrapper}>
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -121,14 +112,20 @@ const Home = () => {
                         <h3>دعم التحديثات</h3>
                         <p>تحديثات مستمرة للباتشات لتتوافق مع أحدث إصدارات الألعاب الرسمية لضمان استقرار الأداء وخلوه من المشاكل.</p>
                     </div>
-
                 </div>
             </section>
 
-            {/* القسم الثالث: أحدث التعريبات */}
+            {/* القسم الثالث: أحدث الإضافات مع عرض إجمالي عدد الألعاب */}
             <section className={`${styles.section} ${styles.latestSection}`}>
                 <div className={styles.latestContainer}>
-                    <h2 className={styles.sectionTitle}>أحدث الإضافات</h2>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
+                        <h2 className={styles.sectionTitle} style={{ margin: 0 }}>أحدث الإضافات</h2>
+                        {totalGamesCount > 0 && (
+                            <span style={{ marginTop: 20, backgroundColor: 'var(--surface-color-light)', padding: '0.4rem 1rem', borderRadius: '20px', color: 'var(--accent-color)', fontWeight: 'bold', border: '1px solid var(--accent-color)', fontSize: '0.95rem' }}>
+                                إجمالي الألعاب المعربة: {totalGamesCount}
+                            </span>
+                        )}
+                    </div>
 
                     {latestGames.length > 0 ? (
                         <div className={styles.gamesGrid}>
@@ -149,13 +146,12 @@ const Home = () => {
 
                     <div style={{ marginTop: '3rem', textAlign: 'center' }}>
                         <Link to="/translations" className={styles.secondaryButton}>
-                            عرض جميع التعريبات
+                            عرض جميع التعريبات ({totalGamesCount})
                         </Link>
                     </div>
                 </div>
             </section>
 
-            {/* القسم الرابع: تعليقات Reddit (Auto Scrolling) */}
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>ماذا يقول اللاعبون؟</h2>
                 <div className={styles.carouselWrapper}>

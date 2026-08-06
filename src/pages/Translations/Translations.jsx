@@ -11,7 +11,6 @@ const Translations = () => {
         const loadData = async () => {
             const data = await fetchTranslationsData();
 
-            // ترتيب الألعاب من الأحدث للأقدم بناءً على حقل تاريخ الإضافة
             const sortedData = data.sort((a, b) => {
                 return new Date(b.addedDate) - new Date(a.addedDate);
             });
@@ -29,7 +28,13 @@ const Translations = () => {
 
     return (
         <div className={styles.pageContainer}>
-            <h1 className={styles.pageTitle}>معرض التعريبات</h1>
+            {/* قسم العنوان مع العداد الديناميكي */}
+            <div className={styles.headerSection}>
+                <h1 className={styles.pageTitle}>معرض التعريبات</h1>
+                <span className={styles.counterBadge}>
+                    إجمالي الألعاب: {games.length}
+                </span>
+            </div>
 
             <div className={styles.gridContainer}>
                 {games.map((game) => (

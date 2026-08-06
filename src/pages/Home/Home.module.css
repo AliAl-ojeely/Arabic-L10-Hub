@@ -30,21 +30,17 @@ body {
     max-width: 800px;
 }
 
-/* تنسيقات العنوان لمنع الاهتزاز */
 .title {
     font-size: 4rem;
     margin-bottom: 1.5rem;
     font-weight: 800;
     min-height: 120px;
-    /* يحفظ مساحة العنوان حتى وهو فارغ */
     display: flex;
     justify-content: center;
     align-items: center;
     direction: rtl;
-    /* لضمان مكان المؤشر */
 }
 
-/* النص المتحرك الملون */
 .typingText {
     background: linear-gradient(90deg, var(--accent-color) 0%, #00f2fe 100%);
     background-clip: text;
@@ -53,7 +49,6 @@ body {
     display: inline-block;
 }
 
-/* مؤشر الكتابة */
 .cursor {
     color: var(--text-primary, #ffffff);
     font-size: 4rem;
@@ -336,11 +331,13 @@ body {
     transform: scale(1.2);
 }
 
+/* ========================================= */
+/* === التجاوب مع شاشات الجوال (Mobile) === */
+/* ========================================= */
 @media (max-width: 768px) {
     .title {
         font-size: 2.5rem;
         min-height: 90px;
-        /* لتقليل المساحة الفارغة في شاشات الجوال */
     }
 
     .cursor {
@@ -358,6 +355,22 @@ body {
     }
 
     .section {
-        padding: 4rem 1.5rem;
+        padding: 4rem 1rem;
+        /* تقليل الهوامش الجانبية للجوال لتفادي أي تمدد */
+    }
+
+    /* إصلاح قسم أحدث الإضافات والعداد في الجوال */
+    .latestSection .latestContainer>div:first-child {
+        flex-direction: column !important;
+        /* جعل العنوان والعداد فوق بعضهما بدل الجانب بجانب */
+        align-items: center !important;
+        text-align: center;
+        gap: 0.8rem !important;
+        margin-bottom: 2.5rem !important;
+    }
+
+    .sectionTitle {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
     }
 }
