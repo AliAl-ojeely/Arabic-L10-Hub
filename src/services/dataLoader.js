@@ -197,7 +197,7 @@ export const fetchTranslationsData = async () => {
             title: 'Lost & Found - A This Bed We Made Story',
             releaseYear: '2026',
             translator: 'علي العجيلي',
-            appVersion: 'v1.0',
+            appVersion: 'v6513',
             description: 'تعريب شامل للقصة الفرعية Lost & Found - A This Bed We Made Story، يغطي ترجمة القوائم، الحوارات، والنصوص الداخلية بالكامل لتوفير تجربة استثنائية وممتعة للاعب العربي.',
             installationSteps: [
                 'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
