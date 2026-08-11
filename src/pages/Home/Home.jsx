@@ -4,6 +4,48 @@ import { fetchTranslationsData } from '../../services/dataLoader';
 import { useTypingRotate } from '../../hooks/useTypingRotate';
 import styles from './Home.module.css';
 
+// جلب المسار الأساسي لـ Vite لضمان ظهور الصور حتى بعد رفع الموقع على GitHub
+const baseUrl = import.meta.env.BASE_URL;
+
+// مصفوفة الفرق والمكتبات الداعمة (تم إضافة baseUrl لمسار الصور)
+const teams = [
+    {
+        id: 1,
+        name: "موقع مُعرّب",
+        description: "مصدرك الشامل لتعريبات الألعاب الرسمية والهاوية.",
+        image: `${baseUrl}muarrab.webp`,
+        link: "https://muarrab.com/"
+    },
+    {
+        id: 2,
+        name: "مكتبة أسمر",
+        description: "منصة تعريبات حصرية جاهزة للتحميل بروابط مباشرة وتحديثات مستمرة.",
+        image: `${baseUrl}asmar.webp`,
+        link: "https://asmar-ar.com/"
+    },
+    {
+        id: 3,
+        name: "فريق الحلم المتجدد",
+        description: "من أعرق الفرق المتخصصة في تعريب ألعاب القصة والروايات المرئية.",
+        image: `${baseUrl}dream.webp`,
+        link: "https://etrdream.com/"
+    },
+    {
+        id: 4,
+        name: "فريق فلته",
+        description: "فريق مبدع ومتألق يقدم تعريبات احترافية ومتقنة لمختلف الألعاب المستقلة والشهيرة.",
+        image: `${baseUrl}fltah.webp`,
+        link: "https://fltah-translator.com/"
+    },
+    {
+        id: 5,
+        name: "العب بالعربي",
+        description: "منصة رائدة تهدف إلى إثراء المحتوى العربي وتقديم تعريبات عالية الجودة لمختلف منصات الألعاب.",
+        image: `${baseUrl}playinarabic.webp`,
+        link: "https://www.playinarabic.com/"
+    }
+];
+
 const redditReviews = [
     { id: 1, user: "u/Disastrous_Tip_7759", text: "شكرا اخي حبيت ان اخبرك ان تعريبك هو الوحيد اللي يعمل على نسخه لينكس من اللعبة بدون مشاكل" },
     { id: 2, user: "u/BadOrange8", text: "ممتاز يا شيخ الله يباركلك ❤️ رغم ان اللعبة لها اكثر من تعريب بس ما توقعت احد يعربها لنا بشكل يدوي" },
@@ -13,8 +55,9 @@ const redditReviews = [
 
 const Home = () => {
     const [latestGames, setLatestGames] = useState([]);
-    const [totalGamesCount, setTotalGamesCount] = useState(0); // حالة لتخزين إجمالي عدد الألعاب
+    const [totalGamesCount, setTotalGamesCount] = useState(0);
     const [currentReview, setCurrentReview] = useState(0);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     const typingWords = [
         'مركز توطين وتعديل الألعاب',
@@ -29,16 +72,9 @@ const Home = () => {
         const loadHomeData = async () => {
             try {
                 const data = await fetchTranslationsData();
-
-                // حفظ العدد الإجمالي للألعاب
                 setTotalGamesCount(data.length);
-
-                const sortedData = data.sort((a, b) => {
-                    return new Date(b.addedDate) - new Date(a.addedDate);
-                });
-
+                const sortedData = data.sort((a, b) => new Date(b.addedDate) - new Date(a.addedDate));
                 setLatestGames(sortedData.slice(0, 3));
-
             } catch (error) {
                 console.error("لم يتم العثور على بيانات الألعاب", error);
             }
@@ -47,15 +83,26 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
-        const interval = setInterval(() => {
+        const reviewInterval = setInterval(() => {
             setCurrentReview((prev) => (prev === redditReviews.length - 1 ? 0 : prev + 1));
         }, 10000);
-        return () => clearInterval(interval);
+        return () => clearInterval(reviewInterval);
     }, []);
+
+    useEffect(() => {
+        const slideInterval = setInterval(() => {
+            setCurrentSlide((prev) => (prev === teams.length - 1 ? 0 : prev + 1));
+        }, 6000);
+        return () => clearInterval(slideInterval);
+    }, []);
+
+    const nextSlide = () => setCurrentSlide((prev) => (prev === teams.length - 1 ? 0 : prev + 1));
+    const prevSlide = () => setCurrentSlide((prev) => (prev === 0 ? teams.length - 1 : prev - 1));
 
     return (
         <div className={styles.homeContainer}>
 
+            {/* --- Hero Section --- */}
             <section className={styles.heroSection}>
                 <div className={styles.heroContent}>
                     <h1 className={styles.title}>
@@ -76,52 +123,65 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* --- سلايدر فرق ومكتبات التعريب --- */}
             <section className={styles.section}>
-                <h2 className={styles.sectionTitle}>لماذا تختار تعريباتنا؟</h2>
-                <div className={styles.featuresGrid}>
-                    <div className={styles.featureCard}>
-                        <div className={styles.iconWrapper}>
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                        </div>
-                        <h3>توطين احترافي</h3>
-                        <p>صياغة دقيقة للنصوص والحوارات لتتناسب مع سياق اللعبة وتوفر تجربة اندماج كاملة بعيداً عن الترجمة الحرفية.</p>
-                    </div>
+                <div className={styles.sliderHeader}>
+                    <h2 className={styles.sectionTitle}>مجتمع التعريب العربي</h2>
+                    <p className={styles.sectionDescription}>تعرف على أبرز الفرق والمكتبات التي تساهم في إثراء المحتوى العربي. <br /> (قائمة سيرفرات ديسكورد قادمة قريباً ⏳)</p>
+                </div>
 
-                    <div className={styles.featureCard}>
-                        <div className={styles.iconWrapper}>
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                            </svg>
+                <div className={styles.slideshowContainer}>
+                    {teams.map((team, index) => (
+                        <div
+                            key={team.id}
+                            className={`${styles.slide} ${index === currentSlide ? styles.activeSlide : ''}`}
+                            style={{ backgroundImage: `url('${team.image}')` }}
+                        >
+                            <div className={styles.slideOverlay}>
+                                <div className={styles.slideContent}>
+                                    <h3>{team.name}</h3>
+                                    <p>{team.description}</p>
+                                    <a href={team.link} target="_blank" rel="noopener noreferrer" className={styles.slideButton}>
+                                        زيارة الموقع
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <h3>تثبيت آمن وسهل</h3>
-                        <p>ملفات مجهزة بعناية ومضغوطة لتكون جاهزة للفك والنقل المباشر إلى مسار اللعبة دون المساس بملفات النظام الأساسية.</p>
-                    </div>
+                    ))}
 
-                    <div className={styles.featureCard}>
-                        <div className={styles.iconWrapper}>
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                <polyline points="23 4 23 10 17 10"></polyline>
-                                <polyline points="1 20 1 14 7 14"></polyline>
-                                <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
-                            </svg>
-                        </div>
-                        <h3>دعم التحديثات</h3>
-                        <p>تحديثات مستمرة للباتشات لتتوافق مع أحدث إصدارات الألعاب الرسمية لضمان استقرار الأداء وخلوه من المشاكل.</p>
+                    {/* الزر الأيمن: يشير لليمين ويأخذك للشريحة التالية */}
+                    <button className={`${styles.sliderNav} ${styles.rightButton}`} onClick={nextSlide}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M9 18l6-6-6-6" />
+                        </svg>
+                    </button>
+
+                    {/* الزر الأيسر: يشير لليسار ويرجعك للشريحة السابقة */}
+                    <button className={`${styles.sliderNav} ${styles.leftButton}`} onClick={prevSlide}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M15 18l-6-6 6-6" />
+                        </svg>
+                    </button>
+
+                    <div className={styles.slideIndicators}>
+                        {teams.map((_, index) => (
+                            <span
+                                key={index}
+                                className={`${styles.indicator} ${index === currentSlide ? styles.activeIndicator : ''}`}
+                                onClick={() => setCurrentSlide(index)}
+                            ></span>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* القسم الثالث: أحدث الإضافات مع عرض إجمالي عدد الألعاب */}
+            {/* --- أحدث الإضافات --- */}
             <section className={`${styles.section} ${styles.latestSection}`}>
                 <div className={styles.latestContainer}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
+                    <div className={styles.latestHeader}>
                         <h2 className={styles.sectionTitle} style={{ margin: 0 }}>أحدث الإضافات</h2>
                         {totalGamesCount > 0 && (
-                            <span style={{ marginTop: 20, backgroundColor: 'var(--surface-color-light)', padding: '0.4rem 1rem', borderRadius: '20px', color: 'var(--accent-color)', fontWeight: 'bold', border: '1px solid var(--accent-color)', fontSize: '0.95rem' }}>
+                            <span className={styles.totalGamesBadge}>
                                 إجمالي الألعاب المعربة: {totalGamesCount}
                             </span>
                         )}
@@ -152,6 +212,7 @@ const Home = () => {
                 </div>
             </section>
 
+            {/* --- ماذا يقول اللاعبون (Reddit) --- */}
             <section className={styles.section}>
                 <h2 className={styles.sectionTitle}>ماذا يقول اللاعبون؟</h2>
                 <div className={styles.carouselWrapper}>
