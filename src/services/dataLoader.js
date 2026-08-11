@@ -190,6 +190,26 @@ export const fetchTranslationsData = async () => {
             technologies: ['توطين النصوص', 'تعريب القوائم'],
             downloadFile: 'Beast of Reincarnation_v1.5_(Arabic).7z',
             addedDate: '2026-08-06'
+        },
+        {
+            id: 10, // تأكد من تعديل الرقم التسلسلي ليكون التالي في مصفوفتك
+            folderName: 'Lost & Found - A This Bed We Made Story',
+            title: 'Lost & Found - A This Bed We Made Story',
+            releaseYear: '2026',
+            translator: 'علي العجيلي',
+            appVersion: 'v1.0',
+            description: 'تعريب شامل للقصة الفرعية Lost & Found - A This Bed We Made Story، يغطي ترجمة القوائم، الحوارات، والنصوص الداخلية بالكامل لتوفير تجربة استثنائية وممتعة للاعب العربي.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
+                'استخرج الملفات باستخدام أحد برامج فك الضغط (مثل 7-Zip أو WinRAR).',
+                'توجه إلى مسار مجلد اللعبة الأساسي، وقم بلصق ملف التعريب داخل مجلد Paks عبر المسار: ThisBedWeMade\\Content\\Paks',
+                'شغل اللعبة واستمتع بالتعريب بالكامل.'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp'],
+            technologies: ['توطين النصوص', 'تعريب القوائم'],
+            downloadFile: 'Lost_and_Found_A_This_Bed_We_Made_Story_(Arabic).7z',
+            addedDate: '2026-08-11'
         }
     ];
 
