@@ -177,7 +177,7 @@ export const fetchTranslationsData = async () => {
             title: 'Beast of Reincarnation',
             releaseYear: '2026',
             translator: 'علي العجيلي',
-            appVersion: 'v1.0.5.0',
+            appVersion: 'v1.0.7.0',
             description: 'تعريب شامل للعبة Beast of Reincarnation، يغطي ترجمة القوائم، الحوارات، والنصوص الداخلية بالكامل لتوفير تجربة استثنائية وممتعة للاعب العربي.',
             installationSteps: [
                 'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
@@ -188,7 +188,7 @@ export const fetchTranslationsData = async () => {
             coverImage: 'poster.webp',
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp'],
             technologies: ['توطين النصوص', 'تعريب القوائم'],
-            downloadFile: 'Beast of Reincarnation_v1.5_(Arabic).7z',
+            downloadFile: 'Beast of Reincarnation_v2.0_(Arabic).7z',
             addedDate: '2026-08-06'
         },
         {
