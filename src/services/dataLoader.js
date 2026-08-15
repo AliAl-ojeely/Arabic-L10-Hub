@@ -210,6 +210,26 @@ export const fetchTranslationsData = async () => {
             technologies: ['توطين النصوص', 'تعريب القوائم'],
             downloadFile: 'Lost_and_Found_A_This_Bed_We_Made_Story_(Arabic).7z',
             addedDate: '2026-08-11'
+        },
+        {
+            id: 11, // تأكد من تعديل الرقم التسلسلي ليكون التالي في مصفوفتك
+            folderName: 'Grounded 2',
+            title: 'Grounded 2',
+            releaseYear: '2025',
+            translator: 'علي العجيلي',
+            appVersion: 'v0.1.1.1',
+            description: 'تعريب شامل للعبة Grounded 2، يغطي ترجمة القوائم، الحوارات، أسماء العناصر والأشياء، النصوص التعليمية، وواجهة المستخدم بالكامل، مع دعم الخط العربي وعرض الأرقام الغربية بشكل صحيح لتقديم تجربة متكاملة للاعب العربي.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط (7z) من الزر أدناه.',
+                'استخرج الملفات باستخدام أحد برامج فك الضغط (مثل 7-Zip أو WinRAR).',
+                'انسخ ملفات التعريب الثلاثة إلى مجلد Paks داخل مسار اللعبة: Augusta\\Content\\Paks',
+                'شغل اللعبة واستمتع بالتعريب بالكامل.'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp'],
+            technologies: ['توطين النصوص', 'تعريب القوائم', 'دعم الخط العربي'],
+            downloadFile: 'Grounded_2_(Arabic).7z',
+            addedDate: '2026-08-15'
         }
     ];
 
