@@ -188,7 +188,7 @@ export const fetchTranslationsData = async () => {
             coverImage: 'poster.webp',
             screenshots: ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp', '7.webp'],
             technologies: ['توطين النصوص', 'تعريب القوائم'],
-            downloadFile: 'Beast of Reincarnation_v2.0_(Arabic).7z',
+            downloadFile: 'Beast of Reincarnation_v2.5_(Arabic).7z',
             addedDate: '2026-08-06'
         },
         {
