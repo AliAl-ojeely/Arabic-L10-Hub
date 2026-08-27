@@ -341,6 +341,41 @@ export const fetchTranslationsData = async () => {
             ],
             downloadFile: 'Cursed_Mountain_Arabic.rar',
             addedDate: '2026-08-24'
+        },
+        {
+            id: 15,
+            folderName: 'Help Will Come Tomorrow',
+            title: 'Help Will Come Tomorrow',
+            releaseYear: '2020',
+            translator: 'علي العجيلي',
+            appVersion: 'v1.1.2',
+            description: 'تعريب عربي شامل للعبة البقاء والاستراتيجية Help Will Come Tomorrow، يشمل ترجمة القوائم والواجهات والحوارات والنصوص الداخلية والمعلومات المرتبطة بالشخصيات والأحداث، بهدف تقديم تجربة عربية متكاملة مع الحفاظ على أجواء اللعبة وقصتها.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط Help_Will_Come_Tomorrow_Arabic.7z من الزر أدناه.',
+                'استخرج محتويات الحزمة باستخدام 7-Zip أو WinRAR.',
+                'أغلق اللعبة بالكامل قبل تثبيت التعريب.',
+                'اتبع تعليمات التثبيت الموجودة داخل حزمة التعريب.',
+                'بعد اكتمال التثبيت، شغّل اللعبة واستمتع بالتجربة باللغة العربية.'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: [
+                '1.webp',
+                '2.webp',
+                '3.webp',
+                '4.webp',
+                '5.webp',
+                '6.webp',
+                '7.webp',
+                '8.webp'
+            ],
+            technologies: [
+                'توطين النصوص',
+                'تعريب القوائم والحوارات',
+                'دعم اللغة العربية',
+                'Unity'
+            ],
+            downloadFile: 'Help_Will_Come_Tomorrow_Arabic.7z',
+            addedDate: '2026-08-27'
         }
     ];
 
