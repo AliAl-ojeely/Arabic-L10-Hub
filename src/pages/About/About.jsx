@@ -8,11 +8,6 @@ const About = () => {
         <div className={styles.heroGlowTwo} />
 
         <div className={styles.heroContent}>
-          <div className={styles.heroBadge}>
-            <span className={styles.heroBadgeDot} />
-            مشروع عربي مستقل وغير ربحي
-          </div>
-
           <h1 className={styles.pageTitle}>عن المشروع</h1>
 
           <p className={styles.heroDescription}>
