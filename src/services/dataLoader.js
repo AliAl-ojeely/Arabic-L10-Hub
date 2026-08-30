@@ -377,7 +377,7 @@ export const fetchTranslationsData = async () => {
             downloadFile: 'Help_Will_Come_Tomorrow_Arabic.7z',
             addedDate: '2026-08-27'
         },
-                {
+        {
             id: 16,
             folderName: 'Kill The Shadow',
             title: 'Kill The Shadow',
@@ -418,7 +418,43 @@ export const fetchTranslationsData = async () => {
             ],
             downloadUrl: 'https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/v1.0.0/Kill_The_Shadow_Arabic_v1.0.0.zip',
             addedDate: '2026-08-30'
-        }
+        },
+        {
+            id: 16,
+            folderName: 'Stella of The End',
+            title: 'Stella of The End',
+            releaseYear: '2022',
+            translator: 'علي العجيلي',
+            appVersion: 'v1.0.0',
+            description: 'تعريب عربي شامل للعبة الرواية البصرية Stella of The End، يتضمن ترجمة القصة والحوارات والقوائم والواجهات والإعدادات وشاشات الحفظ والتحميل ورسائل التأكيد والعناصر النصية المختلفة داخل اللعبة، مع دعم عرض اللغة العربية بصورة سليمة والمحافظة على أسلوب اللعبة وأجوائها الأصلية.',
+            installationSteps: [
+                'قم بتحميل ملف التعريب المضغوط Stella_of_The_End.7z من الزر أدناه.',
+                'استخرج محتويات الحزمة باستخدام 7-Zip أو WinRAR.',
+                'أغلق اللعبة بالكامل قبل تثبيت التعريب.',
+                'اتبع تعليمات التثبيت الموجودة داخل حزمة التعريب وانسخ الملفات إلى مجلد اللعبة عند الطلب.',
+                'بعد اكتمال التثبيت، شغّل اللعبة واختر اللغة الإنجليزية للاستفادة من التعريب العربي.'
+            ],
+            coverImage: 'poster.webp',
+            screenshots: [
+                '1.webp',
+                '2.webp',
+                '3.webp',
+                '4.webp',
+                '5.webp',
+                '6.webp'
+            ],
+            technologies: [
+                'توطين النصوص',
+                'تعريب القوائم والحوارات',
+                'تعريب واجهات المستخدم',
+                'دعم اللغة العربية',
+                'دعم RTL',
+                'Artemis Engine',
+                'PFS / PF8'
+            ],
+            downloadFile: 'Stella_of_The_End.7z',
+            addedDate: '2026-08-23'
+        },
     ];
 
     return data.map(item => new Translation(item));
