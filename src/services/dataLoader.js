@@ -416,7 +416,7 @@ export const fetchTranslationsData = async () => {
                 'تعريب الخرائط والعناصر البصرية',
                 'Unity'
             ],
-            downloadFile: 'Kill_The_Shadow_Arabic_v1.0.0.zip',
+            downloadUrl: 'https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/v1.0.0/Kill_The_Shadow_Arabic_v1.0.0.zip',
             addedDate: '2026-08-30'
         }
     ];

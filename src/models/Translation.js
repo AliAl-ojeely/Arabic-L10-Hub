@@ -12,6 +12,7 @@ export default class Translation {
         screenshots = [],
         technologies = [],
         downloadFile = 'patch.zip',
+        downloadUrl = null,
         addedDate
     }) {
         this.id = id;
@@ -30,6 +31,9 @@ export default class Translation {
 
         this.coverImage = `${basePath}/${coverImage}`;
         this.screenshots = screenshots.map(img => `${basePath}/${img}`);
-        this.downloadUrl = `${basePath}/${downloadFile}`;
+
+        // إذا تم توفير رابط خارجي، مثل GitHub Releases، استخدمه مباشرة.
+        // وإلا استخدم نظام الملفات المحلي القديم.
+        this.downloadUrl = downloadUrl || `${basePath}/${downloadFile}`;
     }
-}
+} 
