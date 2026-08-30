@@ -1,181 +1,666 @@
-.pageContainer {
-    padding: 3rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: 80vh;
+.page {
+    width: 100%;
+    min-width: 0;
+    overflow-x: clip;
+    color: var(--text-primary);
+    background-color: var(--bg-color);
 }
 
-.headerSection {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #1a1a1a;
-    padding-bottom: 1rem;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
+.page *,
+.page *::before,
+.page *::after {
+    box-sizing: border-box;
+}
+
+.heroSection {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: clamp(5rem, 9vw, 8rem) 2rem clamp(3rem, 6vw, 4.5rem);
+    border-bottom: 1px solid var(--surface-color-light);
+    background:
+        radial-gradient(circle at 15% 20%, rgba(37, 99, 235, 0.12), transparent 32%),
+        radial-gradient(circle at 85% 80%, rgba(0, 242, 254, 0.05), transparent 28%),
+        var(--bg-color);
+}
+
+.heroSection::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.18;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 65px 65px;
+    mask-image: linear-gradient(to bottom, #000, transparent);
+    pointer-events: none;
+}
+
+.heroGlow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    top: -250px;
+    right: 12%;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.2);
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .pageTitle {
-    font-size: 2.5rem;
-    margin: 0;
+    margin: 0 0 1.25rem;
     color: var(--text-primary);
+    font-size: clamp(2.7rem, 6vw, 4.8rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
 }
 
-.counterBadge {
-    background-color: var(--surface-color);
-    color: var(--accent-color);
-    padding: 0.5rem 1.2rem;
-    border-radius: 20px;
-    font-weight: bold;
-    border: 1px solid var(--accent-color);
-    font-size: 1.1rem;
+.pageDescription {
+    max-width: 760px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: clamp(0.95rem, 1.5vw, 1.08rem);
+    line-height: 2;
 }
 
-/* ========================================= */
-/* === تنسيقات شريط البحث === */
-/* ========================================= */
-.searchContainer {
-    margin-bottom: 3rem;
+.contentSection {
+    width: 100%;
+    padding: clamp(2.5rem, 5vw, 4rem) 2rem clamp(5rem, 8vw, 8rem);
+}
+
+.contentInner {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.toolbar {
+    width: 100%;
+    margin-bottom: 2.5rem;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.searchArea {
+    width: min(100%, 620px);
 }
 
 .searchInputWrapper {
     position: relative;
     width: 100%;
-    max-width: 600px;
 }
 
 .searchIcon {
     position: absolute;
-    right: 20px;
-    /* بما أن الموقع عربي، الأيقونة تكون في اليمين */
     top: 50%;
+    right: 1.15rem;
+    width: 19px;
+    height: 19px;
     transform: translateY(-50%);
     color: var(--text-secondary);
     pointer-events: none;
-    /* لمنع الأيقونة من إعاقة النقر على حقل الإدخال */
+    transition: color 0.25s ease;
 }
 
 .searchInput {
     width: 100%;
-    padding: 1.2rem 1.2rem 1.2rem 3rem;
-    padding-right: 3.5rem;
-    /* ترك مساحة للأيقونة في اليمين */
-    font-size: 1.1rem;
-    border-radius: 30px;
+    height: 54px;
+    padding: 0 3.15rem 0 3rem;
     border: 1px solid var(--surface-color-light);
-    background-color: var(--surface-color);
-    color: var(--text-primary);
+    border-radius: 14px;
     outline: none;
-    transition: all var(--transition-speed) ease;
+    background: var(--surface-color);
+    color: var(--text-primary);
     font-family: inherit;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 0.95rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.searchInput:hover {
+    border-color: rgba(37, 99, 235, 0.32);
 }
 
 .searchInput:focus {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+    border-color: rgba(37, 99, 235, 0.75);
+    background: rgba(37, 99, 235, 0.025);
+    box-shadow:
+        0 0 0 4px rgba(37, 99, 235, 0.09),
+        0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.searchInputWrapper:focus-within .searchIcon {
+    color: var(--accent-color);
 }
 
 .searchInput::placeholder {
     color: var(--text-secondary);
+    opacity: 0.72;
 }
 
-.noResults {
-    text-align: center;
-    padding: 5rem 2rem;
-    background-color: var(--surface-color);
-    border: 1px dashed var(--surface-color-light);
-    border-radius: var(--border-radius);
+.searchInput::-webkit-search-cancel-button {
+    display: none;
+}
+
+.clearButton {
+    position: absolute;
+    top: 50%;
+    left: 0.75rem;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transform: translateY(-50%);
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.035);
     color: var(--text-secondary);
-    font-size: 1.2rem;
+    cursor: pointer;
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        transform 0.25s ease;
 }
 
-/* ========================================= */
-/* === تنسيقات شبكة الألعاب === */
-/* ========================================= */
+.clearButton svg {
+    width: 16px;
+    height: 16px;
+}
+
+.clearButton:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.resultsBadge {
+    min-width: 124px;
+    padding: 0.85rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    border: 1px solid var(--surface-color-light);
+    border-radius: 16px;
+    background: var(--surface-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
+    flex-shrink: 0;
+}
+
+.resultsBadgeNumber {
+    color: var(--accent-color);
+    font-size: 1.35rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.resultsBadgeLabel {
+    color: var(--text-secondary);
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
 .gridContainer {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
 }
 
 .gameCard {
-    background-color: var(--surface-color);
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    border: 1px solid #1a1a1a;
-    transition: all var(--transition-speed) ease;
+    position: relative;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    cursor: pointer;
+    overflow: hidden;
+    border: 1px solid var(--surface-color-light);
+    border-radius: 18px;
+    background: var(--surface-color);
+    color: inherit;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
 }
 
 .gameCard:hover {
     transform: translateY(-8px);
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+    border-color: rgba(37, 99, 235, 0.6);
+    box-shadow:
+        0 22px 45px rgba(0, 0, 0, 0.28),
+        0 0 25px rgba(37, 99, 235, 0.08);
 }
 
 .posterContainer {
+    position: relative;
     width: 100%;
     aspect-ratio: 3 / 4;
     overflow: hidden;
-    background-color: #111;
+    background: #0b0b0e;
 }
 
 .posterImage {
     width: 100%;
     height: 100%;
+    display: block;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition:
+        transform 0.65s ease,
+        filter 0.65s ease;
 }
 
 .gameCard:hover .posterImage {
-    transform: scale(1.05);
+    transform: scale(1.055);
+}
+
+.posterGradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(7, 7, 10, 0.7), transparent 38%);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.newBadge {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.92);
+    color: white;
+    font-size: 0.66rem;
+    font-weight: 800;
+    box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+    backdrop-filter: blur(10px);
+}
+
+.openIcon {
+    position: absolute;
+    left: 0.9rem;
+    bottom: 0.9rem;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    background: rgba(6, 6, 10, 0.62);
+    color: white;
+    opacity: 0;
+    transform: translateY(8px);
+    backdrop-filter: blur(10px);
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.openIcon svg {
+    width: 17px;
+    height: 17px;
+}
+
+.gameCard:hover .openIcon {
+    opacity: 1;
+    transform: translateY(0);
+    background: var(--accent-color);
 }
 
 .gameInfo {
-    padding: 1.2rem;
-    text-align: center;
+    flex: 1;
+    min-width: 0;
+    padding: 1.25rem 1.2rem 1.2rem;
+}
+
+.translationLabel {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--accent-color);
+    font-size: 0.66rem;
+    font-weight: 800;
 }
 
 .gameTitle {
-    font-size: 1.2rem;
+    margin: 0 0 1.1rem;
     color: var(--text-primary);
-    margin: 0;
-    font-weight: bold;
+    font-size: 1.05rem;
+    font-weight: 750;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
 }
 
-@media (max-width: 768px) {
-    .pageContainer {
-        padding: 2rem 1rem;
+.gameMeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-top: auto;
+    color: var(--text-secondary);
+    font-size: 0.68rem;
+}
+
+.gameMeta > span:first-child {
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.gameMeta svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+}
+
+.viewDetails {
+    flex-shrink: 0;
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: color 0.25s ease;
+}
+
+.gameCard:hover .viewDetails {
+    color: var(--accent-color);
+}
+
+.stateCard {
+    width: min(100%, 680px);
+    margin: 2rem auto;
+    padding: clamp(2.5rem, 5vw, 4rem);
+    border: 1px dashed var(--surface-color-light);
+    border-radius: 20px;
+    background: var(--surface-color);
+    text-align: center;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+}
+
+.stateIcon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(37, 99, 235, 0.22);
+    border-radius: 18px;
+    background: rgba(37, 99, 235, 0.07);
+    color: var(--accent-color);
+}
+
+.stateIcon svg {
+    width: 27px;
+    height: 27px;
+}
+
+.stateCard h2 {
+    margin: 0 0 0.8rem;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.stateCard p {
+    max-width: 520px;
+    margin: 0 auto 1.7rem;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.9;
+}
+
+.stateCard p strong {
+    color: var(--text-primary);
+}
+
+.stateButton {
+    min-height: 44px;
+    padding: 0.7rem 1.15rem;
+    border: 1px solid rgba(37, 99, 235, 0.45);
+    border-radius: 10px;
+    background: rgba(37, 99, 235, 0.08);
+    color: var(--accent-color);
+    font-family: inherit;
+    font-size: 0.84rem;
+    font-weight: 750;
+    cursor: pointer;
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.stateButton:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    color: white;
+}
+
+.skeletonCard {
+    overflow: hidden;
+    border: 1px solid var(--surface-color-light);
+    border-radius: 18px;
+    background: var(--surface-color);
+}
+
+.skeletonPoster {
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(100deg, #111 30%, var(--surface-color-light) 45%, #111 60%);
+    background-size: 200% 100%;
+    animation: skeletonLoading 1.4s infinite;
+}
+
+.skeletonInfo {
+    padding: 1.25rem;
+}
+
+.skeletonInfo span {
+    display: block;
+    height: 11px;
+    margin-bottom: 0.8rem;
+    border-radius: 999px;
+    background: var(--surface-color-light);
+}
+
+.skeletonInfo span:first-child {
+    width: 75%;
+}
+
+.skeletonInfo span:last-child {
+    width: 45%;
+}
+
+@keyframes skeletonLoading {
+    to {
+        background-position-x: -200%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .gridContainer {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 850px) {
+    .heroSection {
+        padding-top: 5rem;
+        padding-bottom: 4rem;
     }
 
-    .headerSection {
+    .contentSection {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .toolbar {
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: stretch;
+    }
+
+    .searchArea {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .resultsBadge {
+        align-self: center;
+    }
+
+    .gridContainer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .heroSection {
+        padding: 4.5rem 1rem 3.5rem;
     }
 
     .pageTitle {
-        font-size: 2rem;
+        font-size: clamp(2.4rem, 11vw, 3.3rem);
+    }
+
+    .pageDescription {
+        max-width: 480px;
+        font-size: 0.92rem;
+        line-height: 1.9;
+    }
+
+    .contentSection {
+        padding: 2.5rem 1rem 5rem;
+    }
+
+    .toolbar {
+        margin-bottom: 2rem;
     }
 
     .searchInput {
-        font-size: 1rem;
-        padding: 1rem 1rem 1rem 1rem;
-        padding-right: 3rem;
+        height: 52px;
+        font-size: 0.9rem;
     }
 
-    .searchIcon {
-        right: 15px;
+    .resultsBadge {
+        min-width: 112px;
+        padding: 0.8rem 1rem;
+    }
+
+    .resultsBadgeNumber {
+        font-size: 1.2rem;
     }
 
     .gridContainer {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.35rem;
+    }
+
+    .gameCard,
+    .skeletonCard {
+        width: min(100%, 390px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .gameInfo {
+        padding: 1.2rem;
+    }
+
+    .gameTitle {
+        font-size: 1.05rem;
+    }
+
+    .stateCard {
+        padding: 2.5rem 1.25rem;
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .heroSection {
+        padding: 4rem 0.75rem 3.25rem;
+    }
+
+    .pageTitle {
+        font-size: 2.25rem;
+    }
+
+    .pageDescription {
+        font-size: 0.86rem;
+    }
+
+    .contentSection {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .searchInput {
+        padding-right: 2.9rem;
+    }
+
+    .searchIcon {
+        right: 1rem;
+        width: 18px;
+        height: 18px;
+    }
+
+    .resultsBadge {
+        min-width: 104px;
+        border-radius: 14px;
+    }
+
+    .resultsBadgeLabel {
+        font-size: 0.68rem;
+    }
+
+    .gameCard,
+    .skeletonCard {
+        max-width: 340px;
+    }
+
+    .gameMeta {
+        font-size: 0.64rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .posterImage,
+    .gameCard,
+    .openIcon,
+    .clearButton,
+    .stateButton {
+        transition: none;
+    }
+
+    .skeletonPoster {
+        animation: none;
+    }
+
+    .gameCard:hover,
+    .stateButton:hover {
+        transform: none;
     }
 }
