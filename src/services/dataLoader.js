@@ -586,7 +586,8 @@ export const fetchTranslationsData = async () => {
           "Unity",
           "Amiri Font",
         ],
-        downloadFile: "All_Quiet_in_the_Trenches_v1.0.2.rar",
+        downloadUrl:
+          "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/all-quiet-in-the-trenches-ar-v1.0.2/All_Quiet_in_the_Trenches_v1.0.2.rar",
         addedDate: "2026-09-02",
       },
     ];
