@@ -547,6 +547,48 @@ export const fetchTranslationsData = async () => {
         downloadFile: "Stella_of_The_End.7z",
         addedDate: "2026-08-23",
       },
+      {
+        id: 18,
+        folderName: "All Quiet in the Trenches",
+        title: "All Quiet in the Trenches",
+        releaseYear: "2024",
+        translator: "علي العجيلي",
+        appVersion: "v1.0.2",
+        description:
+          "تعريب عربي شامل للعبة All Quiet in the Trenches، متوافق مع نسخة اللعبة v0.12.2، ويتضمن ترجمة الحوارات والقصة واليوميات والقوائم والواجهات والإعدادات وشاشات التعليمات والخيارات والعناصر النصية المختلفة داخل اللعبة، مع دعم كامل لاتجاه RTL وتشكيل الحروف العربية والتفاف الأسطر ومعالجة علامات الترقيم والأرقام، بالإضافة إلى دمج خط Amiri وشعار عربي للعبة ومعالجة عرض التاريخ داخل اليوميات بصورة صحيحة.",
+        installationSteps: [
+          "قم بتحميل ملف التعريب المضغوط All_Quiet_in_the_Trenches_v1.0.2.rar من الزر أدناه.",
+          "استخرج محتويات الحزمة باستخدام WinRAR أو 7-Zip.",
+          "أغلق اللعبة بالكامل قبل تثبيت التعريب.",
+          "انسخ مجلد All Quiet in the Trenches_Data الموجود داخل حزمة التعريب إلى مجلد اللعبة الرئيسي.",
+          "عند ظهور رسالة الاستبدال في Windows اختر Replace the files in the destination لاستبدال الملفات المطلوبة.",
+          "بعد اكتمال النسخ، شغّل اللعبة بشكل طبيعي من Steam واختر اللغة الإنجليزية للاستفادة من التعريب العربي.",
+        ],
+        coverImage: "poster.webp",
+        screenshots: [
+          "1.webp",
+          "2.webp",
+          "3.webp",
+          "4.webp",
+          "5.webp",
+          "6.webp",
+        ],
+        technologies: [
+          "توطين النصوص",
+          "تعريب القوائم والحوارات",
+          "تعريب اليوميات",
+          "تعريب واجهات المستخدم",
+          "دعم اللغة العربية",
+          "دعم RTL",
+          "Arabic Shaping",
+          "TextMesh Pro",
+          "Ink",
+          "Unity",
+          "Amiri Font",
+        ],
+        downloadFile: "All_Quiet_in_the_Trenches_v1.0.2.rar",
+        addedDate: "2026-09-02",
+      },
     ];
 
     return data.map(item => new Translation(item));
