@@ -253,12 +253,410 @@
         0 0 25px rgba(37, 99, 235, 0.08);
 }
 
+
+.uniqueCard {
+    border-color: rgba(245, 190, 60, 0.72);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(245, 190, 60, 0.035),
+            transparent 30%
+        ),
+        var(--surface-color);
+
+    box-shadow:
+        0 16px 38px rgba(0, 0, 0, 0.22),
+        0 0 0 1px rgba(245, 190, 60, 0.14),
+        0 0 30px rgba(245, 190, 60, 0.14);
+
+    animation:
+        uniqueCardGlow
+        3.6s
+        ease-in-out
+        infinite;
+}
+
+.uniqueCard::before {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+
+    border-radius: inherit;
+
+    border:
+        1px solid
+        rgba(255, 219, 128, 0.35);
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 28%,
+            rgba(255, 226, 145, 0.05) 42%,
+            rgba(255, 235, 177, 0.16) 50%,
+            rgba(255, 226, 145, 0.05) 58%,
+            transparent 72%
+        );
+
+    background-size: 240% 100%;
+    background-position: 160% 0;
+
+    pointer-events: none;
+
+    animation:
+        uniqueCardSweep
+        4.8s
+        cubic-bezier(0.4, 0, 0.2, 1)
+        infinite;
+}
+
+.uniqueCard::after {
+    content: '';
+
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    border-radius: inherit;
+
+    box-shadow:
+        inset 0 0 28px rgba(245, 190, 60, 0.055);
+
+    pointer-events: none;
+}
+
+.uniqueCard:hover {
+    border-color: rgba(255, 205, 82, 0.92);
+
+    box-shadow:
+        0 24px 50px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 214, 107, 0.2),
+        0 0 38px rgba(245, 190, 60, 0.2);
+}
+
+.uniqueCard .translationLabel,
+.uniqueCard .viewDetails {
+    color: #f3c75f;
+}
+
+.uniqueBadge {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    z-index: 4;
+
+    min-height: 29px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.35rem;
+
+    padding:
+        0.38rem
+        0.65rem;
+
+    border:
+        1px solid
+        rgba(255, 222, 131, 0.45);
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(88, 61, 5, 0.94),
+            rgba(143, 98, 9, 0.92)
+        );
+
+    color: #ffe6a3;
+
+    font-size: 0.64rem;
+    font-weight: 900;
+
+    box-shadow:
+        0 8px 20px rgba(114, 76, 5, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.13);
+
+    backdrop-filter: blur(10px);
+}
+
+.uniqueBadge svg {
+    width: 12px;
+    height: 12px;
+
+    flex-shrink: 0;
+
+    color: #ffd369;
+}
+
+
+.uniqueConfetti {
+    position: absolute;
+    inset: 0;
+    z-index: 8;
+
+    overflow: visible;
+
+    pointer-events: none;
+}
+
+.uniqueConfetti span {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+
+    width: 8px;
+    height: 5px;
+
+    border-radius: 1px;
+
+    opacity: 0;
+
+    background: #f6c453;
+
+    box-shadow:
+        0 0 8px rgba(246, 196, 83, 0.18);
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.25)
+        rotate(0deg);
+
+    transform-origin: center;
+
+    will-change:
+        transform,
+        opacity;
+}
+
+.uniqueConfetti span:nth-child(2n) {
+    width: 6px;
+    height: 9px;
+
+    background: #fff0bd;
+}
+
+.uniqueConfetti span:nth-child(3n) {
+    width: 9px;
+    height: 4px;
+
+    background: #d99a20;
+}
+
+.uniqueConfetti span:nth-child(5n) {
+    background: #fff7dd;
+}
+
+.uniqueConfetti span:nth-child(1) {
+    --tx: -145px;
+    --ty: -175px;
+    --rot: -240deg;
+    --delay: 0ms;
+}
+
+.uniqueConfetti span:nth-child(2) {
+    --tx: -90px;
+    --ty: -220px;
+    --rot: 310deg;
+    --delay: 35ms;
+}
+
+.uniqueConfetti span:nth-child(3) {
+    --tx: -30px;
+    --ty: -195px;
+    --rot: -320deg;
+    --delay: 70ms;
+}
+
+.uniqueConfetti span:nth-child(4) {
+    --tx: 55px;
+    --ty: -210px;
+    --rot: 270deg;
+    --delay: 20ms;
+}
+
+.uniqueConfetti span:nth-child(5) {
+    --tx: 125px;
+    --ty: -165px;
+    --rot: -280deg;
+    --delay: 90ms;
+}
+
+.uniqueConfetti span:nth-child(6) {
+    --tx: 165px;
+    --ty: -80px;
+    --rot: 360deg;
+    --delay: 50ms;
+}
+
+.uniqueConfetti span:nth-child(7) {
+    --tx: 155px;
+    --ty: 35px;
+    --rot: -300deg;
+    --delay: 110ms;
+}
+
+.uniqueConfetti span:nth-child(8) {
+    --tx: 110px;
+    --ty: 145px;
+    --rot: 260deg;
+    --delay: 55ms;
+}
+
+.uniqueConfetti span:nth-child(9) {
+    --tx: 30px;
+    --ty: 185px;
+    --rot: -360deg;
+    --delay: 100ms;
+}
+
+.uniqueConfetti span:nth-child(10) {
+    --tx: -55px;
+    --ty: 175px;
+    --rot: 320deg;
+    --delay: 20ms;
+}
+
+.uniqueConfetti span:nth-child(11) {
+    --tx: -125px;
+    --ty: 125px;
+    --rot: -250deg;
+    --delay: 85ms;
+}
+
+.uniqueConfetti span:nth-child(12) {
+    --tx: -170px;
+    --ty: 45px;
+    --rot: 290deg;
+    --delay: 45ms;
+}
+
+.uniqueConfetti span:nth-child(13) {
+    --tx: -175px;
+    --ty: -70px;
+    --rot: -340deg;
+    --delay: 120ms;
+}
+
+.uniqueConfetti span:nth-child(14) {
+    --tx: 175px;
+    --ty: -10px;
+    --rot: 340deg;
+    --delay: 75ms;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .uniqueCard {
+        overflow: visible;
+    }
+
+    .uniqueCard:hover {
+        z-index: 10;
+    }
+
+    .uniqueCard:hover .uniqueConfetti span {
+        animation:
+            uniqueConfettiBurst
+            920ms
+            cubic-bezier(0.16, 1, 0.3, 1)
+            var(--delay)
+            both;
+    }
+}
+
+@keyframes uniqueConfettiBurst {
+    0% {
+        opacity: 0;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.2)
+            rotate(0deg);
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    45% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+        transform:
+            translate(
+                calc(-50% + var(--tx)),
+                calc(-50% + var(--ty))
+            )
+            scale(0.9)
+            rotate(var(--rot));
+    }
+}
+
+@keyframes uniqueCardGlow {
+    0%,
+    100% {
+        border-color: rgba(245, 190, 60, 0.62);
+
+        box-shadow:
+            0 16px 38px rgba(0, 0, 0, 0.22),
+            0 0 0 1px rgba(245, 190, 60, 0.11),
+            0 0 22px rgba(245, 190, 60, 0.1);
+    }
+
+    50% {
+        border-color: rgba(255, 213, 103, 0.9);
+
+        box-shadow:
+            0 18px 42px rgba(0, 0, 0, 0.26),
+            0 0 0 1px rgba(255, 218, 120, 0.2),
+            0 0 38px rgba(245, 190, 60, 0.2);
+    }
+}
+
+@keyframes uniqueCardSweep {
+    0%,
+    22% {
+        background-position: 160% 0;
+    }
+
+    68%,
+    100% {
+        background-position: -70% 0;
+    }
+}
+
 .posterContainer {
     position: relative;
     width: 100%;
     aspect-ratio: 3 / 4;
     overflow: hidden;
     background: #0b0b0e;
+}
+
+
+.uniqueCard .posterContainer {
+    overflow: hidden;
+
+    border-radius:
+        17px
+        17px
+        0
+        0;
+}
+
+.uniqueCard .posterImage {
+    border-radius:
+        17px
+        17px
+        0
+        0;
 }
 
 .posterImage {
@@ -537,6 +935,20 @@
 }
 
 @media (max-width: 600px) {
+    .uniqueBadge {
+        top: 0.75rem;
+        left: 0.75rem;
+
+        min-height: 27px;
+
+        padding:
+            0.34rem
+            0.58rem;
+
+        font-size: 0.6rem;
+    }
+
+
     .heroSection {
         padding: 4.5rem 1rem 3.5rem;
     }
@@ -655,7 +1067,10 @@
         transition: none;
     }
 
-    .skeletonPoster {
+    .skeletonPoster,
+    .uniqueCard,
+    .uniqueCard::before,
+    .uniqueConfetti span {
         animation: none;
     }
 

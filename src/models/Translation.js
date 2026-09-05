@@ -15,6 +15,7 @@ export default class Translation {
     downloadUrl = null,
     nexusModsUrl = null,
     addedDate,
+    isUnique = false,
   }) {
     this.id = id;
     this.folderName = folderName;
@@ -27,11 +28,13 @@ export default class Translation {
     this.technologies = technologies;
     this.addedDate = addedDate;
     this.nexusModsUrl = nexusModsUrl;
+    this.isUnique = Boolean(isUnique);
 
     const baseUrl = import.meta.env.BASE_URL;
     const basePath = `${baseUrl}games/${folderName}`;
 
     this.coverImage = `${basePath}/${coverImage}`;
+
     this.screenshots = screenshots.map((img) => `${basePath}/${img}`);
 
     this.downloadUrl = downloadUrl || `${basePath}/${downloadFile}`;

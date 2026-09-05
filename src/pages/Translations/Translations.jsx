@@ -224,8 +224,18 @@ const Translations = () => {
                   <Link
                     to={`/translations/${game.folderName}`}
                     key={game.folderName}
-                    className={styles.gameCard}
+                    className={`${styles.gameCard} ${
+                      game.isUnique ? styles.uniqueCard : ""
+                    }`}
                   >
+                    {game.isUnique && (
+                      <div className={styles.uniqueConfetti} aria-hidden="true">
+                        {Array.from({ length: 14 }).map((_, pieceIndex) => (
+                          <span key={pieceIndex} />
+                        ))}
+                      </div>
+                    )}
+
                     <div className={styles.posterContainer}>
                       <img
                         src={game.coverImage}
@@ -235,6 +245,19 @@ const Translations = () => {
                       />
 
                       <div className={styles.posterGradient} />
+
+                      {game.isUnique && (
+                        <span className={styles.uniqueBadge}>
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="m12 2.5 2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55-4.76-4.64 6.58-.96L12 2.5Z" />
+                          </svg>
+                          <span>مميز</span>
+                        </span>
+                      )}
 
                       {index < 3 && !hasSearch && (
                         <span className={styles.newBadge}>جديد</span>
