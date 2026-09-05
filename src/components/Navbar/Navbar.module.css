@@ -436,7 +436,11 @@
     text-decoration: none;
 }
 
-.mobileLogo span {
+.mobileLogoText > span {
+    color: var(--text-primary);
+}
+
+.mobileLogoText strong {
     color: var(--accent-color);
 }
 
@@ -720,28 +724,56 @@
     }
 
     .navInner {
+        width: calc(100% - 1.5rem);
         min-height: 68px;
 
-        grid-template-columns:
-            minmax(0, 1fr)
-            auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
     }
 
-    .desktopNav {
+    .logo,
+    .desktopNav,
+    .discordButton {
         display: none;
+    }
+
+    .navActions {
+        width: auto;
+        margin: 0;
     }
 
     .burgerButton {
         display: flex;
     }
 
-    .discordButton {
-        width: 40px;
-        min-height: 40px;
+    .mobileHeader {
+        justify-content: space-between;
     }
 
-    .logoText {
-        font-size: 1rem;
+    .mobileLogo {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .mobileLogoText {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.3rem;
+
+        direction: ltr;
+        unicode-bidi: isolate;
+
+        white-space: nowrap;
+    }
+
+    .mobileLogoText > span {
+        color: var(--text-primary);
+    }
+
+    .mobileLogoText strong {
+        color: var(--accent-color);
+        font-weight: 900;
     }
 }
 
@@ -749,14 +781,6 @@
     .navInner {
         width: calc(100% - 1.5rem);
         min-height: 64px;
-    }
-
-    .logoText {
-        font-size: 0.9rem;
-    }
-
-    .discordButton {
-        display: none;
     }
 
     .burgerButton {
@@ -784,10 +808,6 @@
 }
 
 @media (max-width: 340px) {
-    .logoText {
-        font-size: 0.82rem;
-    }
-
     .mobileMenu {
         width: 95vw;
     }
