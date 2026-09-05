@@ -157,7 +157,6 @@ const Home = () => {
 
   const featuredGame = latestGames[0] ?? null;
   const currentTeam = teams[currentSlide];
-  const activeReview = redditReviews[currentReview];
 
   return (
     <div className={styles.homeContainer} dir="rtl">
@@ -167,14 +166,8 @@ const Home = () => {
 
         <div className={styles.heroInner}>
           <div className={styles.heroContent}>
-            <div className={styles.heroBadge}>
-              <span className={styles.heroBadgeDot} />
-              منصة عربية مستقلة لتعريب الألعاب
-            </div>
-
             <h1 className={styles.title}>
               <span className={styles.typingText}>{typedText}</span>
-
               <span className={styles.cursor}>|</span>
             </h1>
 
@@ -186,12 +179,12 @@ const Home = () => {
             <div className={styles.actions}>
               <Link to="/translations" className={styles.primaryButton}>
                 <span>تصفح مكتبة التعريبات</span>
-
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path d="M19 12H5" />
                   <path d="M12 19l-7-7 7-7" />
@@ -231,17 +224,11 @@ const Home = () => {
               >
                 <div className={styles.featuredImageWrap}>
                   <img src={featuredGame.coverImage} alt={featuredGame.title} />
-
                   <div className={styles.featuredGradient} />
-
                   <span className={styles.newBadge}>أحدث تعريب</span>
                 </div>
 
                 <div className={styles.featuredContent}>
-                  <span className={styles.featuredEyebrow}>
-                    تمت إضافته حديثًا
-                  </span>
-
                   <h2>{featuredGame.title}</h2>
 
                   <div className={styles.featuredLink}>
@@ -251,6 +238,7 @@ const Home = () => {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"
+                      aria-hidden="true"
                     >
                       <path d="M19 12H5" />
                       <path d="M12 19l-7-7 7-7" />
@@ -261,7 +249,6 @@ const Home = () => {
             ) : (
               <div className={styles.featuredSkeleton}>
                 <div className={styles.skeletonImage} />
-
                 <div className={styles.skeletonContent}>
                   <span />
                   <span />
@@ -269,13 +256,6 @@ const Home = () => {
                 </div>
               </div>
             )}
-          </div>
-        </div>
-
-        <div className={styles.scrollHint}>
-          <span>اكتشف المزيد</span>
-          <div className={styles.scrollMouse}>
-            <span />
           </div>
         </div>
       </section>
@@ -299,10 +279,7 @@ const Home = () => {
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <div>
-              <span className={styles.sectionEyebrow}>آخر التحديثات</span>
-
               <h2 className={styles.sectionTitle}>أحدث الإضافات</h2>
-
               <p className={styles.sectionDescription}>
                 آخر الألعاب التي تمت إضافتها إلى مكتبة التعريبات.
               </p>
@@ -321,7 +298,7 @@ const Home = () => {
               {latestGames.map((game, index) => (
                 <Link
                   to={`/translations/${game.folderName}`}
-                  key={game.id}
+                  key={game.folderName}
                   className={styles.gameCard}
                 >
                   <div className={styles.posterContainer}>
@@ -331,30 +308,13 @@ const Home = () => {
                       loading="lazy"
                     />
 
-                    <div className={styles.posterOverlay} />
-
                     {index === 0 && (
                       <span className={styles.latestBadge}>الأحدث</span>
                     )}
-
-                    <div className={styles.cardArrow}>
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M19 12H5" />
-                        <path d="M12 19l-7-7 7-7" />
-                      </svg>
-                    </div>
                   </div>
 
                   <div className={styles.gameInfo}>
-                    <span>تعريب عربي</span>
-
                     <h3>{game.title}</h3>
-
                     <div className={styles.gameLink}>عرض التفاصيل</div>
                   </div>
                 </Link>
@@ -380,12 +340,7 @@ const Home = () => {
       <section className={styles.section}>
         <div className={styles.sectionInner}>
           <div className={styles.centerSectionHeader}>
-            <span className={styles.sectionEyebrow}>
-              معًا لدعم المحتوى العربي
-            </span>
-
             <h2 className={styles.sectionTitle}>مجتمع التعريب العربي</h2>
-
             <p className={styles.sectionDescription}>
               مجموعة من الفرق والمواقع التي ساهمت في إثراء تجربة الألعاب باللغة
               العربية.
@@ -395,25 +350,13 @@ const Home = () => {
           <div className={styles.communityShowcase}>
             <div key={currentTeam.id} className={styles.communityMedia}>
               <img src={currentTeam.image} alt={currentTeam.name} />
-
-              <div className={styles.communityMediaOverlay} />
-
-              <div className={styles.slideCounter}>
-                <span>{String(currentSlide + 1).padStart(2, "0")}</span>
-
-                <span>/</span>
-
-                <span>{String(teams.length).padStart(2, "0")}</span>
-              </div>
             </div>
 
-            <div className={styles.communityContent}>
-              <span className={styles.communityLabel}>
-                منصة من مجتمع التعريب
-              </span>
-
+            <div
+              key={`community-content-${currentTeam.id}`}
+              className={styles.communityContent}
+            >
               <h3>{currentTeam.name}</h3>
-
               <p>{currentTeam.description}</p>
 
               <a
@@ -428,6 +371,7 @@ const Home = () => {
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <path d="M15 3h6v6" />
                   <path d="M10 14L21 3" />
@@ -447,6 +391,7 @@ const Home = () => {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"
+                      aria-hidden="true"
                     >
                       <path d="M9 18l6-6-6-6" />
                     </svg>
@@ -462,6 +407,7 @@ const Home = () => {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="2"
+                      aria-hidden="true"
                     >
                       <path d="M15 18l-6-6 6-6" />
                     </svg>
@@ -490,29 +436,39 @@ const Home = () => {
       <section className={`${styles.section} ${styles.reviewsSection}`}>
         <div className={styles.sectionInner}>
           <div className={styles.centerSectionHeader}>
-            <span className={styles.sectionEyebrow}>آراء من المجتمع</span>
-
             <h2 className={styles.sectionTitle}>ماذا يقول اللاعبون؟</h2>
           </div>
 
           <div className={styles.reviewContainer}>
-            <div key={activeReview.id} className={styles.reviewCard}>
-              <div className={styles.quoteMark}>”</div>
+            <div className={styles.reviewStage}>
+              {redditReviews.map((review, index) => (
+                <div
+                  key={review.id}
+                  className={`${styles.reviewCard} ${
+                    index === currentReview ? styles.activeReviewCard : ""
+                  }`}
+                  aria-hidden={index !== currentReview}
+                >
+                  <div className={styles.redditUser}>
+                    <div className={styles.redditIcon}>
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-2.5-11.5c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm5 0c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm-2.5 5c-1.933 0-3.5-1.119-3.5-2.5h7c0 1.381-1.567 2.5-3.5 2.5z" />
+                      </svg>
+                    </div>
 
-              <div className={styles.redditUser}>
-                <div className={styles.redditIcon}>
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-2.5-11.5c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm5 0c-.828 0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5 1.5-.672 1.5-1.5-.672-1.5-1.5-1.5zm-2.5 5c-1.933 0-3.5-1.119-3.5-2.5h7c0 1.381-1.567 2.5-3.5 2.5z" />
-                  </svg>
+                    <div>
+                      <strong>{review.user}</strong>
+                      <span>Reddit</span>
+                    </div>
+                  </div>
+
+                  <p className={styles.reviewText}>{review.text}</p>
                 </div>
-
-                <div>
-                  <strong>{activeReview.user}</strong>
-                  <span>Reddit</span>
-                </div>
-              </div>
-
-              <p className={styles.reviewText}>{activeReview.text}</p>
+              ))}
             </div>
 
             <div className={styles.carouselDots}>
@@ -537,16 +493,13 @@ const Home = () => {
 
         <div className={styles.discordContent}>
           <div className={styles.discordIcon}>
-            <svg viewBox="0 0 24 24" fill="currentColor">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M20.317 4.3698A19.7913 19.7913 0 0015.885 3a13.687 13.687 0 00-.566 1.169 18.27 18.27 0 00-5.658 0A12.594 12.594 0 009.089 3a19.736 19.736 0 00-4.432 1.373C1.854 8.57 1.095 12.661 1.475 16.692a17.992 17.992 0 005.431 2.743 13.953 13.953 0 001.307-1.676 11.46 11.46 0 01-2.056-.988c.173-.126.342-.257.506-.391a14.223 14.223 0 0012.454 0c.166.135.335.266.506.391a11.66 11.66 0 01-2.06.989 13.961 13.961 0 001.307 1.675 17.977 17.977 0 005.433-2.742c.446-4.673-.762-8.727-3.986-12.323zM8.02 14.222c-1.183 0-2.157-1.085-2.157-2.419s.955-2.428 2.157-2.428 2.176 1.094 2.157 2.428c0 1.334-.955 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419s.955-2.428 2.157-2.428 2.176 1.094 2.157 2.428c0 1.334-.955 2.419-2.157 2.419z" />
             </svg>
           </div>
 
           <div className={styles.discordText}>
-            <span>Arabic L10 Hub Community</span>
-
             <h2>انضم إلى مجتمعنا على Discord</h2>
-
             <p>
               تابع آخر أخبار التعريبات، شارك اقتراحاتك، احصل على المساعدة وتواصل
               مباشرة مع المجتمع.
@@ -565,6 +518,7 @@ const Home = () => {
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
+              aria-hidden="true"
             >
               <path d="M19 12H5" />
               <path d="M12 19l-7-7 7-7" />

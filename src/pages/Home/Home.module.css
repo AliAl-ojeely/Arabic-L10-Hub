@@ -2,7 +2,7 @@
     width: 100%;
     min-width: 0;
     overflow-x: clip;
-    background-color: var(--bg-color);
+    background: var(--bg-color);
     color: var(--text-primary);
 }
 
@@ -51,12 +51,7 @@
             transparent 1px
         );
     background-size: 70px 70px;
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 90%
-        );
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
 }
 
 .heroGlowOne,
@@ -87,113 +82,37 @@
 .heroInner {
     width: min(1280px, calc(100% - 5rem));
     margin: 0 auto;
-
     padding:
         clamp(6rem, 9vw, 9rem)
         clamp(1rem, 3vw, 3rem)
         clamp(6rem, 8vw, 8rem);
-
     display: grid;
-
     grid-template-columns:
         minmax(0, 1.15fr)
         minmax(320px, 0.75fr);
-
     align-items: center;
-
     gap: clamp(4rem, 7vw, 8rem);
 }
 
 .heroContent {
     min-width: 0;
-
     padding:
         clamp(1rem, 2vw, 2rem)
         clamp(0.5rem, 2vw, 1.5rem);
-
     text-align: right;
-}
-
-.heroBadge {
-    width: fit-content;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    margin-bottom: 1.6rem;
-    padding: 0.6rem 1rem;
-    border: 1px solid rgba(37, 99, 235, 0.28);
-    border-radius: 999px;
-    background: rgba(37, 99, 235, 0.07);
-    color: var(--text-secondary);
-    font-size: 0.88rem;
-    font-weight: 600;
-    backdrop-filter: blur(12px);
-}
-
-.heroBadgeDot {
-    position: relative;
-    width: 8px;
-    height: 8px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: var(--accent-color);
-    box-shadow:
-        0 0 0 5px rgba(37, 99, 235, 0.12);
-}
-
-.heroBadgeDot::after {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border: 1px solid var(--accent-color);
-    border-radius: 50%;
-    animation: badgePulse 2s ease-out infinite;
-}
-
-@keyframes badgePulse {
-    0% {
-        transform: scale(0.7);
-        opacity: 1;
-    }
-
-    100% {
-        transform: scale(1.7);
-        opacity: 0;
-    }
 }
 
 .title {
     width: 100%;
     max-width: 850px;
-
     min-height: 2.5em;
-
-    margin:
-        0
-        0
-        clamp(1.8rem, 3vw, 2.5rem);
-
-    padding:
-        0.25rem
-        clamp(0.25rem, 1vw, 0.75rem);
-
-    display: flex;
-    align-items: flex-start;
-
-    direction: rtl;
-
-    font-size:
-        clamp(
-            2.8rem,
-            5.5vw,
-            5.4rem
-        );
-
+    margin: 0 0 clamp(1.8rem, 3vw, 2.5rem);
+    padding: 0.25rem clamp(0.25rem, 1vw, 0.75rem);
+    color: var(--text-primary);
+    font-size: clamp(2.8rem, 5.5vw, 5.4rem);
     font-weight: 900;
     line-height: 1.12;
-
     letter-spacing: -0.045em;
-
     overflow-wrap: anywhere;
 }
 
@@ -234,25 +153,10 @@
 
 .subtitle {
     max-width: 740px;
-
-    margin:
-        0
-        0
-        clamp(2.2rem, 4vw, 3rem);
-
-    padding:
-        0
-        clamp(0.25rem, 1vw, 0.75rem);
-
+    margin: 0 0 clamp(2.2rem, 4vw, 3rem);
+    padding: 0 clamp(0.25rem, 1vw, 0.75rem);
     color: var(--text-secondary);
-
-    font-size:
-        clamp(
-            1rem,
-            1.5vw,
-            1.18rem
-        );
-
+    font-size: clamp(1rem, 1.5vw, 1.18rem);
     line-height: 2;
 }
 
@@ -260,15 +164,9 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-
     gap: 1rem;
-
-    margin-bottom:
-        clamp(3rem, 5vw, 4rem);
-
-    padding:
-        0
-        clamp(0.25rem, 1vw, 0.75rem);
+    margin-bottom: clamp(3rem, 5vw, 4rem);
+    padding: 0 clamp(0.25rem, 1vw, 0.75rem);
 }
 
 .primaryButton,
@@ -300,8 +198,7 @@
             var(--accent-color),
             var(--accent-hover)
         );
-    box-shadow:
-        0 10px 28px rgba(37, 99, 235, 0.24);
+    box-shadow: 0 10px 28px rgba(37, 99, 235, 0.24);
 }
 
 .primaryButton svg,
@@ -315,8 +212,7 @@
 
 .primaryButton:hover {
     transform: translateY(-3px);
-    box-shadow:
-        0 16px 34px rgba(37, 99, 235, 0.32);
+    box-shadow: 0 16px 34px rgba(37, 99, 235, 0.32);
 }
 
 .secondaryButton {
@@ -335,14 +231,9 @@
 .heroStats {
     display: flex;
     flex-wrap: wrap;
-
     gap: 0;
-
     max-width: 650px;
-
-    padding:
-        0.5rem
-        clamp(0.25rem, 1vw, 0.75rem);
+    padding: 0.5rem clamp(0.25rem, 1vw, 0.75rem);
 }
 
 .heroStat {
@@ -388,6 +279,7 @@
     background: rgba(37, 99, 235, 0.23);
     filter: blur(75px);
     z-index: -1;
+    pointer-events: none;
 }
 
 .featuredGameCard,
@@ -396,8 +288,7 @@
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 22px;
-    background:
-        rgba(18, 18, 24, 0.8);
+    background: rgba(18, 18, 24, 0.8);
     box-shadow:
         0 35px 80px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(255, 255, 255, 0.025);
@@ -444,9 +335,7 @@
     transition: transform 0.65s ease;
 }
 
-.featuredGameCard:hover
-    .featuredImageWrap
-    img {
+.featuredGameCard:hover .featuredImageWrap img {
     transform: scale(1.045);
 }
 
@@ -460,6 +349,7 @@
             rgba(8, 8, 12, 0.22) 55%,
             transparent 80%
         );
+    pointer-events: none;
 }
 
 .newBadge {
@@ -476,16 +366,20 @@
     font-weight: 700;
 }
 
-.featuredContent {
-    padding: 1.5rem;
+.latestBadge {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 7px;
+    background: var(--accent-color);
+    color: #fff;
+    font-size: 0.68rem;
+    font-weight: 700;
 }
 
-.featuredEyebrow {
-    display: block;
-    margin-bottom: 0.55rem;
-    color: var(--accent-color);
-    font-size: 0.75rem;
-    font-weight: 700;
+.featuredContent {
+    padding: 1.5rem;
 }
 
 .featuredContent h2 {
@@ -551,240 +445,107 @@
     }
 }
 
-.scrollHint {
-    position: absolute;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.55rem;
-    color: var(--text-secondary);
-    font-size: 0.68rem;
-    opacity: 0.65;
-}
-
-.scrollMouse {
-    width: 22px;
-    height: 34px;
-    padding-top: 7px;
-    display: flex;
-    justify-content: center;
-    border: 1px solid var(--surface-color-light);
-    border-radius: 999px;
-}
-
-.scrollMouse span {
-    width: 3px;
-    height: 7px;
-    border-radius: 999px;
-    background: var(--accent-color);
-    animation: scrollDot 1.8s ease infinite;
-}
-
-@keyframes scrollDot {
-    0% {
-        transform: translateY(0);
-        opacity: 0;
-    }
-
-    35% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(10px);
-        opacity: 0;
-    }
-}
-
 .highlightsSection {
-    position: relative;
-    z-index: 2;
-
     width: 100%;
-
-    padding:
-        clamp(4rem, 7vw, 6rem)
-        2rem
-        clamp(4rem, 7vw, 6rem);
-
-    margin: 0;
-
-    background:
-        linear-gradient(
-            180deg,
-            var(--bg-color) 0%,
-            rgba(255, 255, 255, 0.012) 50%,
-            var(--bg-color) 100%
-        );
+    padding: 4.5rem 2rem;
 }
 
 .highlightsGrid {
     width: 100%;
     max-width: 1160px;
-
     margin: 0 auto;
-
     display: grid;
-    grid-template-columns:
-        repeat(
-            3,
-            minmax(0, 1fr)
-        );
-
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     overflow: hidden;
-
-    border:
-        1px solid
-        var(--surface-color-light);
-
-    border-radius: 20px;
-
-    background:
-        rgba(18, 18, 22, 0.92);
-
-    box-shadow:
-        0 20px 50px
-        rgba(0, 0, 0, 0.22);
+    border: 1px solid var(--surface-color-light);
+    border-radius: 14px;
+    background: var(--surface-color);
 }
 
 .highlightCard {
     min-width: 0;
-
     display: flex;
     align-items: flex-start;
-
-    gap: 1.2rem;
-
-    padding:
-        2rem
-        1.8rem;
-
-    border-left:
-        1px solid
-        var(--surface-color-light);
-
-    transition:
-        background-color 0.3s ease,
-        transform 0.3s ease;
+    gap: 1rem;
+    padding: 1.65rem;
+    border-left: 1px solid var(--surface-color-light);
 }
 
 .highlightCard:last-child {
     border-left: none;
 }
 
-.highlightCard:hover {
-    background:
-        rgba(37, 99, 235, 0.045);
-}
-
 .highlightNumber {
     flex-shrink: 0;
-
-    color:
-        rgba(37, 99, 235, 0.75);
-
+    color: var(--accent-color);
     font-family: monospace;
-
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     font-weight: 800;
-
     line-height: 1.6;
 }
 
 .highlightCard h3 {
-    margin:
-        0
-        0
-        0.55rem;
-
+    margin: 0 0 0.4rem;
     color: var(--text-primary);
-
-    font-size: 1.05rem;
-    font-weight: 750;
-
+    font-size: 1rem;
     line-height: 1.5;
 }
 
 .highlightCard p {
     margin: 0;
-
     color: var(--text-secondary);
-
-    font-size: 0.85rem;
-    line-height: 1.9;
+    font-size: 0.82rem;
+    line-height: 1.85;
 }
 
 .section {
     width: 100%;
-    padding: clamp(5rem, 8vw, 8rem) 2rem;
+    padding: clamp(4.5rem, 7vw, 6.5rem) 2rem;
 }
 
 .sectionInner {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1160px;
     margin: 0 auto;
 }
 
-.latestSection {
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(255, 255, 255, 0.012),
-            transparent
-        );
+.latestSection,
+.reviewsSection {
+    border-top: 1px solid rgba(255, 255, 255, 0.025);
 }
 
 .sectionHeader {
     display: flex;
-    justify-content: space-between;
     align-items: flex-end;
+    justify-content: space-between;
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .centerSectionHeader {
     max-width: 700px;
-    margin: 0 auto 3.5rem;
+    margin: 0 auto 2.75rem;
     text-align: center;
-}
-
-.sectionEyebrow {
-    display: block;
-    margin-bottom: 0.8rem;
-    color: var(--accent-color);
-    font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
 }
 
 .sectionTitle {
     margin: 0;
     color: var(--text-primary);
-    font-size:
-        clamp(
-            2rem,
-            4vw,
-            3.3rem
-        );
-    font-weight: 850;
-    line-height: 1.25;
-    letter-spacing: -0.025em;
+    font-size: clamp(2rem, 3.6vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
 }
 
 .sectionDescription {
-    max-width: 650px;
-    margin: 1rem 0 0;
+    max-width: 640px;
+    margin: 0.75rem 0 0;
     color: var(--text-secondary);
-    font-size: 0.98rem;
-    line-height: 1.9;
+    font-size: 0.92rem;
+    line-height: 1.85;
 }
 
-.centerSectionHeader
-    .sectionDescription {
+.centerSectionHeader .sectionDescription {
     margin-left: auto;
     margin-right: auto;
 }
@@ -793,24 +554,15 @@
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
-    gap: 0.55rem;
-    padding: 0.65rem 1rem;
+    gap: 0.5rem;
+    padding: 0.55rem 0.8rem;
     border: 1px solid var(--surface-color-light);
-    border-radius: 999px;
-    background: var(--surface-color);
+    border-radius: 9px;
     color: var(--text-secondary);
-    font-size: 0.82rem;
+    font-size: 0.78rem;
 }
 
 .totalGamesBadge span {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 25px;
-    height: 25px;
-    padding: 0 0.4rem;
-    border-radius: 999px;
-    background: rgba(37, 99, 235, 0.12);
     color: var(--accent-color);
     font-weight: 800;
 }
@@ -818,46 +570,35 @@
 .gamesGrid,
 .loadingGrid {
     display: grid;
-    grid-template-columns:
-        repeat(
-            3,
-            minmax(0, 1fr)
-        );
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
 }
 
 .gameCard {
-    position: relative;
     min-width: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     border: 1px solid var(--surface-color-light);
-    border-radius: 18px;
+    border-radius: 14px;
     background: var(--surface-color);
     color: inherit;
     text-decoration: none;
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.18);
     transition:
-        transform 0.4s ease,
-        border-color 0.4s ease,
-        box-shadow 0.4s ease;
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .gameCard:hover {
-    transform: translateY(-8px);
-    border-color: rgba(37, 99, 235, 0.6);
-    box-shadow:
-        0 22px 48px rgba(0, 0, 0, 0.3),
-        0 0 24px rgba(37, 99, 235, 0.08);
+    transform: translateY(-4px);
+    border-color: rgba(37, 99, 235, 0.5);
 }
 
 .posterContainer {
     position: relative;
     aspect-ratio: 3 / 4;
     overflow: hidden;
-    background: var(--bg-color);
+    background: #0b0b0d;
 }
 
 .posterContainer img {
@@ -865,99 +606,29 @@
     height: 100%;
     display: block;
     object-fit: cover;
-    transition: transform 0.65s ease;
+    transition: transform 0.35s ease;
 }
 
-.gameCard:hover
-    .posterContainer
-    img {
-    transform: scale(1.055);
-}
-
-.posterOverlay {
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(
-            to top,
-            rgba(7, 7, 10, 0.65),
-            transparent 42%
-        );
-    opacity: 0.7;
-}
-
-.latestBadge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.42rem 0.75rem;
-    border-radius: 999px;
-    background: var(--accent-color);
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 800;
-    box-shadow:
-        0 8px 18px rgba(37, 99, 235, 0.35);
-}
-
-.cardArrow {
-    position: absolute;
-    left: 1rem;
-    bottom: 1rem;
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    background: rgba(7, 7, 10, 0.62);
-    color: white;
-    backdrop-filter: blur(10px);
-    opacity: 0;
-    transform: translateY(8px);
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease,
-        background-color 0.3s ease;
-}
-
-.cardArrow svg {
-    width: 17px;
-    height: 17px;
-}
-
-.gameCard:hover .cardArrow {
-    opacity: 1;
-    transform: translateY(0);
-    background: var(--accent-color);
+.gameCard:hover .posterContainer img {
+    transform: scale(1.025);
 }
 
 .gameInfo {
     flex: 1;
-    padding: 1.35rem;
-}
-
-.gameInfo > span {
-    display: block;
-    margin-bottom: 0.45rem;
-    color: var(--accent-color);
-    font-size: 0.7rem;
-    font-weight: 700;
+    padding: 1.15rem;
 }
 
 .gameInfo h3 {
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
     color: var(--text-primary);
-    font-size: 1.12rem;
+    font-size: 1.05rem;
     line-height: 1.5;
 }
 
 .gameLink {
     color: var(--text-secondary);
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    transition: color 0.3s ease;
 }
 
 .gameCard:hover .gameLink {
@@ -965,9 +636,9 @@
 }
 
 .loadingCard {
-    min-height: 460px;
+    min-height: 440px;
     border: 1px solid var(--surface-color-light);
-    border-radius: 18px;
+    border-radius: 14px;
     background:
         linear-gradient(
             100deg,
@@ -980,83 +651,68 @@
 }
 
 .centerAction {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     text-align: center;
 }
 
 .viewAllButton {
     display: inline-flex;
     align-items: center;
-    gap: 0.7rem;
-    min-height: 48px;
-    padding: 0.75rem 1.3rem;
+    gap: 0.55rem;
+    min-height: 44px;
+    padding: 0.65rem 1rem;
     border: 1px solid var(--surface-color-light);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.02);
+    border-radius: 9px;
+    background: transparent;
     color: var(--text-primary);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.84rem;
     font-weight: 700;
     transition:
-        color 0.3s ease,
-        border-color 0.3s ease,
-        background-color 0.3s ease,
-        transform 0.3s ease;
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .viewAllButton span {
-    min-width: 26px;
-    height: 26px;
-    padding: 0 0.4rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    background: rgba(37, 99, 235, 0.12);
     color: var(--accent-color);
-    font-size: 0.75rem;
 }
 
 .viewAllButton:hover {
-    transform: translateY(-3px);
     color: var(--accent-color);
-    border-color: rgba(37, 99, 235, 0.6);
-    background: rgba(37, 99, 235, 0.05);
+    border-color: rgba(37, 99, 235, 0.55);
 }
 
 .communityShowcase {
-    max-width: 1100px;
-    min-height: 480px;
+    max-width: 1040px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns:
-        minmax(0, 1.15fr)
-        minmax(320px, 0.85fr);
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
     overflow: hidden;
     border: 1px solid var(--surface-color-light);
-    border-radius: 24px;
+    border-radius: 14px;
     background: var(--surface-color);
-    box-shadow:
-        0 28px 70px rgba(0, 0, 0, 0.32);
 }
 
 .communityMedia {
-    position: relative;
     min-width: 0;
-    min-height: 460px;
+    min-height: 420px;
     overflow: hidden;
-    animation: mediaFade 0.55s ease;
+    animation:
+        communityMediaEnter
+        0.72s
+        cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
 }
 
-@keyframes mediaFade {
+@keyframes communityMediaEnter {
     from {
-        opacity: 0.35;
-        transform: scale(1.015);
+        opacity: 0;
+        transform: scale(1.025) translateX(-10px);
     }
 
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1) translateX(0);
     }
 }
 
@@ -1065,133 +721,117 @@
     height: 100%;
     display: block;
     object-fit: cover;
+    transform: scale(1.01);
+    animation:
+        communityImageSettle
+        0.9s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        both;
+    will-change: transform;
 }
 
-.communityMediaOverlay {
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(
-            to left,
-            rgba(12, 12, 16, 0.35),
-            transparent 55%
-        ),
-        linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.45),
-            transparent 45%
-        );
-}
+@keyframes communityImageSettle {
+    from {
+        transform: scale(1.045);
+    }
 
-.slideCounter {
-    position: absolute;
-    bottom: 1.4rem;
-    left: 1.4rem;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    background: rgba(6, 6, 10, 0.65);
-    backdrop-filter: blur(10px);
-    color: rgba(255, 255, 255, 0.58);
-    font-size: 0.72rem;
-}
-
-.slideCounter span:first-child {
-    color: #fff;
-    font-weight: 800;
+    to {
+        transform: scale(1.01);
+    }
 }
 
 .communityContent {
     min-width: 0;
-    padding: clamp(2rem, 4vw, 3.5rem);
+    padding: clamp(2rem, 4vw, 3rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    animation:
+        communityContentEnter
+        0.68s
+        cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
 }
 
-.communityLabel {
-    margin-bottom: 0.9rem;
-    color: var(--accent-color);
-    font-size: 0.75rem;
-    font-weight: 800;
+@keyframes communityContentEnter {
+    from {
+        opacity: 0;
+        transform: translateX(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .communityContent h3 {
-    margin: 0 0 1rem;
+    margin: 0 0 0.75rem;
     color: var(--text-primary);
-    font-size:
-        clamp(
-            2rem,
-            3vw,
-            2.8rem
-        );
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
     line-height: 1.3;
 }
 
 .communityContent p {
-    margin: 0 0 1.8rem;
+    margin: 0 0 1.5rem;
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.95;
+    font-size: 0.9rem;
+    line-height: 1.9;
 }
 
 .communityButton {
     width: fit-content;
     display: inline-flex;
     align-items: center;
-    gap: 0.65rem;
-    padding: 0.75rem 1rem;
+    gap: 0.55rem;
+    padding: 0.65rem 0.9rem;
     border: 1px solid rgba(37, 99, 235, 0.45);
-    border-radius: 10px;
-    background: rgba(37, 99, 235, 0.07);
+    border-radius: 8px;
     color: var(--accent-color);
     text-decoration: none;
-    font-size: 0.84rem;
+    font-size: 0.8rem;
     font-weight: 700;
     transition:
-        transform 0.3s ease,
-        background-color 0.3s ease,
-        border-color 0.3s ease;
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.28s ease,
+        border-color 0.28s ease;
 }
 
 .communityButton:hover {
     transform: translateY(-2px);
     border-color: var(--accent-color);
-    background: rgba(37, 99, 235, 0.12);
+    background: rgba(37, 99, 235, 0.06);
 }
 
 .communityControls {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
 }
 
 .sliderButtons {
     display: flex;
-    gap: 0.55rem;
+    gap: 0.5rem;
 }
 
 .sliderButtons button {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--surface-color-light);
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.025);
+    border-radius: 8px;
+    background: transparent;
     color: var(--text-primary);
     cursor: pointer;
     transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background-color 0.25s ease,
-        color 0.25s ease;
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .sliderButtons button:hover {
@@ -1201,18 +841,25 @@
     background: var(--accent-color);
 }
 
+.sliderButtons button:active {
+    transform: translateY(0) scale(0.96);
+}
+
 .sliderButtons svg {
     width: 18px;
     height: 18px;
 }
 
-.slideIndicators {
+.slideIndicators,
+.carouselDots {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.45rem;
 }
 
-.indicator {
+.indicator,
+.dot {
     width: 7px;
     height: 7px;
     padding: 0;
@@ -1221,155 +868,142 @@
     background: var(--surface-color-light);
     cursor: pointer;
     transition:
-        width 0.3s ease,
-        background-color 0.3s ease;
+        width 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.4s ease;
 }
 
-.activeIndicator {
-    width: 25px;
+.indicator:hover,
+.dot:hover {
+    transform: scale(1.25);
+}
+
+.activeIndicator,
+.activeDot {
+    width: 24px;
     background: var(--accent-color);
 }
 
-.reviewsSection {
-    border-top: 1px solid rgba(255, 255, 255, 0.025);
-    background:
-        radial-gradient(
-            circle at 50% 50%,
-            rgba(37, 99, 235, 0.06),
-            transparent 48%
-        );
-}
-
 .reviewContainer {
-    max-width: 860px;
+    max-width: 760px;
     margin: 0 auto;
 }
 
+.reviewStage {
+    display: grid;
+}
+
 .reviewCard {
-    position: relative;
-    min-height: 310px;
-    padding:
-        clamp(
-            2rem,
-            5vw,
-            4rem
-        );
+    grid-area: 1 / 1;
+    min-height: 220px;
+    padding: clamp(1.75rem, 4vw, 2.75rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    overflow: hidden;
     border: 1px solid var(--surface-color-light);
-    border-radius: 22px;
-    background:
-        linear-gradient(
-            145deg,
-            var(--surface-color),
-            rgba(16, 16, 22, 0.84)
-        );
-    box-shadow:
-        0 24px 60px rgba(0, 0, 0, 0.3);
-    animation: reviewFade 0.55s ease;
+    border-radius: 14px;
+    background: var(--surface-color);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate3d(0, 14px, 0) scale(0.992);
+    filter: blur(2px);
+    will-change: opacity, transform, filter;
+    transition:
+        opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.55s ease,
+        visibility 0s linear 0.7s;
 }
 
-@keyframes reviewFade {
+.activeReviewCard {
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+    transition-delay: 0s;
+}
+
+.activeReviewCard .redditUser {
+    animation: reviewUserIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.activeReviewCard .reviewText {
+    animation: reviewTextIn 0.82s 0.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes reviewUserIn {
     from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translate3d(10px, 0, 0);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
-.quoteMark {
-    position: absolute;
-    top: -20px;
-    left: 1.5rem;
-    color: rgba(37, 99, 235, 0.12);
-    font-family: Georgia, serif;
-    font-size: 10rem;
-    line-height: 1;
-    pointer-events: none;
+@keyframes reviewTextIn {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 8px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 .redditUser {
-    position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
-    gap: 0.85rem;
-    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+    margin-bottom: 1.3rem;
 }
 
 .redditIcon {
-    width: 42px;
-    height: 42px;
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
     border-radius: 50%;
-    background: rgba(255, 69, 0, 0.1);
-    color: #ff4500;
+    background: #ff4500;
+    color: #fff;
 }
 
 .redditIcon svg {
-    width: 22px;
-    height: 22px;
+    width: 21px;
+    height: 21px;
 }
 
 .redditUser strong {
     display: block;
-    margin-bottom: 0.15rem;
     color: var(--text-primary);
-    font-size: 0.92rem;
+    font-size: 0.82rem;
 }
 
 .redditUser span {
+    display: block;
+    margin-top: 0.1rem;
     color: var(--text-secondary);
-    font-size: 0.7rem;
+    font-size: 0.66rem;
 }
 
 .reviewText {
-    position: relative;
-    z-index: 1;
     margin: 0;
     color: var(--text-primary);
-    font-size:
-        clamp(
-            1.1rem,
-            2vw,
-            1.35rem
-        );
-    line-height: 2;
-    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.95;
 }
 
 .carouselDots {
-    margin-top: 1.6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.dot {
-    width: 7px;
-    height: 7px;
-    padding: 0;
-    border: none;
-    border-radius: 999px;
-    background: var(--surface-color-light);
-    cursor: pointer;
-    transition:
-        width 0.3s ease,
-        background-color 0.3s ease;
-}
-
-.activeDot {
-    width: 28px;
-    background: var(--accent-color);
+    margin-top: 1.25rem;
 }
 
 .discordSection {
@@ -1403,12 +1037,7 @@
 .discordContent {
     position: relative;
     z-index: 1;
-    padding:
-        clamp(
-            2rem,
-            5vw,
-            3.5rem
-        );
+    padding: clamp(2rem, 5vw, 3.5rem);
     display: grid;
     grid-template-columns:
         auto
@@ -1439,23 +1068,10 @@
     min-width: 0;
 }
 
-.discordText > span {
-    display: block;
-    margin-bottom: 0.35rem;
-    color: #8996ff;
-    font-size: 0.7rem;
-    font-weight: 700;
-}
-
 .discordText h2 {
     margin: 0 0 0.55rem;
     color: var(--text-primary);
-    font-size:
-        clamp(
-            1.5rem,
-            3vw,
-            2.2rem
-        );
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
 }
 
 .discordText p {
@@ -1479,8 +1095,7 @@
     text-decoration: none;
     font-size: 0.86rem;
     font-weight: 800;
-    box-shadow:
-        0 10px 28px rgba(88, 101, 242, 0.25);
+    box-shadow: 0 10px 28px rgba(88, 101, 242, 0.25);
     transition:
         transform 0.3s ease,
         background-color 0.3s ease,
@@ -1490,20 +1105,16 @@
 .discordButton:hover {
     transform: translateY(-3px);
     background: #6975f5;
-    box-shadow:
-        0 16px 35px rgba(88, 101, 242, 0.34);
+    box-shadow: 0 16px 35px rgba(88, 101, 242, 0.34);
 }
 
 @media (max-width: 1100px) {
     .heroInner {
         width: min(1180px, calc(100% - 3rem));
-
         grid-template-columns:
             minmax(0, 1fr)
             minmax(280px, 0.72fr);
-
         gap: clamp(2.5rem, 5vw, 4rem);
-
         padding-top: 5.5rem;
         padding-bottom: 6rem;
     }
@@ -1514,19 +1125,7 @@
 
     .title {
         max-width: 780px;
-
-        font-size:
-            clamp(
-                2.7rem,
-                5vw,
-                4.6rem
-            );
-
-        line-height: 1.12;
-    }
-
-    .subtitle {
-        max-width: 680px;
+        font-size: clamp(2.7rem, 5vw, 4.6rem);
     }
 
     .featuredGameCard,
@@ -1536,326 +1135,82 @@
 
     .communityShowcase {
         grid-template-columns:
-            minmax(0, 1.08fr)
-            minmax(290px, 0.92fr);
-    }
-
-    .communityContent {
-        padding:
-            clamp(
-                2rem,
-                3vw,
-                2.75rem
-            );
-    }
-
-    .sectionInner {
-        max-width: 1080px;
+            minmax(0, 1.05fr)
+            minmax(290px, 0.95fr);
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .heroSection {
         min-height: auto;
     }
 
     .heroInner {
-        width: min(780px, 100%);
-
-        padding:
-            clamp(5rem, 8vw, 6rem)
-            clamp(1.5rem, 5vw, 2.5rem)
-            5.5rem;
-
+        width: 100%;
+        padding: 5rem 1.25rem 5rem;
         grid-template-columns: 1fr;
-
-        gap: 3.5rem;
-
-        text-align: center;
-    }
-
-    .heroContent {
-        width: 100%;
-        max-width: 760px;
-
-        margin: 0 auto;
-
-        padding:
-            1rem
-            clamp(0.5rem, 2vw, 1.25rem);
-
-        text-align: center;
-    }
-
-    .heroBadge {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .title {
-        width: 100%;
-        max-width: 760px;
-
-        min-height: 2.55em;
-
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 1.8rem;
-
-        padding-inline:
-            clamp(
-                0.5rem,
-                2vw,
-                1.5rem
-            );
-
-        justify-content: center;
-
-        text-align: center;
-
-        font-size:
-            clamp(
-                2.7rem,
-                7vw,
-                4rem
-            );
-
-        line-height: 1.13;
-    }
-
-    .subtitle {
-        max-width: 680px;
-
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2.25rem;
-
-        padding-inline: 0.75rem;
-
-        text-align: center;
-    }
-
-    .actions {
-        justify-content: center;
-
-        margin-bottom: 3rem;
-    }
-
-    .heroStats {
-        width: min(100%, 560px);
-
-        margin-left: auto;
-        margin-right: auto;
-
-        justify-content: center;
-    }
-
-    .heroVisual {
-        width: 100%;
-
-        margin-top: 0.5rem;
-    }
-
-    .featuredGameCard,
-    .featuredSkeleton {
-        width: min(100%, 370px);
-    }
-
-    .featuredGameCard {
-        transform: none;
-    }
-
-    .scrollHint {
-        display: none;
-    }
-
-    .highlightsSection {
-        width: min(720px, calc(100% - 3rem));
-
-        padding-top: 1rem;
-    }
-
-    .highlightsGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .highlightCard {
-        border-left: none;
-
-        border-bottom:
-            1px solid
-            var(--surface-color-light);
-    }
-
-    .highlightCard:last-child {
-        border-bottom: none;
-    }
-
-    .gamesGrid,
-    .loadingGrid {
-        grid-template-columns:
-            repeat(
-                2,
-                minmax(0, 1fr)
-            );
-
-        gap: 1.5rem;
-    }
-
-    .communityShowcase {
-        width: min(100%, 720px);
-
-        grid-template-columns: 1fr;
-    }
-
-    .communityMedia {
-        min-height: 380px;
-        max-height: 440px;
-    }
-
-    .communityContent {
-        padding: 2.5rem;
-    }
-
-    .communityContent p {
-        max-width: 600px;
-    }
-
-    .reviewContainer {
-        max-width: 720px;
-    }
-
-    .discordSection {
-        width: min(900px, calc(100% - 3rem));
-    }
-
-    .discordContent {
-        grid-template-columns:
-            auto
-            minmax(0, 1fr);
-
-        gap: 1.5rem;
-    }
-
-    .discordButton {
-        grid-column: 1 / -1;
-
-        width: fit-content;
-    }
-}
-
-@media (max-width: 768px) {
-    .heroInner {
-        width: 100%;
-
-        padding:
-            5rem
-            1.25rem
-            5rem;
-
         gap: 3rem;
+        text-align: center;
     }
 
     .heroContent {
-        padding:
-            0.75rem
-            0.5rem;
-    }
-
-    .heroBadge {
-        max-width: 100%;
-
-        padding:
-            0.55rem
-            0.9rem;
-
-        font-size: 0.78rem;
-
-        line-height: 1.5;
+        width: 100%;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0.75rem 0.5rem;
+        text-align: center;
     }
 
     .title {
         width: 100%;
         max-width: 680px;
-
         min-height: 2.8em;
-
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 1.6rem;
-
-        padding:
-            0.5rem
-            0.75rem;
-
-        font-size:
-            clamp(
-                2.3rem,
-                9vw,
-                3.5rem
-            );
-
+        padding: 0.5rem 0.75rem;
+        font-size: clamp(2.3rem, 9vw, 3.5rem);
         line-height: 1.15;
     }
 
     .subtitle {
         max-width: 620px;
-
-        padding:
-            0
-            0.5rem;
-
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 2.2rem;
-
+        padding: 0 0.5rem;
         font-size: 0.98rem;
         line-height: 1.95;
     }
 
     .actions {
         width: 100%;
-
+        justify-content: center;
         flex-direction: column;
-
         align-items: center;
-
         gap: 0.85rem;
-
         padding-inline: 0.5rem;
-
         margin-bottom: 3rem;
     }
 
     .primaryButton,
     .secondaryButton {
         width: min(100%, 360px);
-
         min-height: 52px;
-
-        padding:
-            0.85rem
-            1.25rem;
+        padding: 0.85rem 1.25rem;
     }
 
     .heroStats {
         width: min(100%, 520px);
-
         display: grid;
-
-        grid-template-columns:
-            repeat(
-                3,
-                minmax(0, 1fr)
-            );
-
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         margin: 0 auto;
-
         padding-inline: 0;
     }
 
     .heroStat {
         min-width: 0;
-
-        padding:
-            0.25rem
-            0.75rem;
+        padding: 0.25rem 0.75rem;
     }
 
     .heroStat:first-child {
@@ -1879,76 +1234,52 @@
         width: min(100%, 340px);
     }
 
-    .highlightsSection {
-        width: calc(100% - 2rem);
+    .featuredGameCard {
+        transform: none;
+    }
 
-        padding-top: 0;
+    .highlightsSection {
+        padding: 3.5rem 1rem;
+    }
+
+    .highlightsGrid {
+        max-width: 620px;
+        grid-template-columns: 1fr;
     }
 
     .highlightCard {
-        padding: 1.6rem;
+        border-left: none;
+        border-bottom: 1px solid var(--surface-color-light);
+    }
+
+    .highlightCard:last-child {
+        border-bottom: none;
     }
 
     .section {
-        padding:
-            5rem
-            1.25rem;
+        padding: 4rem 1rem;
     }
 
     .sectionHeader {
+        align-items: flex-start;
         flex-direction: column;
-
-        align-items: center;
-
-        gap: 1.5rem;
-
-        margin-bottom: 2.75rem;
-
-        text-align: center;
-    }
-
-    .sectionHeader > div:first-child {
-        width: 100%;
-    }
-
-    .sectionDescription {
-        margin-left: auto;
-        margin-right: auto;
+        gap: 1rem;
+        margin-bottom: 2rem;
     }
 
     .totalGamesBadge {
-        align-self: center;
-    }
-
-    .centerSectionHeader {
-        margin-bottom: 2.75rem;
+        align-self: flex-start;
     }
 
     .gamesGrid,
     .loadingGrid {
-        grid-template-columns: 1fr;
-
-        gap: 1.5rem;
-    }
-
-    .gameCard {
-        width: min(100%, 440px);
-
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .loadingCard {
-        width: min(100%, 440px);
-
-        min-height: 520px;
-
-        margin-left: auto;
-        margin-right: auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
     }
 
     .communityShowcase {
-        border-radius: 20px;
+        max-width: 620px;
+        grid-template-columns: 1fr;
     }
 
     .communityMedia {
@@ -1957,86 +1288,18 @@
     }
 
     .communityContent {
-        padding:
-            2.25rem
-            1.5rem;
-
-        text-align: center;
-    }
-
-    .communityLabel {
-        text-align: center;
-    }
-
-    .communityContent h3 {
-        text-align: center;
-    }
-
-    .communityContent p {
-        margin-left: auto;
-        margin-right: auto;
-
-        text-align: center;
-    }
-
-    .communityButton {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .communityControls {
-        margin-top: 2rem;
-
-        flex-direction: column-reverse;
-
-        justify-content: center;
-
-        gap: 1.25rem;
-    }
-
-    .sliderButtons {
-        justify-content: center;
-    }
-
-    .slideIndicators {
-        justify-content: center;
-    }
-
-    .reviewsSection {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
-    }
-
-    .reviewCard {
-        min-height: 320px;
-
-        text-align: center;
-    }
-
-    .redditUser {
-        justify-content: center;
-    }
-
-    .reviewText {
-        max-width: 620px;
-
-        margin-left: auto;
-        margin-right: auto;
+        padding: 2rem;
     }
 
     .discordSection {
         width: calc(100% - 2rem);
-
         margin-bottom: 4rem;
     }
 
     .discordContent {
         grid-template-columns: 1fr;
-
         justify-items: center;
-
         gap: 1.4rem;
-
         text-align: center;
     }
 
@@ -2046,24 +1309,20 @@
 
     .discordText p {
         max-width: 560px;
-
         margin-left: auto;
         margin-right: auto;
     }
 
     .discordButton {
         grid-column: auto;
-
         width: min(100%, 320px);
     }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 520px) {
     .heroInner {
-        padding:
-            4.5rem
-            1rem
-            4.5rem;
+        padding: 4rem 0.85rem 4.25rem;
+        gap: 2.5rem;
     }
 
     .heroContent {
@@ -2071,117 +1330,27 @@
     }
 
     .title {
-        min-height: 3em;
-
-        padding-inline: 0.5rem;
-
-        font-size:
-            clamp(
-                2.15rem,
-                10.5vw,
-                3rem
-            );
-    }
-
-    .subtitle {
-        padding-inline: 0.25rem;
-
-        font-size: 0.93rem;
-    }
-
-    .heroStats {
-        max-width: 430px;
-    }
-
-    .heroStat {
-        padding-inline: 0.5rem;
-    }
-
-    .featuredGameCard,
-    .featuredSkeleton {
-        width: min(100%, 320px);
-    }
-
-    .section {
-        padding:
-            4.5rem
-            1rem;
-    }
-
-    .sectionTitle {
-        font-size:
-            clamp(
-                1.9rem,
-                8vw,
-                2.4rem
-            );
-    }
-
-    .communityMedia {
-        min-height: 260px;
-    }
-}
-
-@media (max-width: 480px) {
-    .heroSection::before {
-        background-size:
-            50px
-            50px;
-    }
-
-    .heroInner {
-        padding:
-            4rem
-            0.85rem
-            4.25rem;
-
-        gap: 2.5rem;
-    }
-
-    .heroBadge {
-        max-width: 92%;
-
-        padding:
-            0.5rem
-            0.75rem;
-
-        font-size: 0.7rem;
-    }
-
-    .title {
         max-width: 100%;
-
         min-height: 3.2em;
-
         margin-bottom: 1.4rem;
-
-        padding:
-            0.5rem
-            0.35rem;
-
-        font-size:
-            clamp(
-                2rem,
-                11vw,
-                2.75rem
-            );
-
+        padding: 0.5rem 0.35rem;
+        font-size: clamp(2rem, 11vw, 2.75rem);
         line-height: 1.17;
     }
 
     .subtitle {
         max-width: 420px;
-
         margin-bottom: 2rem;
-
+        padding-inline: 0.25rem;
         font-size: 0.9rem;
         line-height: 1.9;
     }
 
     .actions {
-        padding-inline: 0;
-
-        margin-bottom: 2.5rem;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.7rem;
+        margin-bottom: 2.25rem;
     }
 
     .primaryButton,
@@ -2190,15 +1359,11 @@
     }
 
     .heroStats {
-        width: 100%;
-
         max-width: 360px;
     }
 
     .heroStat {
-        padding:
-            0.2rem
-            0.4rem;
+        padding: 0 0.4rem;
     }
 
     .heroStat:first-child {
@@ -2206,19 +1371,16 @@
     }
 
     .heroStat strong {
-        font-size: 1.05rem;
+        font-size: 1rem;
     }
 
     .heroStat span {
-        font-size: 0.64rem;
-
-        line-height: 1.4;
+        font-size: 0.6rem;
     }
 
     .featuredGameCard,
     .featuredSkeleton {
         width: min(100%, 300px);
-
         border-radius: 18px;
     }
 
@@ -2231,64 +1393,45 @@
     }
 
     .highlightsSection {
-        width: calc(100% - 1.5rem);
-
-        padding-bottom: 0;
-    }
-
-    .highlightsGrid {
-        border-radius: 16px;
+        padding: 3rem 0.75rem;
     }
 
     .highlightCard {
-        gap: 1rem;
-
-        padding: 1.35rem;
-    }
-
-    .highlightCard p {
-        font-size: 0.8rem;
+        padding: 1.25rem;
     }
 
     .section {
-        padding:
-            4rem
-            0.85rem;
+        padding: 3.5rem 0.75rem;
+    }
+
+    .sectionHeader,
+    .centerSectionHeader {
+        margin-bottom: 2rem;
     }
 
     .sectionTitle {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .sectionDescription {
-        font-size: 0.88rem;
-        line-height: 1.85;
+        font-size: 0.86rem;
+        line-height: 1.8;
     }
 
-    .totalGamesBadge {
-        font-size: 0.78rem;
+    .gamesGrid,
+    .loadingGrid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
-    .gameCard {
-        width: min(100%, 380px);
-
-        border-radius: 16px;
+    .gameCard,
+    .loadingCard {
+        width: min(100%, 360px);
+        margin: 0 auto;
     }
 
-    .posterContainer {
-        aspect-ratio: 3 / 4;
-    }
-
-    .gameInfo {
-        padding: 1.15rem;
-    }
-
-    .gameInfo h3 {
-        font-size: 1.05rem;
-    }
-
-    .communityShowcase {
-        border-radius: 18px;
+    .loadingCard {
+        min-height: 470px;
     }
 
     .communityMedia {
@@ -2296,68 +1439,57 @@
         max-height: 280px;
     }
 
-    .slideCounter {
-        bottom: 1rem;
-        left: 1rem;
-    }
-
     .communityContent {
-        padding:
-            1.8rem
-            1.15rem;
+        padding: 1.5rem 1.15rem;
+        text-align: center;
     }
 
     .communityContent h3 {
-        font-size: 1.7rem;
+        font-size: 1.55rem;
     }
 
     .communityContent p {
-        font-size: 0.88rem;
-        line-height: 1.85;
+        font-size: 0.85rem;
+    }
+
+    .communityButton {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .communityControls {
-        margin-top: 1.75rem;
-    }
-
-    .sliderButtons button {
-        width: 40px;
-        height: 40px;
+        margin-top: 1.5rem;
+        flex-direction: column-reverse;
+        justify-content: center;
     }
 
     .reviewCard {
-        min-height: 330px;
-
-        padding:
-            2rem
-            1.25rem;
-
-        border-radius: 18px;
+        min-height: 0;
+        padding: 1.5rem 1.15rem;
     }
 
     .redditUser {
-        margin-bottom: 1.25rem;
+        justify-content: center;
     }
 
     .reviewText {
-        font-size: 0.98rem;
-        line-height: 1.9;
-    }
-
-    .quoteMark {
-        font-size: 7rem;
+        text-align: center;
+        font-size: 0.92rem;
+        line-height: 1.85;
     }
 
     .discordSection {
         width: calc(100% - 1.5rem);
-
+        margin-bottom: 3.5rem;
         border-radius: 18px;
     }
 
     .discordContent {
-        padding:
-            2rem
-            1.15rem;
+        padding: 2rem 1.15rem;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        gap: 1.2rem;
     }
 
     .discordIcon {
@@ -2377,127 +1509,66 @@
     .discordText p {
         font-size: 0.86rem;
     }
+
+    .discordButton {
+        grid-column: auto;
+        width: min(100%, 300px);
+    }
 }
 
 @media (max-width: 360px) {
     .heroInner {
-        padding:
-            3.5rem
-            0.65rem
-            4rem;
-    }
-
-    .heroBadge {
-        font-size: 0.65rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
     }
 
     .title {
-        min-height: 3.25em;
-
-        padding-inline: 0.2rem;
-
-        font-size:
-            clamp(
-                1.8rem,
-                11.5vw,
-                2.3rem
-            );
-    }
-
-    .subtitle {
-        font-size: 0.85rem;
-    }
-
-    .primaryButton,
-    .secondaryButton {
-        max-width: 300px;
-
-        font-size: 0.9rem;
+        font-size: 1.85rem;
     }
 
     .heroStats {
         max-width: 320px;
     }
 
-    .heroStat {
-        padding-inline: 0.25rem;
-    }
-
     .heroStat strong {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
     }
 
     .heroStat span {
-        font-size: 0.58rem;
-    }
-
-    .featuredGameCard,
-    .featuredSkeleton {
-        width: min(100%, 280px);
-    }
-
-    .highlightsSection,
-    .discordSection {
-        width: calc(100% - 1rem);
-    }
-
-    .highlightCard {
-        padding: 1.2rem;
+        font-size: 0.55rem;
     }
 
     .section {
-        padding:
-            3.75rem
-            0.65rem;
+        padding-left: 0.65rem;
+        padding-right: 0.65rem;
     }
 
-    .sectionTitle {
-        font-size: 1.8rem;
-    }
-
-    .communityContent {
-        padding:
-            1.6rem
-            1rem;
-    }
-
-    .communityMedia {
-        min-height: 200px;
-    }
-
-    .reviewCard {
-        padding:
-            1.75rem
-            1rem;
-    }
-
-    .discordContent {
-        padding:
-            1.75rem
-            1rem;
+    .highlightsSection {
+        padding-left: 0.65rem;
+        padding-right: 0.65rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .heroBadgeDot::after,
     .cursor,
-    .scrollMouse span,
     .featuredSkeleton,
     .loadingCard,
     .communityMedia,
-    .reviewCard {
+    .communityMedia img,
+    .communityContent,
+    .activeReviewCard .redditUser,
+    .activeReviewCard .reviewText {
         animation: none;
     }
 
+    .reviewCard,
     .featuredGameCard,
     .featuredImageWrap img,
     .gameCard,
     .posterContainer img,
     .primaryButton,
     .secondaryButton,
-    .viewAllButton,
     .communityButton,
-    .sliderButtons button,
     .discordButton {
         transition: none;
     }
@@ -2505,10 +1576,7 @@
     .featuredGameCard:hover,
     .gameCard:hover,
     .primaryButton:hover,
-    .secondaryButton:hover,
-    .viewAllButton:hover,
-    .communityButton:hover,
-    .discordButton:hover {
+    .secondaryButton:hover {
         transform: none;
     }
 }
