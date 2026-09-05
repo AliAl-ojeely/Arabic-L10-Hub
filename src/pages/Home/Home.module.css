@@ -113,7 +113,10 @@
     font-weight: 900;
     line-height: 1.12;
     letter-spacing: -0.045em;
-    overflow-wrap: anywhere;
+
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: balance;
 }
 
 .typingText {
@@ -1108,6 +1111,27 @@
     box-shadow: 0 16px 35px rgba(88, 101, 242, 0.34);
 }
 
+
+@media (min-width: 1200px) {
+    .heroInner {
+        width: min(1320px, calc(100% - 6rem));
+        gap: clamp(4.5rem, 7vw, 8rem);
+    }
+
+    .heroContent {
+        max-width: 840px;
+    }
+
+    .title {
+        max-width: 840px;
+    }
+
+    .heroVisual {
+        min-height: 680px;
+        padding-top: 1.5rem;
+    }
+}
+
 @media (max-width: 1100px) {
     .heroInner {
         width: min(1180px, calc(100% - 3rem));
@@ -1130,13 +1154,47 @@
 
     .featuredGameCard,
     .featuredSkeleton {
-        width: min(100%, 350px);
+        width: min(100%, 370px);
     }
 
     .communityShowcase {
         grid-template-columns:
             minmax(0, 1.05fr)
             minmax(290px, 0.95fr);
+    }
+}
+
+
+@media (min-width: 769px) {
+    .heroInner {
+        align-items: start;
+    }
+
+    .heroContent {
+        align-self: start;
+        padding-top: clamp(1.5rem, 2vw, 2.25rem);
+    }
+
+    .title {
+        height: 4.15em;
+        min-height: 4.15em;
+        margin-bottom: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    .heroVisual {
+        align-self: start;
+        min-height: 660px;
+        align-items: flex-start;
+        padding:
+            clamp(1.25rem, 2vw, 2rem)
+            clamp(1rem, 2vw, 1.75rem)
+            clamp(2rem, 3vw, 3rem);
+        margin-top: 0;
+    }
+
+    .featuredGameCard,
+    .featuredSkeleton {
+        width: min(100%, 410px);
     }
 }
 
