@@ -4,6 +4,7 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const burgerRef = useRef(null);
 
   const closeMenu = () => {
@@ -54,12 +55,70 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    let frameId = null;
+
+    const updateNavbarFade = () => {
+      frameId = null;
+
+      if (window.innerWidth <= 820 || isOpen) {
+        setScrollProgress(0);
+        return;
+      }
+
+      const fadeStart = 24;
+      const fadeEnd = 280;
+      const scrollY = window.scrollY;
+
+      const progress = Math.min(
+        1,
+        Math.max(0, (scrollY - fadeStart) / (fadeEnd - fadeStart)),
+      );
+
+      setScrollProgress(progress);
+    };
+
+    const requestFadeUpdate = () => {
+      if (frameId !== null) {
+        return;
+      }
+
+      frameId = window.requestAnimationFrame(updateNavbarFade);
+    };
+
+    updateNavbarFade();
+
+    window.addEventListener("scroll", requestFadeUpdate, { passive: true });
+    window.addEventListener("resize", requestFadeUpdate);
+
+    return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
+
+      window.removeEventListener("scroll", requestFadeUpdate);
+      window.removeEventListener("resize", requestFadeUpdate);
+    };
+  }, [isOpen]);
+
+  const navbarOpacity = isOpen ? 1 : 1 - scrollProgress;
+  const navbarShift = isOpen ? 0 : -18 * scrollProgress;
+  const navbarHidden = !isOpen && scrollProgress >= 0.995;
+
   const getNavLinkClass = ({ isActive }) =>
     isActive ? `${styles.navLink} ${styles.activeLink}` : styles.navLink;
 
   return (
     <>
-      <header className={styles.navbar}>
+      <header
+        className={styles.navbar}
+        style={{
+          opacity: navbarOpacity,
+          transform: `translate3d(0, ${navbarShift}px, 0)`,
+          visibility: navbarHidden ? "hidden" : "visible",
+          pointerEvents: navbarHidden ? "none" : "auto",
+        }}
+      >
         <div className={styles.navInner}>
           <Link
             to="/"
@@ -67,10 +126,6 @@ const Navbar = () => {
             onClick={closeMenu}
             aria-label="Arabic L10 Hub"
           >
-            <span className={styles.logoMark}>
-              <span>A</span>
-            </span>
-
             <span className={styles.logoText}>
               <span>Arabic L10</span>
               <strong>Hub</strong>
