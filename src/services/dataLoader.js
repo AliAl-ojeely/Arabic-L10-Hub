@@ -627,7 +627,7 @@ export const fetchTranslationsData = async () => {
         downloadUrl:
           "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/banished-ar-v1.0.1/Banished_Arabic_Localization_v1.0.1.7z",
         addedDate: "2026-09-05",
-        nexusModsUrl: "https://www.nexusmods.com/banished/mods/148?published=1",
+        nexusModsUrl: "https://www.nexusmods.com/banished/mods/148",
       },
     ];
 

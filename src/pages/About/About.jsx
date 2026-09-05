@@ -57,14 +57,12 @@ const About = () => {
                 </svg>
               </div>
 
-              <span className={styles.cardEyebrow}>صاحب المشروع</span>
-
               <h2>من هو علي العجيلي؟</h2>
 
               <p>
-                أنا علي العجيلي، مطور برمجيات متخصص في تطوير واجهات المستخدم
-                وتطبيقات سطح المكتب، وحاصل على درجة البكالوريوس في تقنية
-                المعلومات من جامعة العلوم والتكنولوجيا.
+                مطور برمجيات متخصص في تطوير واجهات المستخدم وتطبيقات سطح المكتب،
+                وحاصل على درجة البكالوريوس في تقنية المعلومات من جامعة العلوم
+                والتكنولوجيا.
               </p>
 
               <p>
@@ -142,8 +140,6 @@ const About = () => {
       <section className={styles.storySection}>
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionEyebrow}>لماذا بدأت؟</span>
-
             <h2>من أرشيف شخصي إلى منصة مستقلة</h2>
 
             <p>
@@ -233,8 +229,6 @@ const About = () => {
         <div className={styles.sectionInner}>
           <div className={styles.visionGrid}>
             <div className={styles.visionContent}>
-              <span className={styles.sectionEyebrow}>الرؤية المستقبلية</span>
-
               <h2>أكثر من مجرد مكتبة تحميل</h2>
 
               <p>
@@ -316,8 +310,6 @@ const About = () => {
             </div>
 
             <div className={styles.transparencyContent}>
-              <span className={styles.sectionEyebrow}>شفافية تامة</span>
-
               <h2>المشروع مجاني وغير ربحي بالكامل</h2>
 
               <p>
