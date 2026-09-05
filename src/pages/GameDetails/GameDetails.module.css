@@ -342,6 +342,14 @@
     font-weight: 750;
 }
 
+.actionButtons {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
 .downloadButton {
     width: fit-content;
     min-height: 52px;
@@ -376,6 +384,42 @@
 .downloadButton:hover {
     transform: translateY(-3px);
     box-shadow: 0 18px 38px rgba(37, 99, 235, 0.34);
+}
+
+.nexusButton {
+    width: fit-content;
+    min-height: 52px;
+    padding: 0.8rem 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    border: 1px solid rgba(218, 121, 39, 0.55);
+    border-radius: 12px;
+    background: rgba(218, 121, 39, 0.08);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.nexusButton svg {
+    width: 19px;
+    height: 19px;
+    color: #da7927;
+}
+
+.nexusButton:hover {
+    transform: translateY(-3px);
+    border-color: #da7927;
+    background: rgba(218, 121, 39, 0.14);
+    box-shadow: 0 16px 34px rgba(218, 121, 39, 0.13);
 }
 
 .contentSection {
@@ -1118,7 +1162,13 @@
         margin-bottom: 2rem;
     }
 
-    .downloadButton {
+    .actionButtons {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .downloadButton,
+    .nexusButton {
         width: min(100%, 340px);
     }
 
@@ -1217,6 +1267,16 @@
 
     .metaCard {
         text-align: right;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .downloadButton,
+    .nexusButton {
+        width: 100%;
     }
 
     .contentSection,
@@ -1338,6 +1398,7 @@
     .backLink svg,
     .galleryShortcut,
     .downloadButton,
+    .nexusButton,
     .retryButton,
     .thumbnailWrapper,
     .thumbnailWrapper > img,
@@ -1359,6 +1420,7 @@
     .backLink:hover,
     .galleryShortcut:hover,
     .downloadButton:hover,
+    .nexusButton:hover,
     .retryButton:hover,
     .thumbnailWrapper:hover {
         transform: none;

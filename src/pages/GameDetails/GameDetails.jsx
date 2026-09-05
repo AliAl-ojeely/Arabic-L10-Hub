@@ -265,6 +265,7 @@ const GameDetails = () => {
     appVersion,
     installationSteps = [],
     downloadUrl,
+    nexusModsUrl,
     coverImage,
   } = game;
 
@@ -407,26 +408,52 @@ const GameDetails = () => {
                 </div>
               </div>
 
-              {downloadUrl && (
-                <a
-                  href={downloadUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.downloadButton}
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M12 3v12" />
-                    <path d="m7 10 5 5 5-5" />
-                    <path d="M5 21h14" />
-                  </svg>
+              {(downloadUrl || nexusModsUrl) && (
+                <div className={styles.actionButtons}>
+                  {downloadUrl && (
+                    <a
+                      href={downloadUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.downloadButton}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M12 3v12" />
+                        <path d="m7 10 5 5 5-5" />
+                        <path d="M5 21h14" />
+                      </svg>
 
-                  <span>تحميل التعريب</span>
-                </a>
+                      <span>تحميل التعريب</span>
+                    </a>
+                  )}
+
+                  {nexusModsUrl && (
+                    <a
+                      href={nexusModsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.nexusButton}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M14 3h7v7" />
+                        <path d="M10 14 21 3" />
+                        <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5" />
+                      </svg>
+
+                      <span>صفحة Nexus Mods</span>
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           </div>

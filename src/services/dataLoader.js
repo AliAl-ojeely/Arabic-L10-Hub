@@ -590,6 +590,45 @@ export const fetchTranslationsData = async () => {
           "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/all-quiet-in-the-trenches-ar-v1.0.2/All_Quiet_in_the_Trenches_v1.0.2.rar",
         addedDate: "2026-09-02",
       },
+      {
+        id: 19,
+        folderName: "Banished",
+        title: "Banished",
+        releaseYear: "2014",
+        translator: "علي العجيلي",
+        appVersion: "v1.0.0",
+        description:
+          "تعريب عربي شامل للعبة Banished، متوافق مع نسخة اللعبة v1.0.7 Build 170910، ويتضمن تعريب 1,641 وحدة نصية تشمل القوائم والواجهات والنصوص الوصفية والمساعدة والدروس التعليمية ومختلف النصوص التي يدعمها نظام موارد اللعبة، مع معالجة اتصال وتشكيل الحروف العربية ودعم اتجاه RTL المرئي ودمج خط Amiri بأحجام محسنة للقراءة، بالإضافة إلى معالجة خاصة للنصوص الطويلة والتفاف الأسطر لمنع انقلاب ترتيب الأسطر العربية داخل واجهات اللعبة.",
+        installationSteps: [
+          "قم بتحميل ملف التعريب المضغوط Banished_Arabic_Localization_v1.0.0.7z من الزر أدناه.",
+          "استخرج محتويات الحزمة باستخدام 7-Zip أو WinRAR.",
+          "أغلق اللعبة بالكامل قبل تثبيت التعريب.",
+          "انسخ محتويات الحزمة إلى مجلد لعبة Banished الرئيسي.",
+          "تأكد من وجود ملف BanishedArabic.pkm داخل مجلد WinData.",
+          "شغّل اللعبة وافتح قائمة Mods.",
+          "فعّل Banished Arabic Translation ثم اضغط OK.",
+          "وافق على إعادة تحميل موارد اللعبة إذا طلبت اللعبة ذلك، وبعدها سيعمل التعريب العربي.",
+        ],
+        coverImage: "poster.webp",
+        screenshots: ["1.webp", "2.webp", "3.webp", "4.webp"],
+        technologies: [
+          "توطين النصوص",
+          "تعريب القوائم والواجهات",
+          "تعريب النصوص الوصفية",
+          "تعريب المساعدة والدروس",
+          "دعم اللغة العربية",
+          "دعم RTL",
+          "Arabic Shaping",
+          "Amiri Font",
+          "Auto Wrapping Fix",
+          "PKM Mod",
+          "Banished Modding",
+        ],
+        downloadUrl:
+          "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/banished-ar-v1.0.0/Banished_Arabic_Localization_v1.0.0.7z",
+        addedDate: "2026-09-05",
+        nexusModsUrl: "https://www.nexusmods.com/banished/mods/148?published=1",
+      },
     ];
 
     return data.map(item => new Translation(item));
