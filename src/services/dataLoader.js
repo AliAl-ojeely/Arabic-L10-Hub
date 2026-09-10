@@ -538,7 +538,7 @@ export const fetchTranslationsData = async () => {
       title: "All Quiet in the Trenches",
       releaseYear: "2024",
       translator: "علي العجيلي",
-      appVersion: "v1.0.2",
+      appVersion: "v0.13.2",
       description:
         "تعريب عربي شامل للعبة All Quiet in the Trenches، متوافق مع نسخة اللعبة v0.12.2، ويتضمن ترجمة الحوارات والقصة واليوميات والقوائم والواجهات والإعدادات وشاشات التعليمات والخيارات والعناصر النصية المختلفة داخل اللعبة، مع دعم كامل لاتجاه RTL وتشكيل الحروف العربية والتفاف الأسطر ومعالجة علامات الترقيم والأرقام، بالإضافة إلى دمج خط Amiri وشعار عربي للعبة ومعالجة عرض التاريخ داخل اليوميات بصورة صحيحة.",
       installationSteps: [
@@ -565,7 +565,7 @@ export const fetchTranslationsData = async () => {
         "Amiri Font",
       ],
       downloadUrl:
-        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/all-quiet-in-the-trenches-ar-v1.0.2/All_Quiet_in_the_Trenches_v1.0.2.rar",
+        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/all-quiet-in-the-trenches-ar-v1.0.3/All_Quiet_in_the_Trenches_v1.0.3_Game_v0.13.2.zip",
       addedDate: "2026-09-02",
       isUnique: true,
     },
