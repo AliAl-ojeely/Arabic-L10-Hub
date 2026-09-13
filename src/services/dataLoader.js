@@ -609,6 +609,45 @@ export const fetchTranslationsData = async () => {
       nexusModsUrl: "https://www.nexusmods.com/banished/mods/148",
       isUnique: false,
     },
+    {
+      id: 20,
+      folderName: "Phoenix Wright Ace Attorney Trilogy",
+      title: "Phoenix Wright: Ace Attorney Trilogy",
+      releaseYear: "2019",
+      translator: "علي العجيلي",
+      appVersion: "v1.0.0",
+      description:
+        "تعريب عربي شامل للعبة Phoenix Wright: Ace Attorney Trilogy، يقدم تجربة التحقيق والقضايا باللغة العربية، ويتضمن تعريب الحوارات والقضايا والقوائم والواجهات والنصوص التوضيحية ورسائل النظام وعناصر التحقيق والأدلة. تم العمل على معالجة عرض اللغة العربية داخل اللعبة من خلال دعم اتجاه RTL المرئي واتصال وتشكيل الحروف العربية وتحسين عرض النصوص الطويلة والحوارية، بهدف تقديم تجربة قراءة مناسبة تحافظ على أسلوب السلسلة الأصلي.",
+      installationSteps: [
+        "قم بتحميل ملف التعريب المضغوط Phoenix_Wright_Ace_Attorney_Trilogy_Arabic_v1.0.0.zip من الزر أدناه.",
+        "استخرج محتويات الحزمة باستخدام 7-Zip أو WinRAR.",
+        "أغلق اللعبة بالكامل قبل تثبيت التعريب.",
+        "انسخ ملفات التعريب إلى مجلد اللعبة الرئيسي حسب المسارات الموضحة داخل ملف README.",
+        "تأكد من وجود جميع ملفات التعريب في أماكنها الصحيحة.",
+        "شغّل اللعبة وابدأ اللعب.",
+        "ستظهر النصوص العربية داخل الحوارات والقضايا والقوائم المدعومة.",
+      ],
+      coverImage: "poster.webp",
+      screenshots: ["1.webp", "2.webp", "3.webp", "4.webp", "5.webp", "6.webp"],
+      technologies: [
+        "توطين النصوص",
+        "تعريب الحوارات",
+        "تعريب القضايا",
+        "تعريب القوائم والواجهات",
+        "تعريب عناصر التحقيق والأدلة",
+        "تعريب رسائل النظام",
+        "دعم اللغة العربية",
+        "دعم RTL",
+        "Arabic Shaping",
+        "Arabic Font Integration",
+        "Dialogue Localization",
+        "Phoenix Wright Modding",
+      ],
+      downloadUrl:
+        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/phoenix-wright-trilogy-ar-v1.0.0/Phoenix_Wright_Ace_Attorney_Trilogy_Arabic_v1.0.0.zip",
+      addedDate: "2026-09-14",
+      isUnique: false,
+    },
   ];
 
   return data.map((item) => new Translation(item));
