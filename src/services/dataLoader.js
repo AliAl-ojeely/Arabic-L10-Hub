@@ -646,7 +646,7 @@ export const fetchTranslationsData = async () => {
       downloadUrl:
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/phoenix-wright-trilogy-ar-v1.0.0/Phoenix_Wright_Ace_Attorney_Trilogy_Arabic_v1.0.0.zip",
       addedDate: "2026-09-12",
-      isUnique: false,
+      isUnique: true,
     },
     {
       id: 21,
