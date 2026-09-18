@@ -240,6 +240,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Beast of Reincarnation_v2.5_(Arabic).7z",
       addedDate: "2026-08-06",
       nexusModsUrl: "https://www.nexusmods.com/beastofreincarnation/mods/64",
+      isUnique: true
     },
     {
       id: 10,
@@ -644,7 +645,7 @@ export const fetchTranslationsData = async () => {
         "Phoenix Wright Modding",
       ],
       downloadUrl:
-        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/phoenix-wright-trilogy-ar-v1.0.0/Phoenix_Wright_Ace_Attorney_Trilogy_Arabic_v1.0.0.zip",
+        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/phoenix-wright-trilogy-ar-v1.1.0/Phoenix_Wright_Ace_Attorney_Trilogy_Arabic_v1.1.0.zip",
       addedDate: "2026-09-12",
       isUnique: true,
     },
