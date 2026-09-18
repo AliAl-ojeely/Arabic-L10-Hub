@@ -616,7 +616,7 @@ export const fetchTranslationsData = async () => {
       title: "Phoenix Wright: Ace Attorney Trilogy",
       releaseYear: "2019",
       translator: "علي العجيلي",
-      appVersion: "v1.0.0",
+      appVersion: "v1.1.0",
       description:
         "تعريب عربي شامل للعبة Phoenix Wright: Ace Attorney Trilogy، يقدم تجربة التحقيق والقضايا باللغة العربية، ويتضمن تعريب الحوارات والقضايا والقوائم والواجهات والنصوص التوضيحية ورسائل النظام وعناصر التحقيق والأدلة. تم العمل على معالجة عرض اللغة العربية داخل اللعبة من خلال دعم اتجاه RTL المرئي واتصال وتشكيل الحروف العربية وتحسين عرض النصوص الطويلة والحوارية، بهدف تقديم تجربة قراءة مناسبة تحافظ على أسلوب السلسلة الأصلي.",
       installationSteps: [
