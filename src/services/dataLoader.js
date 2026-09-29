@@ -416,6 +416,7 @@ export const fetchTranslationsData = async () => {
       ],
       downloadFile: "Cursed_Mountain_Arabic.rar",
       addedDate: "2026-08-24",
+      nexusModsUrl: "https://www.nexusmods.com/cursedmountain/mods/1",
     },
     {
       id: 15,
