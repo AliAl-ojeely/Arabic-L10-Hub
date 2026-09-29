@@ -182,21 +182,6 @@
     pointer-events: none;
 }
 
-.posterBadge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.45rem 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    background: rgba(37, 99, 235, 0.92);
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 800;
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
-    backdrop-filter: blur(10px);
-}
-
 .galleryShortcut {
     width: 100%;
     min-height: 46px;

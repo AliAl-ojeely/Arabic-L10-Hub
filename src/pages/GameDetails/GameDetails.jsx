@@ -300,9 +300,6 @@ const GameDetails = () => {
                   className={styles.posterImage}
                 />
 
-                <div className={styles.posterShine} />
-
-                <span className={styles.posterBadge}>تعريب عربي</span>
               </div>
 
               {screenshots.length > 0 && (
