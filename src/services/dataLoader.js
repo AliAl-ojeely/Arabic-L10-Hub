@@ -826,7 +826,7 @@ export const fetchTranslationsData = async () => {
         "Enderal Modding",
       ],
       downloadUrl:
-        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/enderal-arabic-v1.0.0-gog/Enderal_Forgotten_Stories_v1.0.zip",
+        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/enderal-arabic-v1.2.6-gog/Enderal_Forgotten_Stories_v1.2.6.zip",
       addedDate: "2026-09-29",
       isUnique: false,
     },
