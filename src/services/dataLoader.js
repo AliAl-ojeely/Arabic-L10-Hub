@@ -1031,6 +1031,8 @@ export const fetchTranslationsData = async () => {
       downloadUrl:
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/Danganronpa_Trigger_Happy_Havoc_v1.0.1/Danganronpa_Trigger_Happy_Havoc_Arabic_v1.0.1.zip",
       addedDate: "2026-10-08",
+      nexusModsUrl:
+        "https://www.nexusmods.com/danganronpatriggerhappyhavoc/mods/4",
       isUnique: true,
     },
   ];
