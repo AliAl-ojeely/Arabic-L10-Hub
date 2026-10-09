@@ -1029,7 +1029,7 @@ export const fetchTranslationsData = async () => {
         "Arabic Localization Installer",
       ],
       downloadUrl:
-        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/Danganronpa_Trigger_Happy_Havoc_v1.0.1/Danganronpa_Trigger_Happy_Havoc_Arabic_v1.0.1.zip",
+        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/Danganronpa_Trigger_Happy_Havoc_v1.0.5/Danganronpa_Arabic_Installer_v1.0.5.zip",
       addedDate: "2026-10-08",
       nexusModsUrl:
         "https://www.nexusmods.com/danganronpatriggerhappyhavoc/mods/4",
