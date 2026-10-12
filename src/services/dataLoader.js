@@ -54,6 +54,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Hollow-Knight-Silksong-v1.5-Arabic-Patch.rar",
       addedDate: "2026-07-11",
       nexusModsUrl: "https://www.nexusmods.com/hollowknightsilksong/mods/1179",
+      isUnique: true,
     },
     {
       id: 3,
@@ -532,7 +533,7 @@ export const fetchTranslationsData = async () => {
       ],
       downloadFile: "Stella_of_The_End.7z",
       addedDate: "2026-08-23",
-      isUnique: true,
+      isUnique: false,
     },
     {
       id: 18,
