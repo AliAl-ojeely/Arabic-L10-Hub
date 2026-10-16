@@ -31,6 +31,7 @@ export const fetchTranslationsData = async () => {
       technologies: ["توطين النصوص", "تعديل الخطوط"],
       downloadFile: "Partisans1941-Arabic-Patch.7z",
       addedDate: "2026-07-29",
+      trailerUrl: "https://www.youtube.com/watch?v=cBvQ1IiURtU",
     },
     {
       id: 2,
@@ -55,6 +56,7 @@ export const fetchTranslationsData = async () => {
       addedDate: "2026-07-11",
       nexusModsUrl: "https://www.nexusmods.com/hollowknightsilksong/mods/1179",
       isUnique: true,
+      trailerUrl: "https://www.youtube.com/watch?v=pFAknD_9U7c",
     },
     {
       id: 3,
@@ -78,6 +80,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Gothic 1 Remake-Arabic-Patch.7z",
       addedDate: "2026-07-22",
       nexusModsUrl: "https://www.nexusmods.com/gothic1remake/mods/523",
+      trailerUrl: "https://www.youtube.com/watch?v=n0R7BmfpD7k",
     },
     {
       id: 4,
@@ -102,6 +105,7 @@ export const fetchTranslationsData = async () => {
       addedDate: "2026-07-24",
       nexusModsUrl:
         "https://www.nexusmods.com/spongebobsquarepantstitansofthetide/mods/15",
+      trailerUrl: "https://www.youtube.com/watch?v=MlUJyndva0k",
     },
     {
       id: 5,
@@ -125,6 +129,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "The Mound Omen of Cthulhu-Arabic-Patch.7z",
       addedDate: "2026-07-29",
       nexusModsUrl: "https://www.nexusmods.com/themoundomenofcthulhu/mods/15",
+      trailerUrl: "https://www.youtube.com/watch?v=I_scYSAcSiY",
     },
     {
       id: 6,
@@ -148,6 +153,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Eriksholm - The Stolen Dream-Arabic-Patch.7z",
       addedDate: "2026-07-18",
       nexusModsUrl: "https://www.nexusmods.com/eriksholmthestolendream/mods/21",
+      trailerUrl: "https://www.youtube.com/watch?v=ivQJwQRQQqw",
     },
     {
       id: 7,
@@ -179,6 +185,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "This Bed We Made - Arabic.7z",
       addedDate: "2026-07-28",
       nexusModsUrl: "https://www.nexusmods.com/thisbedeemade/mods/2",
+      trailerUrl: "https://www.youtube.com/watch?v=Ngeelwlov9o",
     },
     {
       id: 8,
@@ -211,6 +218,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "The Relic First Guardian (Arabic).rar",
       addedDate: "2026-08-05",
       nexusModsUrl: "https://www.nexusmods.com/therelicthefirstguardian/mods/3",
+      trailerUrl: "https://www.youtube.com/watch?v=3_Mycb8_VU4",
     },
     {
       id: 9,
@@ -241,6 +249,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Beast of Reincarnation_v2.5_(Arabic).7z",
       addedDate: "2026-08-06",
       nexusModsUrl: "https://www.nexusmods.com/beastofreincarnation/mods/64",
+      trailerUrl: "https://www.youtube.com/watch?v=YBAuVSnS0ls",
       isUnique: true,
     },
     {
@@ -263,6 +272,7 @@ export const fetchTranslationsData = async () => {
       technologies: ["توطين النصوص", "تعريب القوائم"],
       downloadFile: "Lost_and_Found_A_This_Bed_We_Made_Story_(Arabic).7z",
       addedDate: "2026-08-11",
+      trailerUrl: "https://www.youtube.com/watch?v=4bgODeXJV0w",
     },
     {
       id: 11,
@@ -293,6 +303,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Grounded_2_(Arabic).7z",
       addedDate: "2026-08-15",
       nexusModsUrl: "https://www.nexusmods.com/grounded2/mods/162",
+      trailerUrl: "https://www.youtube.com/watch?v=5Yq9nmIXaDs",
     },
     {
       id: 12,
@@ -334,6 +345,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Men_of_War_Arabic.7z",
       addedDate: "2026-08-16",
       nexusModsUrl: "https://www.nexusmods.com/menofwar/mods/12",
+      trailerUrl: "https://www.youtube.com/watch?v=MuuWdTav6d0",
     },
     {
       id: 13,
@@ -375,6 +387,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "JA3_Arabic.rar",
       addedDate: "2026-08-24",
       nexusModsUrl: "https://www.nexusmods.com/jaggedalliance3/mods/325",
+      trailerUrl: "https://www.youtube.com/watch?v=rza9Oou-XP8",
     },
     {
       id: 14,
@@ -418,6 +431,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Cursed_Mountain_Arabic.rar",
       addedDate: "2026-08-24",
       nexusModsUrl: "https://www.nexusmods.com/cursedmountain/mods/1",
+      trailerUrl: "https://www.youtube.com/watch?v=D9jZ7YeC61w",
     },
     {
       id: 15,
@@ -455,6 +469,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Help_Will_Come_Tomorrow_Arabic.7z",
       addedDate: "2026-08-27",
       isUnique: true,
+      trailerUrl: "https://www.youtube.com/watch?v=UeaNRGK4GDc",
     },
     {
       id: 16,
@@ -503,6 +518,7 @@ export const fetchTranslationsData = async () => {
       downloadUrl:
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/v1.1.0/Kill_The_Shadow_Arabic_v1.1.0_Build_24925748.zip",
       addedDate: "2026-08-31",
+      trailerUrl: "https://www.youtube.com/watch?v=7UFzGiFYI2Y",
     },
     {
       id: 17,
@@ -534,6 +550,7 @@ export const fetchTranslationsData = async () => {
       downloadFile: "Stella_of_The_End.7z",
       addedDate: "2026-08-23",
       isUnique: false,
+      trailerUrl: "https://www.youtube.com/watch?v=CozHHU_yhwo",
     },
     {
       id: 18,
@@ -571,6 +588,7 @@ export const fetchTranslationsData = async () => {
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/all-quiet-in-the-trenches-ar-v1.0.3/All_Quiet_in_the_Trenches_v1.0.3_Game_v0.13.2.zip",
       addedDate: "2026-09-02",
       isUnique: true,
+      trailerUrl: "https://www.youtube.com/watch?v=mF16Xw-9K3w",
     },
     {
       id: 19,
@@ -611,6 +629,7 @@ export const fetchTranslationsData = async () => {
       addedDate: "2026-09-05",
       nexusModsUrl: "https://www.nexusmods.com/banished/mods/148",
       isUnique: false,
+      trailerUrl: "https://www.youtube.com/watch?v=1xKbwGxUb18",
     },
     {
       id: 20,
@@ -650,6 +669,7 @@ export const fetchTranslationsData = async () => {
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/phoenix-wright-trilogy-ar-v1.1.0/Phoenix_Wright_Ace_Attorney_Trilogy_Arabic_v1.1.0.zip",
       addedDate: "2026-09-12",
       isUnique: true,
+      trailerUrl: "https://www.youtube.com/watch?v=Et0EwbCXJTo",
     },
     {
       id: 21,
@@ -701,6 +721,7 @@ export const fetchTranslationsData = async () => {
       addedDate: "2026-09-14",
       nexusModsUrl: "https://www.nexusmods.com/haveanicedeath/mods/5",
       isUnique: false,
+      trailerUrl: "https://www.youtube.com/watch?v=Pl0EaPUpar0",
     },
     {
       id: 22,
@@ -755,6 +776,7 @@ export const fetchTranslationsData = async () => {
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/laika-arabic-v1.0.0-game-v1.0.14/Laika_Aged_Through_Blood_ver_1.0.14.zip",
       addedDate: "2026-09-16",
       isUnique: false,
+      trailerUrl: "https://www.youtube.com/watch?v=wayLO62Bqds",
     },
     {
       id: 23,
@@ -830,6 +852,7 @@ export const fetchTranslationsData = async () => {
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/enderal-arabic-v1.2.6-gog/Enderal_Forgotten_Stories_v1.2.6.zip",
       addedDate: "2026-09-29",
       isUnique: false,
+      trailerUrl: "https://www.youtube.com/watch?v=_DHkmHBPs2Q",
     },
     {
       id: 24,
@@ -912,6 +935,7 @@ export const fetchTranslationsData = async () => {
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/ghost-trick-phantom-detective-v1.0/Ghost_Trick_Phantom_Detective_v1.0.zip",
       addedDate: "2026-10-01",
       isUnique: false,
+      trailerUrl: "https://www.youtube.com/watch?v=D5po_6bO9eg",
     },
 
     {
@@ -1035,6 +1059,7 @@ export const fetchTranslationsData = async () => {
       nexusModsUrl:
         "https://www.nexusmods.com/danganronpatriggerhappyhavoc/mods/4",
       isUnique: true,
+      trailerUrl: "https://www.youtube.com/watch?v=_BSr489kPIU",
     },
   ];
 

@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Link, useParams } from "react-router-dom";
 import { fetchTranslationsData } from "../../services/dataLoader";
 import styles from "./GameDetails.module.css";
+import TrailerPlayer from "../../components/TrailerPlayer/TrailerPlayer";
 
 const MIN_SWIPE_DISTANCE = 50;
 
@@ -299,7 +300,6 @@ const GameDetails = () => {
                   alt={`غلاف لعبة ${title}`}
                   className={styles.posterImage}
                 />
-
               </div>
 
               {screenshots.length > 0 && (
@@ -532,6 +532,12 @@ const GameDetails = () => {
           </div>
         </div>
       </section>
+
+      <TrailerPlayer
+        key={game.folderName}
+        title={game.title}
+        url={game.trailerUrl}
+      />
 
       {screenshots.length > 0 && (
         <section className={styles.gallerySection}>

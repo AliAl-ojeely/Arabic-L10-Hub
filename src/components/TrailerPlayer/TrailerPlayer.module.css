@@ -1,0 +1,188 @@
+
+.section {
+  width: 100%;
+  padding: clamp(3rem, 6vw, 5rem) 2rem;
+  background: var(--surface-color);
+  border-block: 1px solid var(--surface-color-light);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+
+.header h2 {
+  margin: 0 0 0.75rem;
+  color: var(--text-primary);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+
+.player {
+  position: relative;
+  width: 100%;
+  max-width: 1050px;
+  margin-inline: auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid #292929;
+  border-radius: 18px;
+  background: #050505;
+}
+
+
+.iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.previewButton {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #090909;
+  cursor: pointer;
+  font: inherit;
+}
+
+.thumbnail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.previewButton:hover .thumbnail {
+  transform: scale(1.035);
+  filter: brightness(0.5);
+}
+
+.playCircle {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.playCircle svg {
+  width: 38px;
+  height: 38px;
+  margin-left: 3px;
+}
+
+.previewButton:hover .playCircle {
+  background: var(--accent-color);
+  transform: scale(1.06);
+}
+
+.playLabel {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 2rem;
+  left: 0;
+  padding: 0 1rem;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 2px 12px #000;
+}
+
+
+.youtubeLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  gap: 0.55rem;
+  margin: 1.3rem auto 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+
+.youtubeLink svg {
+  width: 19px;
+  height: 19px;
+}
+
+.youtubeLink:hover {
+  color: var(--accent-color);
+}
+
+.previewButton:focus-visible,
+.youtubeLink:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 2.75rem 1rem;
+  }
+
+  .player {
+    border-radius: 12px;
+  }
+
+  .playCircle {
+    width: 64px;
+    height: 64px;
+  }
+
+  .playCircle svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .playLabel {
+    bottom: 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumbnail,
+  .playCircle,
+  .youtubeLink {
+    transition: none;
+  }
+}

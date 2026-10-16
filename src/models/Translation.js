@@ -14,6 +14,7 @@ export default class Translation {
     downloadFile = "patch.zip",
     downloadUrl = null,
     nexusModsUrl = null,
+    trailerUrl = null,
     addedDate,
     isUnique = false,
   }) {
@@ -29,6 +30,9 @@ export default class Translation {
     this.addedDate = addedDate;
     this.nexusModsUrl = nexusModsUrl;
     this.isUnique = Boolean(isUnique);
+
+    this.trailerUrl =
+      typeof trailerUrl === "string" ? trailerUrl.trim() || null : null;
 
     const baseUrl = import.meta.env.BASE_URL;
     const basePath = `${baseUrl}games/${folderName}`;
