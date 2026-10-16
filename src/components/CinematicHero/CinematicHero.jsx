@@ -6,30 +6,30 @@ const SLIDE_DURATION = 8000;
 
 // Exact background filenames from public/background.
 const BACKGROUNDS = {
-  "Partisans 1941": "partisans-1941.jpg",
-  "Hollow Knight Silksong": "hollow-knight-silksong.png",
-  "Gothic 1 Remake": "gothic-1-remake.png",
+  "Partisans 1941": "partisans-1941.webp",
+  "Hollow Knight Silksong": "hollow-knight-silksong.webp",
+  "Gothic 1 Remake": "gothic-1-remake.webp",
   "SpongeBob SquarePants Titans of the Tide":
-    "spongebob-squarepants-titans-of-the-tide.jpg",
-  "The Mound - Omen of Cthulhu": "the-mound-omen-of-cthulhu.jpg",
-  "Eriksholm - The Stolen Dream": "eriksholm-the-stolen-dream.jpg",
-  "This Bed We Made": "this-bed-we-made.jpg",
-  "Beast of Reincarnation": "beast-of-reincarnation.jpg",
+    "spongebob-squarepants-titans-of-the-tide.webp",
+  "The Mound - Omen of Cthulhu": "the-mound-omen-of-cthulhu.webp",
+  "Eriksholm - The Stolen Dream": "eriksholm-the-stolen-dream.webp",
+  "This Bed We Made": "this-bed-we-made.webp",
+  "Beast of Reincarnation": "beast-of-reincarnation.webp",
   "Lost & Found - A This Bed We Made Story":
-    "lost-found-a-this-bed-we-made-story.jpg",
-  "Grounded 2": "grounded-2.png",
-  "Men of War": "men-of-war.jpg",
-  "Jagged Alliance 3": "jagged-alliance-3.jpg",
-  "Help Will Come Tomorrow": "help-will-come-tomorrow.png",
-  "All Quiet in the Trenches": "all-quiet-in-the-trenches.png",
-  Banished: "banished.png",
+    "lost-found-a-this-bed-we-made-story.webp",
+  "Grounded 2": "grounded-2.webp",
+  "Men of War": "men-of-war.webp",
+  "Jagged Alliance 3": "jagged-alliance-3.webp",
+  "Help Will Come Tomorrow": "help-will-come-tomorrow.webp",
+  "All Quiet in the Trenches": "all-quiet-in-the-trenches.webp",
+  Banished: "banished.webp",
   "Phoenix Wright Ace Attorney Trilogy":
-    "phoenix-wright-ace-attorney-trilogy.jpg",
-  "Have a Nice Death": "have-a-nice-death.png",
-  "Laika Aged Through Blood": "laika-aged-through-blood.png",
-  "Enderal Forgotten Stories": "enderal-forgotten-stories.png",
-  "Ghost Trick Phantom Detective": "ghost-trick-phantom-detective.png",
-  "Danganronpa Trigger Happy Havoc": "danganronpa-trigger-happy-havoc.png",
+    "phoenix-wright-ace-attorney-trilogy.webp",
+  "Have a Nice Death": "have-a-nice-death.webp",
+  "Laika Aged Through Blood": "laika-aged-through-blood.webp",
+  "Enderal Forgotten Stories": "enderal-forgotten-stories.webp",
+  "Ghost Trick Phantom Detective": "ghost-trick-phantom-detective.webp",
+  "Danganronpa Trigger Happy Havoc": "danganronpa-trigger-happy-havoc.webp",
 };
 
 export default function CinematicHero({ games = [] }) {
