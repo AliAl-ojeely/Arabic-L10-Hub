@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchTranslationsData } from "../../services/dataLoader";
-import { useTypingRotate } from "../../hooks/useTypingRotate";
+import CinematicHero from "../../components/CinematicHero/CinematicHero";
 import styles from "./Home.module.css";
+import CommunityCinematic from "../../components/CommunityCinematic/CommunityCinematic";
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -46,6 +47,15 @@ const teams = [
     image: `${baseUrl}playinarabic.webp`,
     link: "https://www.playinarabic.com/",
   },
+
+  {
+    id: 6,
+    name: "هشام للتعريب",
+    description:
+      "منصة عربية متخصصة في تقديم تعريبات الألعاب، تهدف إلى إثراء تجربة اللاعبين وإتاحة المزيد من الألعاب باللغة العربية.",
+    image: `${baseUrl}hesham.webp`,
+    link: "https://arabichesham.com/",
+  },
 ];
 
 const redditReviews = [
@@ -74,21 +84,18 @@ const redditReviews = [
 const highlights = [
   {
     id: 1,
-    number: "01",
     title: "تعريبات منظمة",
     description:
       "صفحات واضحة لكل لعبة تحتوي على معلومات التعريب والصور وطريقة الوصول إليه.",
   },
   {
     id: 2,
-    number: "02",
     title: "تجربة عربية",
     description:
       "واجهة مصممة من الأساس للمحتوى العربي مع دعم كامل لاتجاه RTL والجوال.",
   },
   {
     id: 3,
-    number: "03",
     title: "مجتمع واحد",
     description:
       "مساحة تجمع اللاعبين والمهتمين بالتعريب وتساعد على إبقاء المشاريع متاحة.",
@@ -99,21 +106,14 @@ const Home = () => {
   const [latestGames, setLatestGames] = useState([]);
   const [totalGamesCount, setTotalGamesCount] = useState(0);
   const [currentReview, setCurrentReview] = useState(0);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const typingWords = [
-    "ألعابك... الآن بالعربية",
-    "تعريبات أوضح، تجربة أفضل",
-    "مكتبة عربية لعشاق الألعاب",
-    "منصة تحفظ جهود المعرّبين",
-  ];
-
-  const typedText = useTypingRotate(typingWords, 80, 50, 2000);
+  const [allGames, setAllGames] = useState([]);
 
   useEffect(() => {
     const loadHomeData = async () => {
       try {
         const data = await fetchTranslationsData();
+
+        setAllGames(data);
 
         const sortedData = [...data].sort(
           (a, b) => new Date(b.addedDate) - new Date(a.addedDate),
@@ -139,133 +139,14 @@ const Home = () => {
     return () => clearInterval(reviewInterval);
   }, []);
 
-  useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev === teams.length - 1 ? 0 : prev + 1));
-    }, 6500);
-
-    return () => clearInterval(slideInterval);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === teams.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? teams.length - 1 : prev - 1));
-  };
-
-  const featuredGame = latestGames[0] ?? null;
-  const currentTeam = teams[currentSlide];
-
   return (
     <div className={styles.homeContainer} dir="rtl">
-      <section className={styles.heroSection}>
-        <div className={styles.heroGlowOne} />
-        <div className={styles.heroGlowTwo} />
-
-        <div className={styles.heroInner}>
-          <div className={styles.heroContent}>
-            <h1 className={styles.title}>
-              <span className={styles.typingText}>{typedText}</span>
-              <span className={styles.cursor}>|</span>
-            </h1>
-
-            <p className={styles.subtitle}>
-              اكتشف تعريبات الألعاب والتعديلات العربية في مكان واحد. تجربة
-              واضحة، صفحات منظمة، ودعم مستمر لمجتمع اللاعبين العرب.
-            </p>
-
-            <div className={styles.actions}>
-              <Link to="/translations" className={styles.primaryButton}>
-                <span>تصفح مكتبة التعريبات</span>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  aria-hidden="true"
-                >
-                  <path d="M19 12H5" />
-                  <path d="M12 19l-7-7 7-7" />
-                </svg>
-              </Link>
-
-              <Link to="/about" className={styles.secondaryButton}>
-                تعرف على المشروع
-              </Link>
-            </div>
-
-            <div className={styles.heroStats}>
-              <div className={styles.heroStat}>
-                <strong>{totalGamesCount > 0 ? totalGamesCount : "—"}</strong>
-                <span>تعريب متاح</span>
-              </div>
-
-              <div className={styles.heroStat}>
-                <strong>100%</strong>
-                <span>واجهة عربية</span>
-              </div>
-
-              <div className={styles.heroStat}>
-                <strong>RTL</strong>
-                <span>دعم كامل</span>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.heroVisual}>
-            <div className={styles.heroVisualGlow} />
-
-            {featuredGame ? (
-              <Link
-                to={`/translations/${featuredGame.folderName}`}
-                className={styles.featuredGameCard}
-              >
-                <div className={styles.featuredImageWrap}>
-                  <img src={featuredGame.coverImage} alt={featuredGame.title} />
-                  <div className={styles.featuredGradient} />
-                  <span className={styles.newBadge}>أحدث تعريب</span>
-                </div>
-
-                <div className={styles.featuredContent}>
-                  <h2>{featuredGame.title}</h2>
-
-                  <div className={styles.featuredLink}>
-                    عرض التعريب
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      aria-hidden="true"
-                    >
-                      <path d="M19 12H5" />
-                      <path d="M12 19l-7-7 7-7" />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
-            ) : (
-              <div className={styles.featuredSkeleton}>
-                <div className={styles.skeletonImage} />
-                <div className={styles.skeletonContent}>
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      <CinematicHero games={allGames} />
 
       <section className={styles.highlightsSection}>
         <div className={styles.highlightsGrid}>
           {highlights.map((item) => (
             <article key={item.id} className={styles.highlightCard}>
-              <span className={styles.highlightNumber}>{item.number}</span>
-
               <div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
@@ -347,89 +228,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className={styles.communityShowcase}>
-            <div key={currentTeam.id} className={styles.communityMedia}>
-              <img src={currentTeam.image} alt={currentTeam.name} />
-            </div>
-
-            <div
-              key={`community-content-${currentTeam.id}`}
-              className={styles.communityContent}
-            >
-              <h3>{currentTeam.name}</h3>
-              <p>{currentTeam.description}</p>
-
-              <a
-                href={currentTeam.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.communityButton}
-              >
-                زيارة الموقع
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  aria-hidden="true"
-                >
-                  <path d="M15 3h6v6" />
-                  <path d="M10 14L21 3" />
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                </svg>
-              </a>
-
-              <div className={styles.communityControls}>
-                <div className={styles.sliderButtons}>
-                  <button
-                    type="button"
-                    onClick={prevSlide}
-                    aria-label="الموقع السابق"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      aria-hidden="true"
-                    >
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={nextSlide}
-                    aria-label="الموقع التالي"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      aria-hidden="true"
-                    >
-                      <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                  </button>
-                </div>
-
-                <div className={styles.slideIndicators}>
-                  {teams.map((team, index) => (
-                    <button
-                      type="button"
-                      key={team.id}
-                      className={`${styles.indicator} ${
-                        index === currentSlide ? styles.activeIndicator : ""
-                      }`}
-                      onClick={() => setCurrentSlide(index)}
-                      aria-label={`عرض ${team.name}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          <CommunityCinematic sites={teams} />
         </div>
       </section>
 
