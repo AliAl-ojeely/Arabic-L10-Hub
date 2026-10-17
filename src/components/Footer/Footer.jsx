@@ -10,8 +10,20 @@ const Footer = () => {
 
       <div className={styles.footerContent}>
         <div className={styles.brand}>
-          <Link to="/" className={styles.logo}>
-            Arabic L10 <span>Hub</span>
+          <Link
+            to="/"
+            className={styles.logo}
+            aria-label="Arabic L10 Hub - الصفحة الرئيسية"
+          >
+            <img
+              className={styles.brandLogoImage}
+              src={`${import.meta.env.BASE_URL}brand/arabic-l10-logo.webp`}
+              alt="شعار Arabic L10 Hub"
+              width="1060"
+              height="729"
+              loading="lazy"
+              decoding="async"
+            />
           </Link>
 
           <p>

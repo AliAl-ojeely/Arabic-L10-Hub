@@ -126,9 +126,18 @@ const Navbar = () => {
             onClick={closeMenu}
             aria-label="Arabic L10 Hub"
           >
+            <img
+              className={styles.logoMark}
+              src={`${import.meta.env.BASE_URL}brand/arabic-l10-mark.webp`}
+              alt=""
+              width="46"
+              height="46"
+              decoding="async"
+            />
             <span className={styles.logoText}>
-              <span>Arabic L10</span>
-              <strong>Hub</strong>
+              <span>ARABIC</span>
+              <strong>L10</strong>
+              <span>HUB</span>
             </span>
           </Link>
 
@@ -210,9 +219,18 @@ const Navbar = () => {
       >
         <div className={styles.mobileHeader}>
           <Link to="/" className={styles.mobileLogo} onClick={closeMenu}>
+            <img
+              className={styles.logoMark}
+              src={`${import.meta.env.BASE_URL}brand/arabic-l10-mark.webp`}
+              alt=""
+              width="44"
+              height="44"
+              decoding="async"
+            />
             <span className={styles.mobileLogoText}>
-              <span>Arabic L10</span>
-              <strong>Hub</strong>
+              <span>ARABIC</span>
+              <strong>L10</strong>
+              <span>HUB</span>
             </span>
           </Link>
 
