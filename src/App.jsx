@@ -7,6 +7,7 @@ import Translations from './pages/Translations/Translations';
 import GameDetails from './pages/GameDetails/GameDetails';
 import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
+import ScrollToTopButton from './components/ScrollToTopButton/ScrollToTopButton';
 import './App.css';
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
                 </div>
             </main>
             <Footer />
+            <ScrollToTopButton />
         </div>
     );
 }

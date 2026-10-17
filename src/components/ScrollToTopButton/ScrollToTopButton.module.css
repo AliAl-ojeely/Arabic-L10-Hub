@@ -1,0 +1,85 @@
+/* Arabic L10 Hub - global floating scroll-to-top */
+.button {
+  position: fixed;
+  z-index: 900; /* Below navbar/drawer (1000+) and image modals. */
+  left: max(22px, env(safe-area-inset-left, 0px));
+  bottom: max(24px, env(safe-area-inset-bottom, 0px));
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(37, 99, 235, 0.28);
+  background: rgba(12, 17, 28, 0.96);
+  color: #2563eb; /* Fixed blue arrow in BOTH themes. */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    visibility 220ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.button svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+  flex-shrink: 0;
+}
+
+.button:hover {
+  background: #17243b;
+  border-color: rgba(37, 99, 235, 0.65);
+}
+
+.button:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 4px;
+}
+
+/* Light mode: change surface only; blue arrow stays exactly #2563eb. */
+:global(html[data-theme="light"]) .button {
+  background: rgba(255, 255, 255, 0.97);
+  border-color: rgba(37, 99, 235, 0.22);
+  box-shadow: 0 8px 25px rgba(31, 49, 77, 0.15);
+  color: #2563eb;
+}
+
+:global(html[data-theme="light"]) .button:hover {
+  background: #eaf1ff;
+  border-color: rgba(37, 99, 235, 0.55);
+}
+
+@media (max-width: 680px) {
+  .button {
+    width: 46px;
+    height: 46px;
+    left: max(15px, env(safe-area-inset-left, 0px));
+    bottom: max(17px, env(safe-area-inset-bottom, 0px));
+  }
+  .button svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+}

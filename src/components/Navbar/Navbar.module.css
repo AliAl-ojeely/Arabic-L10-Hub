@@ -1037,6 +1037,52 @@
 :global(html[data-theme="light"]) .navActions .burgerButton span {
   background: #fff;
 }
-/* Keep the existing blue active-link underline and focus-visible outline. */
 
-/* AL10_LIGHT_THEME_END */
+
+/* ============================================
+   LIGHT MODE - NAVBAR CONTROL REFINEMENT
+   Preserve transparent navbar
+   ============================================ */
+
+@media (min-width: 821px) {
+
+  /* Active navigation link - same visual style as Dark Mode */
+  :global(html[data-theme="light"]) .navbar .desktopNav .activeLink,
+  :global(html[data-theme="light"]) .navbar .desktopNav .activeLink:hover {
+    background: rgba(37, 99, 235, 0.13) !important;
+    border: 1px solid rgba(37, 99, 235, 0.42) !important;
+    box-shadow: inset 0 0 15px rgba(37, 99, 235, 0.05) !important;
+  }
+
+  /* Discord - restore its outlined appearance */
+  :global(html[data-theme="light"]) .navbar .navActions .discordButton {
+    background: rgba(88, 101, 242, 0.10) !important;
+    border: 1px solid rgba(88, 101, 242, 0.48) !important;
+    box-shadow: none !important;
+  }
+
+  :global(html[data-theme="light"]) .navbar .navActions .discordButton:hover {
+    background: rgba(88, 101, 242, 0.18) !important;
+    border-color: rgba(88, 101, 242, 0.75) !important;
+  }
+
+  /* Sun / Moon - remove black background completely */
+  :global(html[data-theme="light"]) .navbar .navActions .themeButton,
+  :global(html[data-theme="light"]) .navbar .navActions .themeButton:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    border-color: rgba(148, 163, 184, 0.4) !important;
+    box-shadow: none !important;
+  }
+
+}
+
+@media (min-width: 821px) {
+  .navbar .navActions .themeButton,
+  .navbar .navActions .themeButton:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
+
