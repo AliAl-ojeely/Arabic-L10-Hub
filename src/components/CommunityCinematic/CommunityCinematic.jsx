@@ -1,183 +1,259 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./CommunityCinematic.module.css";
 
 const SLIDE_DURATION = 7500;
+const TRANSITION_DURATION = 900;
+const imageCache = new Map();
+
+// A failed image must never block slide navigation.
+function prepareImage(src) {
+  if (!src) return Promise.resolve(false);
+  if (imageCache.has(src)) return imageCache.get(src);
+
+  const image = new Image();
+  image.decoding = "async";
+
+  let promise;
+  if (typeof image.decode === "function") {
+    image.src = src;
+    promise = image.decode().then(
+      () => true,
+      () => false,
+    );
+  } else {
+    promise = new Promise((resolve) => {
+      image.onload = () => resolve(true);
+      image.onerror = () => resolve(false);
+      image.src = src;
+    });
+  }
+
+  imageCache.set(src, promise);
+  promise.then((ok) => {
+    if (!ok) imageCache.delete(src);
+  });
+  return promise;
+}
 
 export default function CommunityCinematic({ sites = [] }) {
   const sectionRef = useRef(null);
+  const activeRef = useRef(0);
+  const requestedRef = useRef(0);
+  const requestIdRef = useRef(0);
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [hasFocus, setHasFocus] = useState(false);
+  const [outgoingIndex, setOutgoingIndex] = useState(null);
+  const [pendingIndex, setPendingIndex] = useState(null);
+  const [imageFailed, setImageFailed] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const [isPageVisible, setIsPageVisible] = useState(
     () => typeof document === "undefined" || !document.hidden,
   );
-
-  const [isPaused, setIsPaused] = useState(() => {
-    if (typeof window === "undefined") return true;
-
-    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  });
+  const [isPaused, setIsPaused] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
 
   const count = sites.length;
+  const currentIndex = Math.min(activeIndex, Math.max(0, count - 1));
+  const active = sites[currentIndex];
+  const outgoing = outgoingIndex === null ? null : sites[outgoingIndex];
 
   const isAutoplaying =
     count > 1 &&
-    !isPaused &&
-    !isHovered &&
-    !hasFocus &&
     isInView &&
-    isPageVisible;
+    isPageVisible &&
+    !isPaused &&
+    pendingIndex === null;
 
-  // Pause when the browser tab is not visible.
   useEffect(() => {
-    const updateVisibility = () => {
-      setIsPageVisible(!document.hidden);
-    };
+    requestIdRef.current += 1;
+    activeRef.current = 0;
+    requestedRef.current = 0;
+    setActiveIndex(0);
+    setOutgoingIndex(null);
+    setPendingIndex(null);
+    setImageFailed(false);
+  }, [sites]);
 
-    document.addEventListener("visibilitychange", updateVisibility);
-
-    return () => {
-      document.removeEventListener("visibilitychange", updateVisibility);
-    };
+  useEffect(() => {
+    const update = () => setIsPageVisible(!document.hidden);
+    document.addEventListener("visibilitychange", update);
+    return () => document.removeEventListener("visibilitychange", update);
   }, []);
 
-  // Pause automatic changes when the section is offscreen.
   useEffect(() => {
     const element = sectionRef.current;
-
     if (!element) return undefined;
-
     if (typeof IntersectionObserver === "undefined") {
       setIsInView(true);
       return undefined;
     }
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
-      },
+      ([entry]) => setIsInView(entry.isIntersecting),
       { threshold: 0.15 },
     );
-
     observer.observe(element);
-
     return () => observer.disconnect();
-  }, []);
+  }, [count]);
 
-  // Single timer; reset after every manual or automatic change.
+  const select = useCallback(
+    (index) => {
+      if (count < 2) return;
+      const target = ((index % count) + count) % count;
+      const requestId = ++requestIdRef.current;
+      requestedRef.current = target;
+
+      if (target === activeRef.current) {
+        setPendingIndex(null);
+        return;
+      }
+
+      // Highlight the requested tab immediately. Keep the displayed content
+      // consistent until the next image is decoded.
+      setPendingIndex(target);
+      prepareImage(sites[target].image).then((success) => {
+        if (requestId !== requestIdRef.current) return;
+        const old = activeRef.current;
+        activeRef.current = target;
+        setOutgoingIndex(old);
+        setActiveIndex(target);
+        setImageFailed(!success);
+        setPendingIndex(null);
+      });
+    },
+    [count, sites],
+  );
+
+  const next = () => select(requestedRef.current + 1);
+  const previous = () => select(requestedRef.current - 1);
+
   useEffect(() => {
     if (!isAutoplaying) return undefined;
-
-    const timer = window.setTimeout(() => {
-      setActiveIndex((current) => (current + 1) % count);
-    }, SLIDE_DURATION);
-
+    const timer = window.setTimeout(
+      () => select(activeRef.current + 1),
+      SLIDE_DURATION,
+    );
     return () => window.clearTimeout(timer);
-  }, [activeIndex, count, isAutoplaying]);
+  }, [activeIndex, isAutoplaying, select]);
 
-  // Functional state updates prevent stale-index navigation.
-  const next = () => {
-    if (count < 2) return;
+  useEffect(() => {
+    if (outgoingIndex === null) return undefined;
+    const timer = window.setTimeout(
+      () => setOutgoingIndex(null),
+      TRANSITION_DURATION + 80,
+    );
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, outgoingIndex]);
 
-    setActiveIndex((current) => (current + 1) % count);
-  };
+  // Preload just the next site, and only when the section is near the viewport.
+  useEffect(() => {
+    if (!isInView || count < 2) return;
+    prepareImage(sites[(currentIndex + 1) % count].image);
+  }, [isInView, count, currentIndex, sites]);
 
-  const previous = () => {
-    if (count < 2) return;
+  // Prevent late image requests from updating an unmounted component.
+  useEffect(
+    () => () => {
+      requestIdRef.current += 1;
+    },
+    [],
+  );
 
-    setActiveIndex((current) => (current - 1 + count) % count);
-  };
+  if (!active) return null;
 
-  const select = (index) => {
-    if (index < 0 || index >= count) return;
-    setActiveIndex(index);
-  };
-
-  const handleBlur = (event) => {
-    if (!event.currentTarget.contains(event.relatedTarget)) {
-      setHasFocus(false);
-    }
-  };
-
-  if (count === 0) return null;
-
-  const currentIndex = Math.min(activeIndex, count - 1);
-  const active = sites[currentIndex];
+  const shownSelection = pendingIndex ?? currentIndex;
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} dir="rtl">
       <section
         ref={sectionRef}
         className={styles.showcase}
-        dir="rtl"
         aria-label="معرض مواقع التعريب العربي"
         aria-roledescription="عرض شرائح"
-        onPointerEnter={(event) => {
-          if (event.pointerType === "mouse") {
-            setIsHovered(true);
-          }
-        }}
-        onPointerLeave={(event) => {
-          if (event.pointerType === "mouse") {
-            setIsHovered(false);
-          }
-        }}
-        onFocusCapture={() => setHasFocus(true)}
-        onBlurCapture={handleBlur}
+        aria-busy={pendingIndex !== null}
       >
-        {/* Stable background layers: no remount on navigation */}
         <div className={styles.backdrops} aria-hidden="true">
-          {sites.map((site, index) => (
+          {outgoing && (
             <img
-              key={site.id}
-              src={site.image}
+              className={styles.previousBackdrop}
+              src={outgoing.image}
+              alt=""
+              decoding="async"
+            />
+          )}
+          {!imageFailed && (
+            <img
+              key={active.id}
+              className={styles.currentBackdrop}
+              src={active.image}
               alt=""
               loading="lazy"
               decoding="async"
-              className={`${styles.backdrop} ${
-                index === currentIndex ? styles.visibleBackdrop : ""
-              }`}
             />
-          ))}
+          )}
         </div>
-
         <div className={styles.scrim} aria-hidden="true" />
 
         <div className={styles.main}>
-          <div
-            className={styles.content}
-            aria-live={isAutoplaying ? "off" : "polite"}
-            aria-atomic="true"
-          >
-            <h3 className={styles.name}>{active.name}</h3>
-
-            <p className={styles.description}>{active.description}</p>
-
-            <a
-              className={styles.visitButton}
-              href={active.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              زيارة الموقع
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+          {/* Keep both descriptions briefly so their motion crossfades too. */}
+          <div className={styles.contentStage}>
+            {outgoing && (
+              <div
+                key={`outgoing-${outgoing.id}`}
+                className={`${styles.content} ${styles.previousContent}`}
                 aria-hidden="true"
               >
-                <path d="M7 17 17 7" />
-                <path d="M8 7h9v9" />
-              </svg>
-            </a>
+                <h3 className={styles.name}>{outgoing.name}</h3>
+                <p className={styles.description}>{outgoing.description}</p>
+                <span className={styles.visitButton}>
+                  زيارة الموقع
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17 17 7" />
+                    <path d="M8 7h9v9" />
+                  </svg>
+                </span>
+              </div>
+            )}
+            <div
+              key={`current-${active.id}`}
+              className={`${styles.content} ${styles.currentContent}`}
+              aria-live="off"
+            >
+              <h3 className={styles.name}>{active.name}</h3>
+              <p className={styles.description}>{active.description}</p>
+              <a
+                className={styles.visitButton}
+                href={active.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                زيارة الموقع
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17 17 7" />
+                  <path d="M8 7h9v9" />
+                </svg>
+              </a>
+            </div>
           </div>
 
-          {/* Logos stay mounted and crossfade safely */}
           <a
             className={styles.artworkLink}
             href={active.link}
@@ -186,18 +262,34 @@ export default function CommunityCinematic({ sites = [] }) {
             aria-label={`زيارة موقع ${active.name}`}
           >
             <div className={styles.artworkFrame}>
-              {sites.map((site, index) => (
+              <span className={styles.artworkFallback}>{active.name}</span>
+              {outgoing && (
                 <img
-                  key={site.id}
-                  src={site.image}
-                  alt={index === currentIndex ? `شعار ${site.name}` : ""}
+                  className={styles.previousArtwork}
+                  src={outgoing.image}
+                  alt=""
+                  decoding="async"
+                />
+              )}
+              {!imageFailed && (
+                <img
+                  key={active.id}
+                  className={styles.currentArtwork}
+                  src={active.image}
+                  alt=""
                   loading="lazy"
                   decoding="async"
-                  className={`${styles.artwork} ${
-                    index === currentIndex ? styles.visibleArtwork : ""
-                  }`}
+                  onError={() => {
+                    if (activeRef.current === currentIndex)
+                      setImageFailed(true);
+                  }}
                 />
-              ))}
+              )}
+              {pendingIndex !== null && (
+                <span className={styles.loadingHint} role="status">
+                  جارٍ تجهيز الصورة…
+                </span>
+              )}
             </div>
           </a>
         </div>
@@ -227,7 +319,6 @@ export default function CommunityCinematic({ sites = [] }) {
                 <path d="m9 5 7 7-7 7" />
               </svg>
             </button>
-
             <button
               type="button"
               onClick={next}
@@ -247,15 +338,14 @@ export default function CommunityCinematic({ sites = [] }) {
                 <path d="m15 5-7 7 7 7" />
               </svg>
             </button>
-
             <button
               type="button"
               onClick={() => setIsPaused((value) => !value)}
               disabled={count < 2}
+              aria-pressed={isPaused}
               aria-label={
                 isPaused ? "تشغيل التنقل التلقائي" : "إيقاف التنقل التلقائي"
               }
-              aria-pressed={isPaused}
               title={isPaused ? "تشغيل تلقائي" : "إيقاف مؤقت"}
             >
               {isPaused ? (
@@ -270,7 +360,6 @@ export default function CommunityCinematic({ sites = [] }) {
               )}
             </button>
           </div>
-
           <div className={styles.progressTrack} aria-hidden="true">
             <span
               key={active.id}
@@ -284,21 +373,14 @@ export default function CommunityCinematic({ sites = [] }) {
         </div>
       </section>
 
-      {/* Direct site selection without transition locks */}
-      <nav
-        className={styles.sitePicker}
-        aria-label="اختر أحد مواقع التعريب"
-        dir="rtl"
-      >
+      <nav className={styles.sitePicker} aria-label="اختر أحد مواقع التعريب">
         {sites.map((site, index) => (
           <button
             key={site.id}
             type="button"
-            className={`${styles.siteTab} ${
-              index === currentIndex ? styles.activeTab : ""
-            }`}
+            className={`${styles.siteTab} ${index === shownSelection ? styles.activeTab : ""}`}
             onClick={() => select(index)}
-            aria-pressed={index === currentIndex}
+            aria-pressed={index === shownSelection}
           >
             {site.name}
           </button>

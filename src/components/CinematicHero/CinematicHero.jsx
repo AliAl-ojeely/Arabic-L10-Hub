@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CinematicHero.module.css";
 
 const SLIDE_DURATION = 8000;
+const BASE = import.meta.env.BASE_URL;
 
-// Exact background filenames from public/background.
+// Exact folder names from dataLoader.js -> original background filename.
 const BACKGROUNDS = {
   "Partisans 1941": "partisans-1941.webp",
   "Hollow Knight Silksong": "hollow-knight-silksong.webp",
@@ -32,120 +33,251 @@ const BACKGROUNDS = {
   "Danganronpa Trigger Happy Havoc": "danganronpa-trigger-happy-havoc.webp",
 };
 
+// The mobile file is portrait-cropped; desktop uses width-based srcSet.
+function getSource(slide, portrait, useOriginal = false) {
+  if (!slide?.optimizedStem || useOriginal) {
+    return { src: slide?.backgroundUrl ?? "" };
+  }
+
+  const prefix = `${BASE}background/optimized/${slide.optimizedStem}`;
+  if (portrait) {
+    return { src: `${prefix}-mobile.webp` };
+  }
+
+  return {
+    src: `${prefix}-1920.webp`,
+    srcSet: [
+      `${prefix}-960.webp 960w`,
+      `${prefix}-1440.webp 1440w`,
+      `${prefix}-1920.webp 1920w`,
+    ].join(", "),
+    sizes: "100vw",
+  };
+}
+
+function loadDecoded(source) {
+  const image = new Image();
+  image.decoding = "async";
+  if (source.sizes) image.sizes = source.sizes;
+  if (source.srcSet) image.srcSet = source.srcSet;
+  image.src = source.src;
+  return image.decode();
+}
+
 export default function CinematicHero({ games = [] }) {
-  
-const slides = useMemo(() => {
-  const base = import.meta.env.BASE_URL;
+  const heroRef = useRef(null);
+  const preloadRef = useRef(null);
+  const slides = useMemo(
+    () =>
+      [...games]
+        .sort((a, b) => new Date(b.addedDate) - new Date(a.addedDate))
+        .map((game) => {
+          const file = BACKGROUNDS[game.folderName];
+          return {
+            ...game,
+            backgroundUrl: file
+              ? `${BASE}background/${file}`
+              : game.screenshots?.[0] || game.coverImage,
+            optimizedStem: file ? file.replace(/\.webp$/i, "") : null,
+          };
+        })
+        .filter((game) => Boolean(game.backgroundUrl)),
+    [games],
+  );
 
-  return [...games]
-    .sort((a, b) => new Date(b.addedDate) - new Date(a.addedDate))
-    .map((game) => {
-      const backgroundFile = BACKGROUNDS[game.folderName];
-
-      // Prefer the dedicated cinematic background.
-      // Otherwise use the game's first screenshot.
-      const backgroundUrl = backgroundFile
-        ? `${base}background/${backgroundFile}`
-        : game.screenshots?.[0] || game.coverImage;
-
-      return {
-        ...game,
-        backgroundUrl,
-      };
-    })
-    .filter((game) => Boolean(game.backgroundUrl));
-}, [games]);
-
-
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [previousIndex, setPreviousIndex] = useState(null);
-
+  const [requestedIndex, setRequestedIndex] = useState(0);
+  const [display, setDisplay] = useState({ index: 0, previous: null });
+  const [failedOptimization, setFailedOptimization] = useState({});
+  const [portrait, setPortrait] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(max-width: 680px) and (orientation: portrait)")
+        .matches,
+  );
+  const [showPoster, setShowPoster] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(min-width: 681px) and (min-height: 551px)").matches,
+  );
   const [paused, setPaused] = useState(
     () =>
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   );
-
-  const [pageHidden, setPageHidden] = useState(false);
-
-  const goTo = useCallback(
-    (index) => {
-      if (slides.length < 2) return;
-
-      const next = ((index % slides.length) + slides.length) % slides.length;
-
-      if (next === activeIndex) return;
-
-      setPreviousIndex(activeIndex);
-      setActiveIndex(next);
-    },
-    [activeIndex, slides.length],
+  const [pageHidden, setPageHidden] = useState(
+    () => typeof document !== "undefined" && document.hidden,
   );
+  const [inView, setInView] = useState(true);
 
-  // Stop automatic transitions in background tabs.
+  // Keep responsive image selection in sync with orientation and viewport.
   useEffect(() => {
-    const handleVisibility = () => {
-      setPageHidden(document.hidden);
+    const mobileQuery = window.matchMedia(
+      "(max-width: 680px) and (orientation: portrait)",
+    );
+    const posterQuery = window.matchMedia(
+      "(min-width: 681px) and (min-height: 551px)",
+    );
+    const update = () => {
+      setPortrait(mobileQuery.matches);
+      setShowPoster(posterQuery.matches);
     };
-
-    document.addEventListener("visibilitychange", handleVisibility);
-
-    handleVisibility();
-
+    mobileQuery.addEventListener("change", update);
+    posterQuery.addEventListener("change", update);
     return () => {
-      document.removeEventListener("visibilitychange", handleVisibility);
+      mobileQuery.removeEventListener("change", update);
+      posterQuery.removeEventListener("change", update);
     };
   }, []);
 
-  // Automatic slideshow.
   useEffect(() => {
-    if (paused || pageHidden || slides.length < 2) {
-      return undefined;
-    }
+    const update = () => setPageHidden(document.hidden);
+    document.addEventListener("visibilitychange", update);
+    return () => document.removeEventListener("visibilitychange", update);
+  }, []);
 
+  // Avoid image downloads and autoplay when the Hero is off-screen.
+  useEffect(() => {
+    if (!heroRef.current || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.05 },
+    );
+    observer.observe(heroRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Only switch the visible slide AFTER the selected image has decoded.
+  // Cancelling stale requests handles rapid next/previous clicks safely.
+  useEffect(() => {
+    if (!slides.length || requestedIndex === display.index) return;
+    const slide = slides[requestedIndex];
+    if (!slide) return;
+
+    let cancelled = false;
+    const prepare = async () => {
+      const source = getSource(
+        slide,
+        portrait,
+        failedOptimization[slide.folderName],
+      );
+      try {
+        await loadDecoded(source);
+      } catch {
+        // If optimized files were not generated or a request fails,
+        // use the original image instead of showing an empty slide.
+        if (!cancelled) {
+          setFailedOptimization((prev) => ({
+            ...prev,
+            [slide.folderName]: true,
+          }));
+        }
+        try {
+          await loadDecoded({ src: slide.backgroundUrl });
+        } catch {
+          return;
+        }
+      }
+      if (!cancelled) {
+        setDisplay((current) =>
+          current.index === requestedIndex
+            ? current
+            : { index: requestedIndex, previous: current.index },
+        );
+      }
+    };
+    prepare();
+    return () => {
+      cancelled = true;
+    };
+  }, [requestedIndex, display.index, slides, portrait, failedOptimization]);
+
+  // Let the old image remain visible throughout the crossfade.
+  useEffect(() => {
+    if (display.previous === null) return;
     const timer = window.setTimeout(() => {
-      goTo(activeIndex + 1);
+      setDisplay((current) => ({ ...current, previous: null }));
+    }, 950);
+    return () => window.clearTimeout(timer);
+  }, [display.index, display.previous]);
+
+  // A single autoplay timer starts after each image is on-screen.
+  useEffect(() => {
+    if (
+      paused ||
+      pageHidden ||
+      !inView ||
+      slides.length < 2 ||
+      requestedIndex !== display.index
+    )
+      return;
+    const timer = window.setTimeout(() => {
+      setRequestedIndex((current) => (current + 1) % slides.length);
     }, SLIDE_DURATION);
-
     return () => window.clearTimeout(timer);
-  }, [activeIndex, goTo, pageHidden, paused, slides.length]);
+  }, [
+    display.index,
+    requestedIndex,
+    paused,
+    pageHidden,
+    inView,
+    slides.length,
+  ]);
 
-  // Remove the old image layer after transition.
+  // Warm only the NEXT image in the browser cache, after the current slide settles.
   useEffect(() => {
-    if (previousIndex === null) return undefined;
-
+    if (slides.length < 2 || pageHidden || !inView) return;
     const timer = window.setTimeout(() => {
-      setPreviousIndex(null);
-    }, 1100);
-
+      const next = slides[(display.index + 1) % slides.length];
+      if (next) {
+        const source = getSource(
+          next,
+          portrait,
+          failedOptimization[next.folderName],
+        );
+        const image = new Image();
+        image.decoding = "async";
+        if (source.sizes) image.sizes = source.sizes;
+        if (source.srcSet) image.srcSet = source.srcSet;
+        image.src = source.src;
+        preloadRef.current = image;
+      }
+    }, 1200);
     return () => window.clearTimeout(timer);
-  }, [activeIndex, previousIndex]);
+  }, [display.index, slides, portrait, pageHidden, inView, failedOptimization]);
 
-  // Preload the next background only.
-  useEffect(() => {
+  const change = (direction) => {
     if (slides.length < 2) return;
+    setRequestedIndex(
+      (current) => (current + direction + slides.length) % slides.length,
+    );
+  };
 
-    const next = new Image();
+  const active = slides[display.index];
+  const previous = display.previous === null ? null : slides[display.previous];
+  const activeSource = getSource(
+    active,
+    portrait,
+    active && failedOptimization[active.folderName],
+  );
+  const previousSource = getSource(
+    previous,
+    portrait,
+    previous && failedOptimization[previous.folderName],
+  );
+  const playing =
+    !paused && !pageHidden && inView && requestedIndex === display.index;
 
-    next.src = slides[(activeIndex + 1) % slides.length].backgroundUrl;
-  }, [activeIndex, slides]);
-
-  const active = slides[activeIndex];
-
-  const previous = previousIndex === null ? null : slides[previousIndex];
-
-  const playing = !paused && !pageHidden;
-
-  // Fallback while game data is being loaded.
   if (!active) {
     return (
-      <section className={`${styles.hero} ${styles.emptyHero}`} dir="rtl">
+      <section
+        ref={heroRef}
+        className={`${styles.hero} ${styles.emptyHero}`}
+        dir="rtl"
+      >
         <div className={styles.inner}>
           <div className={styles.content}>
             <h1>ألعابك... الآن بالعربية</h1>
-
             <p>تصفح التعريبات العربية واكتشف لعبتك التالية.</p>
-
             <Link to="/translations" className={styles.primaryButton}>
               تصفح مكتبة التعريبات
             </Link>
@@ -157,81 +289,82 @@ const slides = useMemo(() => {
 
   return (
     <section
+      ref={heroRef}
       className={styles.hero}
       dir="rtl"
       aria-label="عرض الألعاب المتوفرة باللغة العربية"
       aria-roledescription="عرض شرائح"
     >
-      {/* Previous cinematic background */}
       {previous && (
         <img
           className={styles.previousBackground}
-          src={previous.backgroundUrl}
+          {...previousSource}
           alt=""
           aria-hidden="true"
         />
       )}
-
-      {/* Current cinematic background */}
       <img
-        key={active.folderName}
+        key={`${active.folderName}-${activeSource.src}`}
         className={styles.currentBackground}
-        src={active.backgroundUrl}
+        {...activeSource}
         alt=""
         aria-hidden="true"
-        fetchPriority={activeIndex === 0 ? "high" : "auto"}
-        onAnimationEnd={() => setPreviousIndex(null)}
+        loading="eager"
+        decoding="async"
+        fetchPriority={display.index === 0 ? "high" : "auto"}
+        onError={() =>
+          setFailedOptimization((prev) =>
+            prev[active.folderName]
+              ? prev
+              : { ...prev, [active.folderName]: true },
+          )
+        }
       />
-
       <div className={styles.overlay} aria-hidden="true" />
 
       <div className={styles.inner}>
-        {/* Main content */}
         <div className={styles.content}>
           <h1 className={styles.headline}>ألعابك... الآن بالعربية</h1>
-
           <div className={styles.gameDetails} key={active.folderName}>
             <h2 className={styles.gameTitle}>{active.title}</h2>
-
             <p className={styles.gameDescription}>{active.description}</p>
           </div>
-
           <div className={styles.actions}>
             <Link
               to={`/translations/${active.folderName}`}
               className={styles.primaryButton}
             >
-              استعراض تعريب اللعبة
-              <span aria-hidden="true">←</span>
+              استعراض تعريب اللعبة <span aria-hidden="true">←</span>
             </Link>
-
             <Link to="/translations" className={styles.secondaryButton}>
               جميع التعريبات
             </Link>
           </div>
         </div>
 
-        {/* Featured game poster */}
-        <Link
-          to={`/translations/${active.folderName}`}
-          className={styles.posterLink}
-          aria-label={`الانتقال إلى تعريب ${active.title}`}
-        >
-          <img
-            key={active.coverImage}
-            src={active.coverImage}
-            alt={`غلاف ${active.title}`}
-            className={styles.poster}
-          />
-        </Link>
+        {showPoster && (
+          <Link
+            to={`/translations/${active.folderName}`}
+            className={styles.posterLink}
+            aria-label={`الانتقال إلى تعريب ${active.title}`}
+          >
+            <img
+              src={active.coverImage}
+              alt={`غلاف ${active.title}`}
+              className={styles.poster}
+              fetchPriority="low"
+              loading="lazy"
+              decoding="async"
+            />
+          </Link>
+        )}
       </div>
 
-      {/* Cinematic slideshow controls */}
       <div className={styles.navigation}>
         <div className={styles.controls}>
           <button
             type="button"
-            onClick={() => goTo(activeIndex - 1)}
+            onClick={() => change(-1)}
             aria-label="اللعبة السابقة"
             title="السابق"
           >
@@ -245,10 +378,9 @@ const slides = useMemo(() => {
               <path d="m9 5 7 7-7 7" />
             </svg>
           </button>
-
           <button
             type="button"
-            onClick={() => goTo(activeIndex + 1)}
+            onClick={() => change(1)}
             aria-label="اللعبة التالية"
             title="التالي"
           >
@@ -262,7 +394,6 @@ const slides = useMemo(() => {
               <path d="m15 5-7 7 7 7" />
             </svg>
           </button>
-
           <button
             type="button"
             onClick={() => setPaused((value) => !value)}
@@ -284,19 +415,15 @@ const slides = useMemo(() => {
             )}
           </button>
         </div>
-
         <div className={styles.progressPanel}>
           <span
             className={styles.counter}
-            aria-label={`اللعبة ${activeIndex + 1} من ${slides.length}`}
+            aria-label={`اللعبة ${display.index + 1} من ${slides.length}`}
           >
-            <b>{String(activeIndex + 1).padStart(2, "0")}</b>
-
+            <b>{String(display.index + 1).padStart(2, "0")}</b>
             <span aria-hidden="true">/</span>
-
             {String(slides.length).padStart(2, "0")}
           </span>
-
           <div className={styles.progressTrack} aria-hidden="true">
             <span
               key={active.folderName}
