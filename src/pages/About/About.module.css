@@ -1473,3 +1473,14 @@
         transform: none;
     }
 }
+
+/* AL10_LIGHT_THEME_START */
+:global(html[data-theme="light"]) .heroStats,
+:global(html[data-theme="light"]) .transparencyFacts > div { background: #f0f4fa; }
+:global(html[data-theme="light"]) .storySection {
+  border-color: #e0e6f0;
+  background: linear-gradient(180deg, #f2f6fc, #f7f9fd);
+}
+:global(html[data-theme="light"]) .discordIcon,
+:global(html[data-theme="light"]) .discordText > span { color: #4d53c4; }
+/* AL10_LIGHT_THEME_END */

@@ -900,3 +900,12 @@
         transform: none;
     }
 }
+
+/* AL10_LIGHT_THEME_START */
+:global(html[data-theme="light"]) .helpPanel { background: #eef3fa; }
+:global(html[data-theme="light"]) .discordIcon,
+:global(html[data-theme="light"]) .recommendedBadge,
+:global(html[data-theme="light"]) .discordCard .featureList svg { color: #4d53c4; }
+:global(html[data-theme="light"]) .discordButton { color: #383fa7; }
+:global(html[data-theme="light"]) .discordButton:hover { color: #ffffff; }
+/* AL10_LIGHT_THEME_END */

@@ -745,3 +745,14 @@
     transition: none;
   }
 }
+
+/* AL10_LIGHT_THEME_START */
+/* Hero photos remain cinematic and dark, regardless of the site theme. */
+:global(html[data-theme="light"]) .hero {
+  --text-primary: #ffffff;
+  --text-secondary: #e1e3e8;
+  --surface-color: #090b10;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+}
+/* AL10_LIGHT_THEME_END */

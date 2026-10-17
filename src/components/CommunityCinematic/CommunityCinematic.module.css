@@ -354,3 +354,26 @@
   .currentArtwork { opacity: 1; }
   .artworkFrame, .visitButton, .controls button, .siteTab { transition: none; }
 }
+
+/* AL10_LIGHT_THEME_START */
+/* Retain dark cinematic presentation inside the showcase itself. */
+:global(html[data-theme="light"]) .showcase {
+  --text-primary: #ffffff;
+  --text-secondary: #e0e5ed;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+  border-color: #2c3648;
+}
+:global(html[data-theme="light"]) .siteTab {
+  background: #ffffff;
+  border-color: #dce4f0;
+  color: #41536d;
+}
+:global(html[data-theme="light"]) .siteTab:hover { background: #eef3fc; color: #1b2940; }
+:global(html[data-theme="light"]) .activeTab,
+:global(html[data-theme="light"]) .activeTab:hover {
+  background: #e5edff;
+  border-color: #1d4ed8;
+  color: #153b99;
+}
+/* AL10_LIGHT_THEME_END */

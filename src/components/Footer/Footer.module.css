@@ -433,3 +433,18 @@
 @media (max-width: 768px) {
     .brandLogoImage { width: min(100%, 290px); }
 }
+
+/* AL10_LIGHT_THEME_START */
+/* Deliberately retain a dark brand footer: the approved cream/white logo
+   must remain legible against its surface in light mode. */
+:global(html[data-theme="light"]) .footer {
+  --text-primary: #ffffff;
+  --text-secondary: #acb8cb;
+  --surface-color-light: #293549;
+  background: linear-gradient(180deg, #131b2a, #0b111d);
+  border-top-color: #344056;
+  color: #ffffff;
+}
+:global(html[data-theme="light"]) .bottomBar { border-top-color: #293549; }
+:global(html[data-theme="light"]) .linkItem { background: rgba(255, 255, 255, .035); }
+/* AL10_LIGHT_THEME_END */

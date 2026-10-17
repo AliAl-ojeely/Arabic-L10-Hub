@@ -1079,3 +1079,15 @@
         transform: none;
     }
 }
+
+/* AL10_LIGHT_THEME_START */
+:global(html[data-theme="light"]) .clearButton { background: #edf2fa; }
+:global(html[data-theme="light"]) .clearButton:hover { background: #e4eaf5; }
+:global(html[data-theme="light"]) .posterContainer { background: #edf2f9; }
+:global(html[data-theme="light"]) .skeletonPoster {
+  background: linear-gradient(100deg, #edf1f7 30%, #dee6f0 45%, #edf1f7 60%);
+  background-size: 200% 100%;
+}
+:global(html[data-theme="light"]) .uniqueCard .translationLabel,
+:global(html[data-theme="light"]) .uniqueCard .viewDetails { color: #935a0c; }
+/* AL10_LIGHT_THEME_END */

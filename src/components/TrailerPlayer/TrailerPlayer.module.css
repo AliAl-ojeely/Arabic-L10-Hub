@@ -186,3 +186,8 @@
     transition: none;
   }
 }
+
+/* AL10_LIGHT_THEME_START */
+/* A video canvas is dark for contrast, but its surrounding section is light. */
+:global(html[data-theme="light"]) .player { border-color: #d9e1ed; }
+/* AL10_LIGHT_THEME_END */

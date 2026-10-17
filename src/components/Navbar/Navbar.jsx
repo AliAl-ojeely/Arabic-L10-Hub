@@ -2,10 +2,48 @@ import { useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
+
+const ThemeToggle = ({ theme, onClick, className }) => {
+  const isLight = theme === "light";
+  return (
+    <button
+      type="button"
+      className={className}
+      onClick={onClick}
+      aria-label={isLight ? "تفعيل الوضع الداكن" : "تفعيل الوضع الفاتح"}
+      title={isLight ? "الوضع الداكن" : "الوضع الفاتح"}
+      aria-pressed={isLight}
+    >
+      {isLight ? (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M20.7 13A9 9 0 0 1 11 3.3 9 9 0 1 0 20.7 13Z" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+      )}
+    </button>
+  );
+};
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const burgerRef = useRef(null);
+  const [theme, setTheme] = useState(
+    () => document.documentElement.dataset.theme === "light" ? "light" : "dark"
+  );
+
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    document.documentElement.style.colorScheme = next === "light" ? "light" : "";
+    try { localStorage.setItem("arabic-l10-theme", next); } catch { /* Storage may be disabled. */ }
+    setTheme(next);
+  };
+
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -170,6 +208,7 @@ const Navbar = () => {
           </nav>
 
           <div className={styles.navActions}>
+            <ThemeToggle theme={theme} onClick={toggleTheme} className={`${styles.themeButton} ${styles.desktopThemeButton}`} />
             <a
               href="https://discord.gg/THPYXggyz"
               target="_blank"
@@ -234,6 +273,7 @@ const Navbar = () => {
             </span>
           </Link>
 
+          <ThemeToggle theme={theme} onClick={toggleTheme} className={`${styles.themeButton} ${styles.mobileThemeButton}`} />
           <button
             type="button"
             className={styles.closeButton}

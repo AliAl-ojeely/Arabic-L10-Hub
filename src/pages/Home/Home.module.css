@@ -691,3 +691,9 @@
         transform: none;
     }
 }
+
+/* AL10_LIGHT_THEME_START */
+:global(html[data-theme="light"]) .latestSection,
+:global(html[data-theme="light"]) .reviewsSection { border-top-color: #e4e9f2; }
+:global(html[data-theme="light"]) .posterContainer { background: #eef2f8; }
+/* AL10_LIGHT_THEME_END */

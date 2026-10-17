@@ -1455,3 +1455,21 @@
         transform: none;
     }
 }
+
+/* AL10_LIGHT_THEME_START */
+:global(html[data-theme="light"]) .backLink,
+:global(html[data-theme="light"]) .galleryShortcut { background: rgba(15, 35, 70, .035); }
+:global(html[data-theme="light"]) .metaCard { background: #f0f4fa; }
+:global(html[data-theme="light"]) .gallerySection {
+  background: linear-gradient(180deg, #f1f5fb, transparent);
+  border-top-color: #e0e6f0;
+}
+:global(html[data-theme="light"]) .thumbnailWrapper { background: #e8edf5; }
+/* The full-screen screenshot viewer stays dark in BOTH themes. */
+:global(html[data-theme="light"]) .modalOverlay {
+  --text-primary: #ffffff;
+  --text-secondary: #aebacf;
+  --surface-color: #10131b;
+  --surface-color-light: #303746;
+}
+/* AL10_LIGHT_THEME_END */

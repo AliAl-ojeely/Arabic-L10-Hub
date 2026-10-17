@@ -875,3 +875,168 @@
     .mobileLogoText { font-size: 0.9rem; }
     .logoMark { width: 38px; height: 38px; }
 }
+
+/* AL10_LIGHT_THEME_START */
+/* Theme switcher: desktop navbar and mobile drawer. */
+.themeButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  flex: 0 0 42px;
+  border-radius: 11px;
+  border: 1px solid var(--surface-color-light);
+  color: var(--text-primary);
+  background: var(--surface-color);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+}
+.themeButton svg { width: 21px; height: 21px; }
+.themeButton:hover { border-color: var(--accent-color); transform: translateY(-1px); }
+.themeButton:focus-visible { outline: 3px solid var(--accent-color); outline-offset: 3px; }
+.mobileThemeButton { margin-inline-start: auto; }
+@media (max-width: 820px) {
+  .desktopThemeButton { display: none; }
+  .mobileThemeButton { width: 39px; height: 39px; flex-basis: 39px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .themeButton { transition: none; }
+  .themeButton:hover { transform: none; }
+}
+/* AL10_LIGHT_NAVBAR_TRANSPARENT_FIX_V1 */
+/* Preserve the original transparent overlay over the cinematic hero. */
+:global(html[data-theme="light"]) .navbar {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+/* Desktop wordmark stays readable over cinematic backgrounds. */
+/* Only the wordmark gets a small contrast surface, not the navbar itself. */
+:global(html[data-theme="light"]) .navInner > .logo {
+  background: rgba(7, 12, 22, .64);
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 12px;
+  padding: 3px 10px 3px 5px;
+}
+:global(html[data-theme="light"]) .logoText > span { color: #ffffff; }
+/* Sidebar has a light surface and therefore needs dark typography. */
+:global(html[data-theme="light"]) .mobileLogoText > span { color: #1b2940; }
+:global(html[data-theme="light"]) .desktopNav .navLink {
+  color: #f8fafc;
+  background: rgba(7, 12, 22, .45);
+  border-color: rgba(255, 255, 255, .13);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .4);
+}
+:global(html[data-theme="light"]) .desktopNav .navLink:hover {
+  color: #ffffff;
+  background: rgba(7, 12, 22, .76);
+  border-color: rgba(255, 255, 255, .25);
+}
+:global(html[data-theme="light"]) .desktopNav .activeLink {
+  color: #ffffff;
+  background: rgba(37, 99, 235, .3);
+  border-color: rgba(86, 149, 255, .48);
+}
+/* Each control has its own contrast surface, not a full-width navbar bar. */
+:global(html[data-theme="light"]) .themeButton {
+  color: #ffffff;
+  background: rgba(7, 12, 22, .65);
+  border-color: rgba(255, 255, 255, .28);
+}
+:global(html[data-theme="light"]) .discordButton {
+  color: #bfc8ff;
+  background: rgba(23, 26, 69, .65);
+  border-color: rgba(136, 149, 255, .52);
+}
+:global(html[data-theme="light"]) .discordButton:hover {
+  color: #ffffff;
+  background: rgba(47, 55, 124, .83);
+}
+:global(html[data-theme="light"]) .burgerButton {
+  background: rgba(7, 12, 22, .65);
+  border-color: rgba(255, 255, 255, .3);
+}
+:global(html[data-theme="light"]) .burgerButton span {
+  background: #ffffff;
+}
+/* The actual drawer remains light, including its close/theme controls. */
+:global(html[data-theme="light"]) .closeButton,
+:global(html[data-theme="light"]) .mobileThemeButton {
+  color: #18243a;
+  background: #ffffff;
+  border-color: #dce3ee;
+}
+:global(html[data-theme="light"]) .mobileMenu {
+  background: linear-gradient(180deg, #ffffff, #f7f9fd);
+  border-left: 1px solid #dfe6f0;
+  box-shadow: -30px 0 80px rgba(24, 36, 58, .14);
+}
+:global(html[data-theme="light"]) .mobileHeader,
+:global(html[data-theme="light"]) .mobileFooter { border-color: #e2e8f1; }
+:global(html[data-theme="light"]) .mobileLinkIcon {
+  color: #536177;
+  background: #f1f4f9;
+  border-color: #e2e8f1;
+}
+:global(html[data-theme="light"]) .logoText strong { color: #e6b66e; }
+:global(html[data-theme="light"]) .mobileLogoText strong { color: #99651e; }
+:global(html[data-theme="light"]) .mobileDiscord { color: #18243a; }
+:global(html[data-theme="light"]) .mobileDiscord > svg:first-child { color: #5865f2; }
+:global(html[data-theme="light"]) .mobileDiscord strong { color: #18243a; }
+:global(html[data-theme="light"]) .mobileDiscord div span { color: #58677d; }
+/* Keep mobile brand IN the drawer, not the fixed mobile navbar. */
+@media (max-width: 820px) {
+  :global(html[data-theme="light"]) .navInner > .logo { display: none; }
+  :global(html[data-theme="light"]) .navInner { justify-content: flex-end; }
+}
+/* AL10_LIGHT_NAVBAR_BORDERLESS_CONTROLS_V2 */
+/* The fixed navbar is fully transparent above cinematic artwork.
+   Scope to desktop/topbar only; do NOT restyle the mobile drawer. */
+:global(html[data-theme="light"]) .navInner > .logo,
+:global(html[data-theme="light"]) .desktopNav .navLink,
+:global(html[data-theme="light"]) .desktopNav .activeLink,
+:global(html[data-theme="light"]) .navActions .discordButton,
+:global(html[data-theme="light"]) .navActions .themeButton,
+:global(html[data-theme="light"]) .navActions .burgerButton {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* No dark tiles or outlined pills on hover / active states. */
+:global(html[data-theme="light"]) .desktopNav .navLink:hover,
+:global(html[data-theme="light"]) .desktopNav .activeLink:hover,
+:global(html[data-theme="light"]) .navActions .discordButton:hover,
+:global(html[data-theme="light"]) .navActions .themeButton:hover,
+:global(html[data-theme="light"]) .navActions .burgerButton:hover {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/* Keep controls readable above changing background images. */
+:global(html[data-theme="light"]) .desktopNav .navLink,
+:global(html[data-theme="light"]) .desktopNav .activeLink,
+:global(html[data-theme="light"]) .navActions .themeButton,
+:global(html[data-theme="light"]) .navActions .burgerButton {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .72);
+}
+:global(html[data-theme="light"]) .navActions .discordButton {
+  color: #cbd3ff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, .7);
+}
+:global(html[data-theme="light"]) .navActions .discordButton:hover {
+  color: #fff;
+}
+:global(html[data-theme="light"]) .navActions .burgerButton span {
+  background: #fff;
+}
+/* Keep the existing blue active-link underline and focus-visible outline. */
+
+/* AL10_LIGHT_THEME_END */
