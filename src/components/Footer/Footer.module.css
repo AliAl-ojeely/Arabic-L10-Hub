@@ -1,450 +1,639 @@
+/* ============================================================
+   ARABIC L10 HUB
+   CINEMATIC FOOTER — FULL VERSION
+   ============================================================ */
+
 .footer {
-    position: relative;
-    width: 100%;
-    margin-top: auto;
-    background:
-        linear-gradient(
-            180deg,
-            var(--surface-color) 0%,
-            rgba(10, 10, 14, 0.98) 100%
-        );
-    border-top: 1px solid var(--surface-color-light);
-    color: var(--text-primary);
-    overflow: hidden;
+  --footer-bg: #060606;
+  --footer-text: #f4f5f6;
+  --footer-muted: #a9aeb8;
+  --footer-line: rgba(255, 255, 255, 0.12);
+  --footer-gold: #d6ad75;
+  --footer-link: #9fc0ff;
+
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  min-width: 0;
+  margin-top: auto;
+  overflow: hidden;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border-top: 1px solid var(--footer-line);
 }
+
+:global(html[data-theme="light"]) .footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border-top-color: var(--footer-line);
+}
+
+/* ============================================================
+   TOP ACCENT
+   ============================================================ */
 
 .accentLine {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--accent-color),
-        transparent
-    );
-    opacity: 0.8;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to left,
+    var(--footer-gold) 0,
+    var(--footer-gold) 130px,
+    rgba(255, 255, 255, 0.075) 130px,
+    rgba(255, 255, 255, 0.075) 100%
+  );
 }
+
+/* ============================================================
+   WAVES
+   ============================================================ */
+
+.waves {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  direction: ltr;
+
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 22%,
+    rgba(0, 0, 0, 0.94) 42%,
+    rgba(0, 0, 0, 0.7) 65%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 22%,
+    rgba(0, 0, 0, 0.94) 42%,
+    rgba(0, 0, 0, 0.7) 65%,
+    transparent 100%
+  );
+}
+
+.waveTrack {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 270px;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.waveArtwork {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Gold Wave */
+.waveGold {
+  top: 2px;
+  color: rgba(214, 173, 117, 0.21);
+  opacity: 0.95;
+  animation: waveGoldDrift 34s linear infinite;
+}
+
+/* Blue Wave */
+.waveBlue {
+  top: 58px;
+  color: rgba(37, 99, 235, 0.12);
+  opacity: 0.7;
+  filter: blur(7px);
+  animation: waveBlueDrift 44s linear infinite;
+}
+
+/* New Dark Wave */
+.waveDark {
+  top: 98px;
+  color: rgba(6, 6, 6, 0.98);
+  opacity: 1;
+  filter: blur(1px);
+  animation: waveDarkDrift 52s linear infinite;
+}
+
+@keyframes waveGoldDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes waveBlueDrift {
+  0% {
+    transform: translate3d(-4%, 0, 0);
+  }
+  25% {
+    transform: translate3d(-16.5%, 4px, 0);
+  }
+  50% {
+    transform: translate3d(-29%, 8px, 0);
+  }
+  75% {
+    transform: translate3d(-41.5%, 4px, 0);
+  }
+  100% {
+    transform: translate3d(-54%, 0, 0);
+  }
+}
+
+@keyframes waveDarkDrift {
+  0% {
+    transform: translate3d(-2%, 0, 0);
+  }
+  20% {
+    transform: translate3d(-12%, -2px, 0);
+  }
+  40% {
+    transform: translate3d(-22%, 3px, 0);
+  }
+  60% {
+    transform: translate3d(-32%, 1px, 0);
+  }
+  80% {
+    transform: translate3d(-42%, -2px, 0);
+  }
+  100% {
+    transform: translate3d(-52%, 0, 0);
+  }
+}
+
+/* ============================================================
+   CONTENT LAYER
+   ============================================================ */
+
+.footerContent,
+.bottomBar {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   GRID LAYOUT
+   ============================================================ */
 
 .footerContent {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 3.5rem 2rem 3rem;
-
-    display: grid;
-    grid-template-columns: 1.25fr 0.7fr 1.5fr;
-    gap: 4rem;
-
-    align-items: start;
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.64fr) minmax(0, 1.08fr);
+  align-items: start;
+  column-gap: clamp(2rem, 4vw, 4.25rem);
+  width: min(1220px, calc(100% - 4rem));
+  margin-inline: auto;
+  padding-block: clamp(5.4rem, 7vw, 6.25rem) clamp(3.5rem, 5vw, 4.5rem);
 }
 
+.brand,
+.quickLinksSection,
+.contact {
+  min-width: 0;
+}
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
 .brand {
-    min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .logo {
-    display: inline-block;
-
-    margin-bottom: 1rem;
-
-    color: var(--text-primary);
-
-    font-size: 1.65rem;
-    font-weight: 800;
-
-    line-height: 1.2;
-    letter-spacing: 0.5px;
-
-    text-decoration: none;
-
-    transition:
-        color var(--transition-speed) ease,
-        transform var(--transition-speed) ease;
-}
-
-.logo span {
-    color: var(--accent-color);
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 0.55rem;
+  text-decoration: none;
+  transition: opacity 250ms ease, transform 250ms ease;
 }
 
 .logo:hover {
-    transform: translateY(-2px);
+  opacity: 0.92;
+  transform: translateY(-2px);
+}
+
+.brandLogoImage {
+  display: block;
+  width: min(100%, 310px);
+  height: auto;
+  object-fit: contain;
 }
 
 .brand p {
-    max-width: 360px;
-
-    margin: 0;
-
-    color: var(--text-secondary);
-
-    font-size: 0.95rem;
-    line-height: 1.9;
+  max-width: 375px;
+  margin: 0;
+  color: var(--footer-muted);
+  font-size: 0.93rem;
+  line-height: 2;
+  text-wrap: pretty;
 }
+
+.exploreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 44px;
+  margin-top: 1.15rem;
+  color: var(--footer-gold);
+  font-size: 0.93rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color 180ms ease, gap 180ms ease, transform 180ms ease;
+}
+
+.exploreLink svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.exploreLink:hover {
+  color: #f4d5a8;
+  gap: 0.9rem;
+  transform: translateX(-2px);
+}
+
+/* ============================================================
+   COLUMNS
+   ============================================================ */
 
 .quickLinksSection,
 .contact {
-    min-width: 0;
+  border-inline-start: 1px solid var(--footer-line);
+  padding-inline-start: clamp(1.5rem, 3vw, 3.5rem);
 }
 
-.quickLinksSection h4,
-.contact h4 {
-    position: relative;
-
-    display: inline-block;
-
-    margin: 0 0 1.25rem;
-
-    color: var(--text-primary);
-
-    font-size: 1.05rem;
-    font-weight: 700;
+.sectionTitle {
+  position: relative;
+  width: fit-content;
+  margin: 0 0 1.85rem;
+  padding-bottom: 1rem;
+  color: var(--footer-text);
+  font-size: 1.09rem;
+  font-weight: 750;
+  line-height: 1.4;
 }
 
-.quickLinksSection h4::after,
-.contact h4::after {
-    content: '';
-
-    position: absolute;
-
-    right: 0;
-    bottom: -7px;
-
-    width: 28px;
-    height: 2px;
-
-    border-radius: 10px;
-
-    background-color: var(--accent-color);
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 0;
+  width: 33px;
+  height: 2px;
+  background: var(--footer-gold);
+  border-radius: 2px;
 }
+
+/* ============================================================
+   LINKS
+   ============================================================ */
 
 .pageLinks {
-    display: flex;
-    flex-direction: column;
-
-    gap: 0.7rem;
-
-    margin: 0;
-    padding: 0;
-
-    list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .pageLinks li {
-    margin: 0;
+  margin: 0;
 }
 
 .pageLinks a {
-    position: relative;
-
-    display: inline-flex;
-    align-items: center;
-
-    color: var(--text-secondary);
-
-    font-size: 0.95rem;
-    line-height: 1.5;
-
-    text-decoration: none;
-
-    transition:
-        color var(--transition-speed) ease,
-        transform var(--transition-speed) ease;
-}
-
-.pageLinks a::before {
-    content: '';
-
-    width: 5px;
-    height: 5px;
-
-    margin-left: 0.65rem;
-
-    border-radius: 50%;
-
-    background-color: var(--surface-color-light);
-
-    transition:
-        background-color var(--transition-speed) ease,
-        transform var(--transition-speed) ease;
+  display: inline-flex;
+  align-items: center;
+  min-height: 37px;
+  padding-block: 0.35rem;
+  color: var(--footer-muted);
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.6;
+  text-decoration: none;
+  transition: color 180ms ease, transform 180ms ease;
 }
 
 .pageLinks a:hover {
-    color: var(--accent-color);
-    transform: translateX(-4px);
+  color: var(--footer-text);
+  transform: translateX(-4px);
 }
 
-.pageLinks a:hover::before {
-    background-color: var(--accent-color);
-    transform: scale(1.35);
-}
+/* ============================================================
+   CONTACT
+   ============================================================ */
 
 .contactText {
-    max-width: 430px;
-
-    margin: 0 0 1.25rem;
-
-    color: var(--text-secondary);
-
-    font-size: 0.9rem;
-    line-height: 1.8;
+  max-width: 370px;
+  margin: 0 0 1.4rem;
+  color: var(--footer-muted);
+  font-size: 0.9rem;
+  line-height: 1.95;
 }
 
 .socialLinks {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 0.7rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  width: 100%;
+  max-width: 390px;
 }
 
 .linkItem {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 0.5rem;
-
-    min-height: 42px;
-
-    padding: 0.65rem 0.95rem;
-
-    border: 1px solid var(--surface-color-light);
-    border-radius: var(--border-radius);
-
-    background-color: rgba(255, 255, 255, 0.025);
-
-    color: var(--text-secondary);
-
-    font-size: 0.9rem;
-    font-weight: 500;
-
-    text-decoration: none;
-
-    transition:
-        color var(--transition-speed) ease,
-        background-color var(--transition-speed) ease,
-        border-color var(--transition-speed) ease,
-        transform var(--transition-speed) ease,
-        box-shadow var(--transition-speed) ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.7rem;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--footer-line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #d5d9e0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .linkItem svg {
-    flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  color: var(--footer-link);
+}
 
-    width: 18px;
-    height: 18px;
+.linkItem span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .linkItem:hover {
-    color: var(--text-primary);
-
-    background-color: rgba(37, 99, 235, 0.09);
-
-    border-color: var(--accent-color);
-
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 6px 18px rgba(0, 0, 0, 0.25),
-        0 0 14px rgba(37, 99, 235, 0.12);
+  color: #fff;
+  border-color: rgba(100, 149, 237, 0.55);
+  background: rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
 }
 
-.linkItem:focus-visible,
-.pageLinks a:focus-visible,
-.logo:focus-visible {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 4px;
-}
+/* ============================================================
+   BOTTOM BAR
+   ============================================================ */
 
 .bottomBar {
-    width: calc(100% - 4rem);
-    max-width: 1200px;
-
-    margin: 0 auto;
-    padding: 1.2rem 0 1.4rem;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 2rem;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem 2rem;
+  width: min(1220px, calc(100% - 4rem));
+  margin-inline: auto;
+  padding-block: 1.45rem 1.75rem;
+  border-top: 1px solid var(--footer-line);
 }
 
 .bottomBar p {
-    margin: 0;
-
-    color: var(--text-secondary);
-
-    font-size: 0.82rem;
-    line-height: 1.6;
+  margin: 0;
+  color: #858c98;
+  font-size: 0.8rem;
+  line-height: 1.7;
 }
 
 .nonProfit {
-    text-align: left;
+  text-align: end;
 }
 
-@media (max-width: 1000px) {
-    .footerContent {
-        grid-template-columns: 1fr 0.7fr;
-        gap: 3rem;
-    }
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
 
-    .contact {
-        grid-column: 1 / -1;
-    }
-
-    .contactText {
-        max-width: 600px;
-    }
+.logo:focus-visible,
+.exploreLink:focus-visible,
+.pageLinks a:focus-visible,
+.linkItem:focus-visible {
+  outline: 2px solid #93b9ff;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
-@media (max-width: 768px) {
-    .footerContent {
-        padding: 3rem 1.5rem 2.5rem;
+/* ============================================================
+   TABLET
+   ============================================================ */
 
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+@media (max-width: 1050px) {
+  .footer,
+  :global(html[data-theme="light"]) .footer {
+    border-top: 0 !important;
+  }
 
-        text-align: center;
-    }
+  .accentLine {
+    display: none !important;
+  }
 
-    .brand,
-    .quickLinksSection,
-    .contact {
-        width: 100%;
-    }
+  .waveTrack {
+    height: 235px;
+  }
 
-    .brand p,
-    .contactText {
-        margin-left: auto;
-        margin-right: auto;
-    }
+  .waveGold {
+    top: 0;
+  }
 
-    .quickLinksSection h4::after,
-    .contact h4::after {
-        right: 50%;
-        transform: translateX(50%);
-    }
+  .waveBlue {
+    top: 52px;
+    filter: blur(6px);
+  }
 
-    .pageLinks {
-        align-items: center;
-    }
+  .waveDark {
+    top: 92px;
+  }
 
-    .pageLinks a:hover {
-        transform: translateY(-2px);
-    }
+  .footerContent {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2.25rem 3rem;
+    padding-block: 4.8rem 3.5rem;
+  }
 
-    .socialLinks {
-        justify-content: center;
-    }
+  .brand {
+    grid-column: 1 / -1;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--footer-line);
+  }
 
-    .bottomBar {
-        width: calc(100% - 3rem);
+  .brand p {
+    max-width: 620px;
+  }
 
-        flex-direction: column;
+  .quickLinksSection {
+    border-inline-start: none;
+    padding-inline-start: 0;
+  }
 
-        gap: 0.4rem;
-
-        text-align: center;
-    }
-
-    .nonProfit {
-        text-align: center;
-    }
+  .contact {
+    padding-inline-start: 2rem;
+  }
 }
 
-@media (max-width: 480px) {
-    .footerContent {
-        padding: 2.75rem 1rem 2.25rem;
-        gap: 2.25rem;
-    }
+/* ============================================================
+   MOBILE
+   ============================================================ */
 
-    .logo {
-        font-size: 1.45rem;
-    }
+@media (max-width: 680px) {
+  .waveTrack {
+    height: 205px;
+  }
 
-    .brand p {
-        font-size: 0.9rem;
-        line-height: 1.8;
-    }
+  .waveGold {
+    top: 6px;
+  }
 
-    .contactText {
-        font-size: 0.88rem;
-    }
+  .waveBlue {
+    top: 48px;
+    color: rgba(37, 99, 235, 0.11);
+    opacity: 0.66;
+    filter: blur(5px);
+  }
 
-    .socialLinks {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+  .waveDark {
+    top: 86px;
+    color: rgba(6, 6, 6, 0.99);
+  }
 
-        width: 100%;
-        max-width: 360px;
+  .footerContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: calc(100% - 2.5rem);
+    padding-block: 4.15rem 2.3rem;
+  }
 
-        margin: 0 auto;
-    }
+  .brand,
+  .quickLinksSection,
+  .contact {
+    width: 100%;
+    border-inline-start: none;
+    padding-inline-start: 0;
+  }
 
-    .linkItem {
-        width: 100%;
-        min-width: 0;
+  .brand,
+  .quickLinksSection {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--footer-line);
+  }
 
-        padding: 0.65rem 0.5rem;
+  .brandLogoImage {
+    width: min(100%, 270px);
+  }
 
-        font-size: 0.85rem;
-    }
+  .brand p,
+  .contactText {
+    max-width: 100%;
+  }
 
-    .bottomBar {
-        width: calc(100% - 2rem);
-        padding-bottom: 1.2rem;
-    }
+  .sectionTitle {
+    margin-bottom: 1.2rem;
+  }
 
-    .bottomBar p {
-        font-size: 0.78rem;
-    }
+  .pageLinks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1rem;
+    width: 100%;
+  }
+
+  .pageLinks a {
+    min-height: 44px;
+  }
+
+  .socialLinks {
+    max-width: 100%;
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% - 2.5rem);
+    padding-block: 1.3rem 1.8rem;
+  }
+
+  .nonProfit {
+    text-align: start;
+  }
 }
 
-@media (max-width: 340px) {
-    .socialLinks {
-        grid-template-columns: 1fr;
-    }
+/* ============================================================
+   EXTRA SMALL
+   ============================================================ */
+
+@media (max-width: 350px) {
+  .footerContent,
+  .bottomBar {
+    width: calc(100% - 2rem);
+  }
+
+  .socialLinks {
+    grid-template-columns: 1fr;
+  }
+
+  .waveTrack {
+    height: 185px;
+  }
+
+  .waveBlue {
+    top: 42px;
+    filter: blur(4px);
+  }
+
+  .waveDark {
+    top: 76px;
+  }
+
+  .footerContent {
+    padding-top: 4rem;
+  }
 }
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
 
 @media (prefers-reduced-motion: reduce) {
-    .logo,
-    .pageLinks a,
-    .pageLinks a::before,
-    .linkItem {
-        transition: none;
-    }
+  .waveGold,
+  .waveBlue,
+  .waveDark {
+    animation: none;
+    transform: none;
+  }
 
-    .logo:hover,
-    .pageLinks a:hover,
-    .linkItem:hover {
-        transform: none;
-    }
-}
+  .logo,
+  .exploreLink,
+  .pageLinks a,
+  .linkItem {
+    transition: none;
+  }
 
-/* ARABIC L10 HUB - approved full logo */
-.brandLogoImage {
-    display: block;
-    width: min(100%, 310px);
-    height: auto;
-    object-fit: contain;
+  .logo:hover,
+  .pageLinks a:hover,
+  .linkItem:hover,
+  .exploreLink:hover {
+    transform: none;
+  }
 }
-@media (max-width: 768px) {
-    .brandLogoImage { width: min(100%, 290px); }
-}
-
-/* AL10_LIGHT_THEME_START */
-/* Deliberately retain a dark brand footer: the approved cream/white logo
-   must remain legible against its surface in light mode. */
-:global(html[data-theme="light"]) .footer {
-  --text-primary: #ffffff;
-  --text-secondary: #acb8cb;
-  --surface-color-light: #293549;
-  background: linear-gradient(180deg, #131b2a, #0b111d);
-  border-top-color: #344056;
-  color: #ffffff;
-}
-:global(html[data-theme="light"]) .bottomBar { border-top-color: #293549; }
-:global(html[data-theme="light"]) .linkItem { background: rgba(255, 255, 255, .035); }
-/* AL10_LIGHT_THEME_END */
