@@ -31,36 +31,22 @@ const BACKGROUNDS = {
   "Enderal Forgotten Stories": "enderal-forgotten-stories.webp",
   "Ghost Trick Phantom Detective": "ghost-trick-phantom-detective.webp",
   "Danganronpa Trigger Happy Havoc": "danganronpa-trigger-happy-havoc.webp",
+  "Kill The Shadow": "kill-the-shadow.webp",
 };
 
-// The mobile file is portrait-cropped; desktop uses width-based srcSet.
-function getSource(slide, portrait, useOriginal = false) {
-  if (!slide?.optimizedStem || useOriginal) {
-    return { src: slide?.backgroundUrl ?? "" };
+// Always render native-resolution WebP. Portrait uses a native crop, never an upscaled copy.
+function imageUrl(slide, portrait, failedMobile) {
+  if (!slide) return "";
+  if (portrait && slide.mobileUrl && !failedMobile[slide.folderName]) {
+    return slide.mobileUrl;
   }
-
-  const prefix = `${BASE}background/optimized/${slide.optimizedStem}`;
-  if (portrait) {
-    return { src: `${prefix}-mobile.webp` };
-  }
-
-  return {
-    src: `${prefix}-1920.webp`,
-    srcSet: [
-      `${prefix}-960.webp 960w`,
-      `${prefix}-1440.webp 1440w`,
-      `${prefix}-1920.webp 1920w`,
-    ].join(", "),
-    sizes: "100vw",
-  };
+  return slide.backgroundUrl;
 }
 
-function loadDecoded(source) {
+function decodeImage(url) {
   const image = new Image();
   image.decoding = "async";
-  if (source.sizes) image.sizes = source.sizes;
-  if (source.srcSet) image.srcSet = source.srcSet;
-  image.src = source.src;
+  image.src = url;
   return image.decode();
 }
 
@@ -78,7 +64,7 @@ export default function CinematicHero({ games = [] }) {
             backgroundUrl: file
               ? `${BASE}background/${file}`
               : game.screenshots?.[0] || game.coverImage,
-            optimizedStem: file ? file.replace(/\.webp$/i, "") : null,
+            mobileUrl: file ? `${BASE}background/mobile/${file}` : null,
           };
         })
         .filter((game) => Boolean(game.backgroundUrl)),
@@ -87,7 +73,7 @@ export default function CinematicHero({ games = [] }) {
 
   const [requestedIndex, setRequestedIndex] = useState(0);
   const [display, setDisplay] = useState({ index: 0, previous: null });
-  const [failedOptimization, setFailedOptimization] = useState({});
+  const [failedMobile, setFailedMobile] = useState({});
   const [portrait, setPortrait] = useState(
     () =>
       typeof window !== "undefined" &&
@@ -109,7 +95,7 @@ export default function CinematicHero({ games = [] }) {
   );
   const [inView, setInView] = useState(true);
 
-  // Keep responsive image selection in sync with orientation and viewport.
+  // Adapt to portrait phones while keeping desktop artwork at native resolution.
   useEffect(() => {
     const mobileQuery = window.matchMedia(
       "(max-width: 680px) and (orientation: portrait)",
@@ -155,26 +141,20 @@ export default function CinematicHero({ games = [] }) {
 
     let cancelled = false;
     const prepare = async () => {
-      const source = getSource(
-        slide,
-        portrait,
-        failedOptimization[slide.folderName],
-      );
+      const src = imageUrl(slide, portrait, failedMobile);
       try {
-        await loadDecoded(source);
+        await decodeImage(src);
       } catch {
-        // If optimized files were not generated or a request fails,
-        // use the original image instead of showing an empty slide.
-        if (!cancelled) {
-          setFailedOptimization((prev) => ({
-            ...prev,
-            [slide.folderName]: true,
-          }));
-        }
+        // A missing mobile crop must never prevent navigation.
+        if (!portrait || !slide.mobileUrl || src === slide.backgroundUrl)
+          return;
         try {
-          await loadDecoded({ src: slide.backgroundUrl });
+          await decodeImage(slide.backgroundUrl);
         } catch {
           return;
+        }
+        if (!cancelled) {
+          setFailedMobile((old) => ({ ...old, [slide.folderName]: true }));
         }
       }
       if (!cancelled) {
@@ -189,7 +169,7 @@ export default function CinematicHero({ games = [] }) {
     return () => {
       cancelled = true;
     };
-  }, [requestedIndex, display.index, slides, portrait, failedOptimization]);
+  }, [requestedIndex, display.index, slides, portrait, failedMobile]);
 
   // Let the old image remain visible throughout the crossfade.
   useEffect(() => {
@@ -229,21 +209,14 @@ export default function CinematicHero({ games = [] }) {
     const timer = window.setTimeout(() => {
       const next = slides[(display.index + 1) % slides.length];
       if (next) {
-        const source = getSource(
-          next,
-          portrait,
-          failedOptimization[next.folderName],
-        );
         const image = new Image();
         image.decoding = "async";
-        if (source.sizes) image.sizes = source.sizes;
-        if (source.srcSet) image.srcSet = source.srcSet;
-        image.src = source.src;
+        image.src = imageUrl(next, portrait, failedMobile);
         preloadRef.current = image;
       }
     }, 1200);
     return () => window.clearTimeout(timer);
-  }, [display.index, slides, portrait, pageHidden, inView, failedOptimization]);
+  }, [display.index, slides, portrait, pageHidden, inView, failedMobile]);
 
   const change = (direction) => {
     if (slides.length < 2) return;
@@ -254,16 +227,8 @@ export default function CinematicHero({ games = [] }) {
 
   const active = slides[display.index];
   const previous = display.previous === null ? null : slides[display.previous];
-  const activeSource = getSource(
-    active,
-    portrait,
-    active && failedOptimization[active.folderName],
-  );
-  const previousSource = getSource(
-    previous,
-    portrait,
-    previous && failedOptimization[previous.folderName],
-  );
+  const activeSrc = imageUrl(active, portrait, failedMobile);
+  const previousSrc = imageUrl(previous, portrait, failedMobile);
   const playing =
     !paused && !pageHidden && inView && requestedIndex === display.index;
 
@@ -298,27 +263,29 @@ export default function CinematicHero({ games = [] }) {
       {previous && (
         <img
           className={styles.previousBackground}
-          {...previousSource}
+          src={previousSrc}
           alt=""
           aria-hidden="true"
         />
       )}
       <img
-        key={`${active.folderName}-${activeSource.src}`}
+        key={`${active.folderName}-${activeSrc}`}
         className={styles.currentBackground}
-        {...activeSource}
+        src={activeSrc}
         alt=""
         aria-hidden="true"
         loading="eager"
         decoding="async"
         fetchPriority={display.index === 0 ? "high" : "auto"}
-        onError={() =>
-          setFailedOptimization((prev) =>
-            prev[active.folderName]
-              ? prev
-              : { ...prev, [active.folderName]: true },
-          )
-        }
+        onError={() => {
+          if (
+            portrait &&
+            active.mobileUrl &&
+            activeSrc !== active.backgroundUrl
+          ) {
+            setFailedMobile((old) => ({ ...old, [active.folderName]: true }));
+          }
+        }}
       />
       <div className={styles.overlay} aria-hidden="true" />
 
