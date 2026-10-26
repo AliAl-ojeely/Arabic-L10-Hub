@@ -517,6 +517,7 @@ export const fetchTranslationsData = async () => {
       ],
       downloadUrl:
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/v1.1.0/Kill_The_Shadow_Arabic_v1.1.0_Build_24925748.zip",
+      nexusModsUrl: "https://www.nexusmods.com/killtheshadow/mods/1",
       addedDate: "2026-08-31",
       trailerUrl: "https://www.youtube.com/watch?v=7UFzGiFYI2Y",
     },
