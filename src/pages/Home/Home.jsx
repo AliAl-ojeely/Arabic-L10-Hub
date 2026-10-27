@@ -56,6 +56,42 @@ const teams = [
     image: `${baseUrl}hesham.webp`,
     link: "https://arabichesham.com/",
   },
+
+  {
+    id: 7,
+    name: "تعريبات",
+    description:
+      "منصة عربية مميزة خاصة بالاخ فاضل، يقدم فيها مكتبة الالعاب الممزية الخاصة به بحيث يمكن للاعبين تحميلها بسهولة.",
+    image: `${baseUrl}ta3reebat.webp`,
+    link: "https://ta3reebat.com/",
+  },
+
+  {
+    id: 8,
+    name: "اي حاكة",
+    description:
+      "منصة مميزة في تعريب الألعاب، تقدم تعريبات عالية الجودة لمختلف الألعاب المستقلة والشهيرة.",
+    image: `${baseUrl}anything-ar.webp`,
+    link: "https://kking-ar.github.io/anything-ar/",
+  },
+
+  {
+    id: 9,
+    name: "محفظة للتعريبات",
+    description:
+      "أرشيف مرتب للتعريبات العربية للألعاب، ابحث عن لعبتك واستكشف التعريب بسهولة.",
+    image: `${baseUrl}mahfda.blogspot.webp`,
+    link: "https://mahfda.blogspot.com/",
+  },
+
+  {
+    id: 10,
+    name: "مدونة تعريب لتعريبات ألعاب الكونسول",
+    description:
+      "ارشيف مميزة متخصص اكثر في تعريبات للكونسول بالذات العاب PS4 و تعريبات مميزة و ممتازة",
+    image: `${baseUrl}t3reeb.games.webp`,
+    link: "https://www.t3reeb.games/",
+  },
 ];
 
 const redditReviews = [
