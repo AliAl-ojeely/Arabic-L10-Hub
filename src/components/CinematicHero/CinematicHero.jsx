@@ -32,6 +32,7 @@ const BACKGROUNDS = {
   "Ghost Trick Phantom Detective": "ghost-trick-phantom-detective.webp",
   "Danganronpa Trigger Happy Havoc": "danganronpa-trigger-happy-havoc.webp",
   "Kill The Shadow": "kill-the-shadow.webp",
+  "Chrono Ark": "chrono-ark.webp",
 };
 
 // Always render native-resolution WebP. Portrait uses a native crop, never an upscaled copy.
