@@ -1160,6 +1160,7 @@ export const fetchTranslationsData = async () => {
       addedDate: "2026-10-31",
       isUnique: false,
       trailerUrl: "https://www.youtube.com/watch?v=N7i4Fvuvi2Q",
+      nexusModsUrl: "https://www.nexusmods.com/chronoark/mods/4",
     },
   ];
 
