@@ -15,6 +15,7 @@ export default class Translation {
     downloadUrl = null,
     nexusModsUrl = null,
     trailerUrl = null,
+    linuxDownload = null,
     addedDate,
     isUnique = false,
   }) {
@@ -29,6 +30,7 @@ export default class Translation {
     this.technologies = technologies;
     this.addedDate = addedDate;
     this.nexusModsUrl = nexusModsUrl;
+    this.linuxDownload = linuxDownload;
     this.isUnique = Boolean(isUnique);
 
     this.trailerUrl =

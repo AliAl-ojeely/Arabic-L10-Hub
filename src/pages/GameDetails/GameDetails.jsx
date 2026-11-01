@@ -267,6 +267,7 @@ const GameDetails = () => {
     installationSteps = [],
     downloadUrl,
     nexusModsUrl,
+    linuxDownload,
     coverImage,
   } = game;
 
@@ -405,7 +406,7 @@ const GameDetails = () => {
                 </div>
               </div>
 
-              {(downloadUrl || nexusModsUrl) && (
+              {(downloadUrl || nexusModsUrl || linuxDownload) && (
                 <div className={styles.actionButtons}>
                   {downloadUrl && (
                     <a
@@ -426,6 +427,28 @@ const GameDetails = () => {
                       </svg>
 
                       <span>تحميل التعريب</span>
+                    </a>
+                  )}
+
+                  {linuxDownload && (
+                    <a
+                      href={linuxDownload}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.downloadButton}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M12 3v12" />
+                        <path d="m7 10 5 5 5-5" />
+                        <path d="M5 21h14" />
+                      </svg>
+
+                      <span>تحميل التعريب Linux</span>
                     </a>
                   )}
 
