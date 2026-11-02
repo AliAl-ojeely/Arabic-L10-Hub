@@ -33,6 +33,7 @@ const BACKGROUNDS = {
   "Danganronpa Trigger Happy Havoc": "danganronpa-trigger-happy-havoc.webp",
   "Kill The Shadow": "kill-the-shadow.webp",
   "Chrono Ark": "chrono-ark.webp",
+  "The Necromancer's Tale": "the-necromancers-tale.webp",
 };
 
 // Always render native-resolution WebP. Portrait uses a native crop, never an upscaled copy.
