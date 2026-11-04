@@ -1278,7 +1278,7 @@ export const fetchTranslationsData = async () => {
       addedDate: "2026-11-02",
       isUnique: false,
       trailerUrl: "https://www.youtube.com/watch?v=T8z_5qIJHI4",
-      nexusModsUrl: "",
+      nexusModsUrl: "https://www.nexusmods.com/thenecromancerstale/mods/1",
     },
   ];
 
