@@ -1402,6 +1402,8 @@ export const fetchTranslationsData = async () => {
       addedDate: "2026-11-08",
       isUnique: true,
       trailerUrl: "https://www.youtube.com/watch?v=ha6O8v5xi0U",
+      nexusModsUrl:
+        "https://www.nexusmods.com/danganronpa2goodbyedespair/mods/5",
     },
   ];
 
