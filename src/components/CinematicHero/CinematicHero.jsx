@@ -34,6 +34,7 @@ const BACKGROUNDS = {
   "Kill The Shadow": "kill-the-shadow.webp",
   "Chrono Ark": "chrono-ark.webp",
   "The Necromancer's Tale": "the-necromancers-tale.webp",
+  "Danganronpa 2 Goodbye Despair": "danganronpa-2-goodbye-despair.webp",
 };
 
 // Always render native-resolution WebP. Portrait uses a native crop, never an upscaled copy.
