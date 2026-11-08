@@ -468,7 +468,7 @@ export const fetchTranslationsData = async () => {
       ],
       downloadFile: "Help_Will_Come_Tomorrow_Arabic.7z",
       addedDate: "2026-08-27",
-      isUnique: true,
+      isUnique: false,
       trailerUrl: "https://www.youtube.com/watch?v=UeaNRGK4GDc",
     },
     {
