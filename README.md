@@ -46,6 +46,10 @@ GAMES-TRANSLATIONS/
 │   ├── components/
 │   │   ├── Footer/
 │   │   └── Navbar/
+│   │   └── CinematicHero/
+│   │   └── CommunityCinematic/
+│   │   └── ScrollToTopButton/
+│   │   └── TrailerPlayer/
 │   ├── context/
 │   ├── hooks/
 │   ├── models/
