@@ -588,7 +588,7 @@ export const fetchTranslationsData = async () => {
       downloadUrl:
         "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/all-quiet-in-the-trenches-ar-v1.0.3/All_Quiet_in_the_Trenches_v1.0.3_Game_v0.13.2.zip",
       addedDate: "2026-09-02",
-      isUnique: true,
+      isUnique: false,
       trailerUrl: "https://www.youtube.com/watch?v=mF16Xw-9K3w",
     },
     {
