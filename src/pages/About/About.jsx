@@ -366,9 +366,6 @@ const About = () => {
               </div>
 
               <div className={styles.verificationHeading}>
-                <span className={styles.verificationEyebrow}>
-                  OFFICIAL ACCOUNT VERIFICATION
-                </span>
                 <h2 id="ma3rab-verification-title">
                   إثبات الهوية وتوثيق الحساب
                 </h2>
