@@ -345,44 +345,84 @@ const About = () => {
         </div>
       </section>
 
-      <section className={styles.discordSection}>
-        <div className={styles.discordGlow} />
+      <section
+        className={styles.verificationSection}
+        id="ma3rab-verification"
+        aria-labelledby="ma3rab-verification-title"
+      >
+        <div className={styles.sectionInner}>
+          <article className={styles.verificationCard}>
+            <div className={styles.verificationHeader}>
+              <div className={styles.verificationIcon} aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </div>
 
-        <div className={styles.discordContent}>
-          <div className={styles.discordIcon}>
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20.317 4.3698A19.7913 19.7913 0 0015.885 3a13.687 13.687 0 00-.566 1.169 18.27 18.27 0 00-5.658 0A12.594 12.594 0 009.089 3a19.736 19.736 0 00-4.432 1.373C1.854 8.57 1.095 12.661 1.475 16.692a17.992 17.992 0 005.431 2.743 13.953 13.953 0 001.307-1.676 11.46 11.46 0 01-2.056-.988c.173-.126.342-.257.506-.391a14.223 14.223 0 0012.454 0c.166.135.335.266.506.391a11.66 11.66 0 01-2.06.989 13.961 13.961 0 001.307 1.675 17.977 17.977 0 005.433-2.742c.446-4.673-.762-8.727-3.986-12.323zM8.02 14.222c-1.183 0-2.157-1.085-2.157-2.419s.955-2.428 2.157-2.428 2.176 1.094 2.157 2.428c0 1.334-.955 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419s.955-2.428 2.157-2.428 2.176 1.094 2.157 2.428c0 1.334-.955 2.419-2.157 2.419z" />
-            </svg>
-          </div>
+              <div className={styles.verificationHeading}>
+                <span className={styles.verificationEyebrow}>
+                  OFFICIAL ACCOUNT VERIFICATION
+                </span>
+                <h2 id="ma3rab-verification-title">
+                  إثبات الهوية وتوثيق الحساب
+                </h2>
+              </div>
+            </div>
 
-          <div className={styles.discordText}>
-            <span>Arabic L10 Hub Community</span>
-
-            <h2>كن جزءًا من المجتمع</h2>
-
-            <p>
-              انضم إلى سيرفر Discord لمتابعة آخر أخبار التعريبات، تقديم
-              الاقتراحات، الإبلاغ عن المشاكل والمشاركة في النقاشات.
+            <p className={styles.verificationDescription}>
+              أنا <strong>علي العجيلي</strong>، مؤسس وصاحب مشروع{" "}
+              <span className={styles.inlineBrand}>
+                Arabic L10 <strong>Hub</strong>
+              </span>
+              ، أؤكد أن حسابي على منصة «معرب» يمثل المشروع رسميًا، وأنني المسؤول
+              عن إدارة أعماله والمخوّل بالرد على المراجعات والتعليقات المتعلقة
+              بمشاريع التعريب المنشورة باسمه.
             </p>
-          </div>
 
-          <a
-            href="https://discord.gg/THPYXggyz"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.discordButton}
-          >
-            الانضمام إلى Discord
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M19 12H5" />
-              <path d="M12 19l-7-7 7-7" />
-            </svg>
-          </a>
+            <div className={styles.verificationDetails}>
+              <div className={styles.verificationDetail}>
+                <span>صاحب المشروع</span>
+                <strong>علي العجيلي</strong>
+              </div>
+
+              <div className={styles.verificationDetail}>
+                <span>اسم المشروع</span>
+                <span className={styles.inlineBrand}>
+                  Arabic L10 <strong>Hub</strong>
+                </span>
+              </div>
+
+              <div className={styles.verificationDetail}>
+                <span>منصة التوثيق</span>
+                <strong>معرب (Ma3rab)</strong>
+              </div>
+            </div>
+
+            <div className={styles.verificationCodeBox}>
+              <span className={styles.verificationCodeLabel}>
+                رمز التحقق الرسمي
+              </span>
+
+              <p className={styles.verificationCode} dir="auto">
+                معرب-6CFR-Q82E
+              </p>
+
+              <p className={styles.verificationNote}>
+                نُشر هذا الرمز على الموقع الرسمي لمشروع{" "}
+                <span className={styles.inlineBrand}>
+                  Arabic L10 <strong>Hub</strong>
+                </span>{" "}
+                لغرض إثبات ارتباط الحساب بالمشروع لدى منصة «معرب»، والتحقق من
+                صلاحية تمثيله والرد على المراجعات باسمه.
+              </p>
+            </div>
+          </article>
         </div>
       </section>
     </main>
