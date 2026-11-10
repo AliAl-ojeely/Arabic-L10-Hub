@@ -242,7 +242,9 @@ const About = () => {
                 <span>04</span>
                 <div>
                   <strong>جودة لغوية أعلى</strong>
-                  <p>التركيز على السياق والصياغة وتجربة اللاعب بدل النقل الحرفي.</p>
+                  <p>
+                    التركيز على السياق والصياغة وتجربة اللاعب بدل النقل الحرفي.
+                  </p>
                 </div>
               </div>
             </div>
@@ -321,14 +323,34 @@ const About = () => {
                   >
                     <path d="M3 9l4.5 3.5L12 5l4.5 7.5L21 9l-2 9H5L3 9Z" />
                     <path d="M6 18h12" />
-                    <circle cx="3" cy="9" r="1" fill="currentColor" stroke="none" />
-                    <circle cx="12" cy="5" r="1" fill="currentColor" stroke="none" />
-                    <circle cx="21" cy="9" r="1" fill="currentColor" stroke="none" />
+                    <circle
+                      cx="3"
+                      cy="9"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <circle
+                      cx="12"
+                      cy="5"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <circle
+                      cx="21"
+                      cy="9"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
                   </svg>
                 </div>
               </div>
               <div className={styles.verificationHeading}>
-                <h2 id="ma3rab-verification-title">إثبات الهوية وتوثيق الحساب</h2>
+                <h2 id="ma3rab-verification-title">
+                  إثبات الهوية وتوثيق الحساب
+                </h2>
               </div>
             </div>
 
@@ -360,7 +382,9 @@ const About = () => {
             </div>
 
             <div className={styles.verificationCodeBox}>
-              <span className={styles.verificationCodeLabel}>رمز التحقق الرسمي</span>
+              <span className={styles.verificationCodeLabel}>
+                رمز التحقق الرسمي
+              </span>
               <p className={styles.verificationCode} dir="auto">
                 معرب-6CFR-Q82E
               </p>
