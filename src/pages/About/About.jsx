@@ -40,18 +40,70 @@ const About = () => {
         <div className={styles.sectionInner}>
           <div className={styles.introGrid}>
             <article className={styles.profileCard}>
-              <div className={styles.profileIcon}>
+              <div className={styles.royalIconScene} aria-hidden="true">
+                <div className={styles.royalParticles}>
+                  {ROYAL_PARTICLES.map((index) => (
+                    <span key={index} className={styles.royalParticle} />
+                  ))}
+                </div>
+                <div className={styles.royalCrown}>
+                  <span className={styles.royalShine} />
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M3 9l4.5 3.5L12 5l4.5 7.5L21 9l-2 9H5L3 9Z" />
+                    <path d="M6 18h12" />
+                    <circle
+                      cx="3"
+                      cy="9"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <circle
+                      cx="12"
+                      cy="5"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <circle
+                      cx="21"
+                      cy="9"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <h2>من هو علي العجيلي؟</h2>
+              <div className={styles.verifiedStatus}>
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
                 >
-                  <path d="M20 21a8 8 0 0 0-16 0" />
-                  <circle cx="12" cy="7" r="4" />
+                  <path d="M9 12l2 2 4-4" />
+                  <circle cx="12" cy="12" r="9" />
                 </svg>
+                <span>
+                  تم توثيق{" "}
+                  <span className={styles.inlineBrand}>
+                    Arabic L10 <strong>Hub</strong>
+                  </span>{" "}
+                  رسمياً على منصة «معرب».
+                </span>
               </div>
-              <h2>من هو علي العجيلي؟</h2>
               <p>
                 مطور برمجيات متخصص في تطوير واجهات المستخدم وتطبيقات سطح المكتب،
                 وحاصل على درجة البكالوريوس في تقنية المعلومات من جامعة العلوم
@@ -294,110 +346,6 @@ const About = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section
-        className={styles.verificationSection}
-        id="ma3rab-verification"
-        aria-labelledby="ma3rab-verification-title"
-      >
-        <div className={styles.sectionInner}>
-          <article className={styles.verificationCard}>
-            <div className={styles.verificationHeader}>
-              <div className={styles.royalIconScene} aria-hidden="true">
-                <div className={styles.royalParticles}>
-                  {ROYAL_PARTICLES.map((index) => (
-                    <span key={index} className={styles.royalParticle} />
-                  ))}
-                </div>
-                <div className={styles.verificationIcon}>
-                  <span className={styles.royalShine} />
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M3 9l4.5 3.5L12 5l4.5 7.5L21 9l-2 9H5L3 9Z" />
-                    <path d="M6 18h12" />
-                    <circle
-                      cx="3"
-                      cy="9"
-                      r="1"
-                      fill="currentColor"
-                      stroke="none"
-                    />
-                    <circle
-                      cx="12"
-                      cy="5"
-                      r="1"
-                      fill="currentColor"
-                      stroke="none"
-                    />
-                    <circle
-                      cx="21"
-                      cy="9"
-                      r="1"
-                      fill="currentColor"
-                      stroke="none"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className={styles.verificationHeading}>
-                <h2 id="ma3rab-verification-title">
-                  إثبات الهوية وتوثيق الحساب
-                </h2>
-              </div>
-            </div>
-
-            <p className={styles.verificationDescription}>
-              أنا <strong>علي العجيلي</strong>، مؤسس وصاحب مشروع{" "}
-              <span className={styles.inlineBrand}>
-                Arabic L10 <strong>Hub</strong>
-              </span>
-              ، أؤكد أن حسابي على منصة «معرب» يمثل المشروع رسميًا، وأنني المسؤول
-              عن إدارة أعماله والمخوّل بالرد على المراجعات والتعليقات المتعلقة
-              بمشاريع التعريب المنشورة باسمه.
-            </p>
-
-            <div className={styles.verificationDetails}>
-              <div className={styles.verificationDetail}>
-                <span>صاحب المشروع</span>
-                <strong>علي العجيلي</strong>
-              </div>
-              <div className={styles.verificationDetail}>
-                <span>اسم المشروع</span>
-                <span className={styles.inlineBrand}>
-                  Arabic L10 <strong>Hub</strong>
-                </span>
-              </div>
-              <div className={styles.verificationDetail}>
-                <span>منصة التوثيق</span>
-                <strong>معرب (Ma3rab)</strong>
-              </div>
-            </div>
-
-            <div className={styles.verificationCodeBox}>
-              <span className={styles.verificationCodeLabel}>
-                رمز التحقق الرسمي
-              </span>
-              <p className={styles.verificationCode} dir="auto">
-                معرب-6CFR-Q82E
-              </p>
-              <p className={styles.verificationNote}>
-                نُشر هذا الرمز على الموقع الرسمي لمشروع{" "}
-                <span className={styles.inlineBrand}>
-                  Arabic L10 <strong>Hub</strong>
-                </span>{" "}
-                لغرض إثبات ارتباط الحساب بالمشروع لدى منصة «معرب»، والتحقق من
-                صلاحية تمثيله والرد على المراجعات باسمه.
-              </p>
-            </div>
-          </article>
         </div>
       </section>
     </main>
