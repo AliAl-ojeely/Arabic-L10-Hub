@@ -1,38 +1,33 @@
 import styles from "./About.module.css";
 
+const ROYAL_PARTICLES = Array.from({ length: 14 }, (_, index) => index);
+
 const About = () => {
   return (
     <main className={styles.page} dir="rtl">
       <section className={styles.heroSection}>
         <div className={styles.heroGlowOne} />
         <div className={styles.heroGlowTwo} />
-
         <div className={styles.heroContent}>
           <h1 className={styles.pageTitle}>عن المشروع</h1>
-
           <p className={styles.heroDescription}>
-            تعرف على القصة والرؤية والأهداف التي تقف خلف
+            تعرف على القصة والرؤية والأهداف التي تقف خلف{" "}
             <span className={styles.inlineBrand}>
               Arabic L10 <strong>Hub</strong>
             </span>
             ، والمنهج الذي أتبعه في تعريب الألعاب وحفظ مشاريع المجتمع العربي.
           </p>
-
           <div className={styles.heroStats}>
             <div className={styles.statItem}>
               <strong>100%</strong>
               <span>مشروع مجاني</span>
             </div>
-
             <div className={styles.statDivider} />
-
             <div className={styles.statItem}>
               <strong>0</strong>
               <span>إعلانات</span>
             </div>
-
             <div className={styles.statDivider} />
-
             <div className={styles.statItem}>
               <strong>∞</strong>
               <span>طموح مستمر</span>
@@ -56,21 +51,17 @@ const About = () => {
                   <circle cx="12" cy="7" r="4" />
                 </svg>
               </div>
-
               <h2>من هو علي العجيلي؟</h2>
-
               <p>
                 مطور برمجيات متخصص في تطوير واجهات المستخدم وتطبيقات سطح المكتب،
                 وحاصل على درجة البكالوريوس في تقنية المعلومات من جامعة العلوم
                 والتكنولوجيا.
               </p>
-
               <p>
                 أمتلك شغفًا كبيرًا بهندسة الألعاب، وتعديلها واستخراج أصولها
                 البرمجية وتحليل بنيتها، مع التركيز بشكل خاص على تعريب وتوطين
                 الألعاب لتقديم تجربة أفضل وأكثر قربًا للاعب العربي.
               </p>
-
               <div className={styles.skillTags}>
                 <span>Software Development</span>
                 <span>Game Modding</span>
@@ -78,7 +69,6 @@ const About = () => {
                 <span>Reverse Engineering</span>
               </div>
             </article>
-
             <div className={styles.introAside}>
               <div className={styles.quoteCard}>
                 <svg
@@ -88,13 +78,11 @@ const About = () => {
                 >
                   <path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h7v-7H5.08A2.08 2.08 0 0 1 7.17 9H10V6H7.17Zm10 0A5.17 5.17 0 0 0 12 11.17V18h7v-7h-3.92A2.08 2.08 0 0 1 17.17 9H20V6h-2.83Z" />
                 </svg>
-
                 <p>
                   الهدف ليس ترجمة الكلمات فقط، بل تقديم تجربة عربية تحافظ على
                   روح اللعبة وسياقها وتكون مريحة للاعب قدر الإمكان.
                 </p>
               </div>
-
               <div className={styles.miniCards}>
                 <div className={styles.miniCard}>
                   <svg
@@ -106,13 +94,11 @@ const About = () => {
                     <path d="M12 3v18" />
                     <path d="m17 8-5-5-5 5" />
                   </svg>
-
                   <div>
                     <strong>تطوير مستمر</strong>
                     <span>أدوات وأساليب جديدة مع كل مشروع.</span>
                   </div>
                 </div>
-
                 <div className={styles.miniCard}>
                   <svg
                     viewBox="0 0 24 24"
@@ -122,7 +108,6 @@ const About = () => {
                   >
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
                   </svg>
-
                   <div>
                     <strong>استقلالية كاملة</strong>
                     <span>
@@ -141,18 +126,15 @@ const About = () => {
         <div className={styles.sectionInner}>
           <div className={styles.sectionHeader}>
             <h2>من أرشيف شخصي إلى منصة مستقلة</h2>
-
             <p>
               جاءت فكرة المنصة من حاجة حقيقية إلى مكان موثوق يحفظ مشاريع التعريب
               ويجعلها متاحة لفترة طويلة دون الاعتماد الكامل على خدمة خارجية
               واحدة.
             </p>
           </div>
-
           <div className={styles.storyGrid}>
             <article className={styles.storyCard}>
               <div className={styles.storyNumber}>01</div>
-
               <div className={styles.storyIcon}>
                 <svg
                   viewBox="0 0 24 24"
@@ -164,18 +146,14 @@ const About = () => {
                   <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
                 </svg>
               </div>
-
               <h3>حفظ التعريبات</h3>
-
               <p>
                 توفير أرشيف منظم يساعد على إبقاء ملفات التعريب والمعلومات
                 المرتبطة بها متاحة حتى مع تغير أو توقف خدمات الاستضافة الخارجية.
               </p>
             </article>
-
             <article className={styles.storyCard}>
               <div className={styles.storyNumber}>02</div>
-
               <div className={styles.storyIcon}>
                 <svg
                   viewBox="0 0 24 24"
@@ -188,18 +166,14 @@ const About = () => {
                   <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" />
                 </svg>
               </div>
-
               <h3>مساحة مستقلة</h3>
-
               <p>
                 عدم ربط مستقبل المشروع بالكامل بمنصة واحدة مثل Nexus Mods أو
                 غيرها، مع الاستمرار في الاستفادة منها كقنوات إضافية للنشر.
               </p>
             </article>
-
             <article className={styles.storyCard}>
               <div className={styles.storyNumber}>03</div>
-
               <div className={styles.storyIcon}>
                 <svg
                   viewBox="0 0 24 24"
@@ -213,9 +187,7 @@ const About = () => {
                   <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </div>
-
               <h3>خدمة المجتمع</h3>
-
               <p>
                 بناء مساحة يمكن أن تتوسع مستقبلًا لدعم معربين مستقلين آخرين،
                 وتسهيل الوصول إلى أعمالهم وحفظ جهودهم.
@@ -230,63 +202,47 @@ const About = () => {
           <div className={styles.visionGrid}>
             <div className={styles.visionContent}>
               <h2>أكثر من مجرد مكتبة تحميل</h2>
-
               <p>
-                أطمح أن تتطور
+                أطمح أن تتطور{" "}
                 <span className={styles.inlineBrand}>
                   Arabic L10 <strong>Hub</strong>
-                </span>
+                </span>{" "}
                 إلى بيئة تعاونية تجمع المعربين المستقلين والمطورين والمهتمين
                 بهندسة الألعاب.
               </p>
-
               <p>
                 الهدف هو الوصول إلى مشاريع تعريب أكثر احترافية، تعتمد على صياغة
                 عربية طبيعية وفهم سياق اللعبة بدل الترجمة الحرفية، مع تطوير
                 أدوات تساعد على تسريع عملية التعريب وتحسين جودتها.
               </p>
             </div>
-
             <div className={styles.visionList}>
               <div className={styles.visionItem}>
                 <span>01</span>
-
                 <div>
                   <strong>تعاون بين المعربين</strong>
-
                   <p>تبادل الخبرات والأدوات والتجارب بين أفراد المجتمع.</p>
                 </div>
               </div>
-
               <div className={styles.visionItem}>
                 <span>02</span>
-
                 <div>
                   <strong>أدوات أفضل</strong>
-
                   <p>تطوير أدوات تسهل استخراج النصوص وترجمتها وإعادة دمجها.</p>
                 </div>
               </div>
-
               <div className={styles.visionItem}>
                 <span>03</span>
-
                 <div>
                   <strong>تثبيت أبسط</strong>
-
                   <p>توفير حزم Mods واضحة وسهلة التثبيت قدر الإمكان.</p>
                 </div>
               </div>
-
               <div className={styles.visionItem}>
                 <span>04</span>
-
                 <div>
                   <strong>جودة لغوية أعلى</strong>
-
-                  <p>
-                    التركيز على السياق والصياغة وتجربة اللاعب بدل النقل الحرفي.
-                  </p>
+                  <p>التركيز على السياق والصياغة وتجربة اللاعب بدل النقل الحرفي.</p>
                 </div>
               </div>
             </div>
@@ -308,34 +264,28 @@ const About = () => {
                 <path d="m9 12 2 2 4-4" />
               </svg>
             </div>
-
             <div className={styles.transparencyContent}>
               <h2>المشروع مجاني وغير ربحي بالكامل</h2>
-
               <p>
                 لا توجد إعلانات مزعجة، ولا روابط تحميل ربحية مختصرة، ولا بوابات
                 دفع. الهدف الأساسي من المنصة هو خدمة مجتمع اللاعبين العرب
                 والحفاظ على مشاريع التعريب.
               </p>
-
               <p>
                 تم تصميم الموقع ليكون خفيفًا ويعمل كموقع ثابت، ويتم استضافته عبر
                 <strong> GitHub Pages</strong>، مما يقلل تكاليف التشغيل ويساعد
                 على استمرار المنصة دون الحاجة إلى خادم شهري مدفوع.
               </p>
             </div>
-
             <div className={styles.transparencyFacts}>
               <div>
                 <strong>0</strong>
                 <span>إعلانات</span>
               </div>
-
               <div>
                 <strong>0</strong>
                 <span>روابط ربحية</span>
               </div>
-
               <div>
                 <strong>Free</strong>
                 <span>الوصول للمحتوى</span>
@@ -353,22 +303,32 @@ const About = () => {
         <div className={styles.sectionInner}>
           <article className={styles.verificationCard}>
             <div className={styles.verificationHeader}>
-              <div className={styles.verificationIcon} aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
-                  <path d="m9 12 2 2 4-4" />
-                </svg>
+              <div className={styles.royalIconScene} aria-hidden="true">
+                <div className={styles.royalParticles}>
+                  {ROYAL_PARTICLES.map((index) => (
+                    <span key={index} className={styles.royalParticle} />
+                  ))}
+                </div>
+                <div className={styles.verificationIcon}>
+                  <span className={styles.royalShine} />
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M3 9l4.5 3.5L12 5l4.5 7.5L21 9l-2 9H5L3 9Z" />
+                    <path d="M6 18h12" />
+                    <circle cx="3" cy="9" r="1" fill="currentColor" stroke="none" />
+                    <circle cx="12" cy="5" r="1" fill="currentColor" stroke="none" />
+                    <circle cx="21" cy="9" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                </div>
               </div>
-
               <div className={styles.verificationHeading}>
-                <h2 id="ma3rab-verification-title">
-                  إثبات الهوية وتوثيق الحساب
-                </h2>
+                <h2 id="ma3rab-verification-title">إثبات الهوية وتوثيق الحساب</h2>
               </div>
             </div>
 
@@ -387,14 +347,12 @@ const About = () => {
                 <span>صاحب المشروع</span>
                 <strong>علي العجيلي</strong>
               </div>
-
               <div className={styles.verificationDetail}>
                 <span>اسم المشروع</span>
                 <span className={styles.inlineBrand}>
                   Arabic L10 <strong>Hub</strong>
                 </span>
               </div>
-
               <div className={styles.verificationDetail}>
                 <span>منصة التوثيق</span>
                 <strong>معرب (Ma3rab)</strong>
@@ -402,14 +360,10 @@ const About = () => {
             </div>
 
             <div className={styles.verificationCodeBox}>
-              <span className={styles.verificationCodeLabel}>
-                رمز التحقق الرسمي
-              </span>
-
+              <span className={styles.verificationCodeLabel}>رمز التحقق الرسمي</span>
               <p className={styles.verificationCode} dir="auto">
                 معرب-6CFR-Q82E
               </p>
-
               <p className={styles.verificationNote}>
                 نُشر هذا الرمز على الموقع الرسمي لمشروع{" "}
                 <span className={styles.inlineBrand}>
