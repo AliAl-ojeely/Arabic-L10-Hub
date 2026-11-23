@@ -277,41 +277,6 @@
         infinite;
 }
 
-.uniqueCard::before {
-    content: '';
-
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-
-    border-radius: inherit;
-
-    border:
-        1px solid
-        rgba(255, 219, 128, 0.35);
-
-    background:
-        linear-gradient(
-            115deg,
-            transparent 28%,
-            rgba(255, 226, 145, 0.05) 42%,
-            rgba(255, 235, 177, 0.16) 50%,
-            rgba(255, 226, 145, 0.05) 58%,
-            transparent 72%
-        );
-
-    background-size: 240% 100%;
-    background-position: 160% 0;
-
-    pointer-events: none;
-
-    animation:
-        uniqueCardSweep
-        4.8s
-        cubic-bezier(0.4, 0, 0.2, 1)
-        infinite;
-}
-
 .uniqueCard::after {
     content: '';
 
@@ -341,262 +306,138 @@
     color: #f3c75f;
 }
 
-.uniqueBadge {
+/* Royal ribbon accents echo the About page crown. */
+.uniqueRibbons {
     position: absolute;
-    top: 0.9rem;
-    left: 0.9rem;
-    z-index: 4;
-
-    min-height: 29px;
-
-    display: inline-flex;
-    align-items: center;
+    top: 0;
+    left: 0.95rem;
+    z-index: 5;
+    display: flex;
+    align-items: flex-start;
     justify-content: center;
-
-    gap: 0.35rem;
-
-    padding:
-        0.38rem
-        0.65rem;
-
-    border:
-        1px solid
-        rgba(255, 222, 131, 0.45);
-
-    border-radius: 999px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(88, 61, 5, 0.94),
-            rgba(143, 98, 9, 0.92)
-        );
-
-    color: #ffe6a3;
-
-    font-size: 0.64rem;
-    font-weight: 900;
-
-    box-shadow:
-        0 8px 20px rgba(114, 76, 5, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.13);
-
-    backdrop-filter: blur(10px);
+    gap: 8px;
+    width: 52px;
+    height: 48px;
+    isolation: isolate;
+    pointer-events: none;
+    filter: drop-shadow(0 0 7px rgba(255, 200, 65, 0.58));
 }
 
-.uniqueBadge svg {
-    width: 12px;
-    height: 12px;
+.uniqueRibbons::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -10px -12px -12px;
+    background: radial-gradient(ellipse at 50% 15%, rgba(255, 206, 83, 0.42), transparent 65%);
+    animation: uniqueRibbonAura 3.2s ease-in-out infinite;
+}
 
+.uniqueRibbons::after {
+    content: "✦";
+    position: absolute;
+    top: 18px;
+    right: -4px;
+    color: #fff4c0;
+    font-size: 11px;
+    text-shadow: 0 0 7px rgba(255, 212, 98, 0.9);
+    animation: uniqueRibbonTwinkle 2.2s ease-in-out infinite;
+}
+
+.uniqueRibbon {
+    display: block;
+    width: 15px;
+    height: 38px;
     flex-shrink: 0;
-
-    color: #ffd369;
+    background: linear-gradient(155deg, #fff0b3, #e4ac34 53%, #a36c0c);
+    border: 1px solid rgba(255, 231, 161, 0.65);
+    clip-path: polygon(0 0, 100% 0, 100% 79%, 50% 100%, 0 79%);
+    transform-origin: top center;
+    animation: uniqueRibbonShimmer 3.2s ease-in-out infinite;
 }
 
+.uniqueRibbon:nth-child(2) {
+    height: 32px;
+    animation-delay: -1.6s;
+}
 
+/* Continuous flakes stay within the poster, not the entire card. */
 .uniqueConfetti {
     position: absolute;
     inset: 0;
-    z-index: 8;
-
-    overflow: visible;
-
+    z-index: 3;
+    overflow: hidden;
     pointer-events: none;
 }
 
 .uniqueConfetti span {
     position: absolute;
-    top: 42%;
-    left: 50%;
-
-    width: 8px;
-    height: 5px;
-
-    border-radius: 1px;
-
+    top: -12px;
+    left: var(--x, 50%);
+    width: 5px;
+    height: 8px;
     opacity: 0;
-
-    background: #f6c453;
-
-    box-shadow:
-        0 0 8px rgba(246, 196, 83, 0.18);
-
-    transform:
-        translate(-50%, -50%)
-        scale(0.25)
-        rotate(0deg);
-
-    transform-origin: center;
-
-    will-change:
-        transform,
-        opacity;
-}
-
-.uniqueConfetti span:nth-child(2n) {
-    width: 6px;
-    height: 9px;
-
-    background: #fff0bd;
+    border-radius: 1px;
+    background: linear-gradient(145deg, #fff9da, #e1a51b);
+    box-shadow: 0 0 7px rgba(255, 192, 40, 0.55);
+    animation: uniqueGoldenFall var(--duration, 5.5s) linear var(--delay, 0s) infinite;
 }
 
 .uniqueConfetti span:nth-child(3n) {
-    width: 9px;
+    width: 4px;
     height: 4px;
-
-    background: #d99a20;
+    border-radius: 50%;
+    background: #ffefaa;
 }
 
-.uniqueConfetti span:nth-child(5n) {
-    background: #fff7dd;
+.uniqueConfetti span:nth-child(4n) {
+    width: 7px;
+    height: 7px;
+    clip-path: polygon(50% 0, 63% 36%, 100% 50%, 63% 64%, 50% 100%, 37% 64%, 0 50%, 37% 36%);
 }
 
-.uniqueConfetti span:nth-child(1) {
-    --tx: -145px;
-    --ty: -175px;
-    --rot: -240deg;
-    --delay: 0ms;
-}
+.uniqueConfetti span:nth-child(1)  { --x: 8%;  --duration: 4.8s; --delay: -1.0s; --drift: 14px; --rot: 250deg; }
+.uniqueConfetti span:nth-child(2)  { --x: 20%; --duration: 6.0s; --delay: -4.3s; --drift: -20px; --rot: -290deg; }
+.uniqueConfetti span:nth-child(3)  { --x: 33%; --duration: 5.2s; --delay: -2.9s; --drift: 18px; --rot: 320deg; }
+.uniqueConfetti span:nth-child(4)  { --x: 47%; --duration: 5.6s; --delay: -3.4s; --drift: -12px; --rot: -245deg; }
+.uniqueConfetti span:nth-child(5)  { --x: 58%; --duration: 6.4s; --delay: -1.9s; --drift: 16px; --rot: 305deg; }
+.uniqueConfetti span:nth-child(6)  { --x: 70%; --duration: 4.5s; --delay: -2.6s; --drift: -18px; --rot: -270deg; }
+.uniqueConfetti span:nth-child(7)  { --x: 84%; --duration: 5.8s; --delay: -4.9s; --drift: 17px; --rot: 340deg; }
+.uniqueConfetti span:nth-child(8)  { --x: 94%; --duration: 6.2s; --delay: -3.2s; --drift: -23px; --rot: -300deg; }
+.uniqueConfetti span:nth-child(9)  { --x: 12%; --duration: 6.7s; --delay: -5.5s; --drift: 24px; --rot: 280deg; }
+.uniqueConfetti span:nth-child(10) { --x: 25%; --duration: 5.3s; --delay: -0.8s; --drift: 12px; --rot: -350deg; }
+.uniqueConfetti span:nth-child(11) { --x: 43%; --duration: 4.9s; --delay: -3.6s; --drift: -15px; --rot: 260deg; }
+.uniqueConfetti span:nth-child(12) { --x: 61%; --duration: 6.5s; --delay: -4.8s; --drift: 20px; --rot: -325deg; }
+.uniqueConfetti span:nth-child(13) { --x: 77%; --duration: 5.5s; --delay: -1.5s; --drift: -13px; --rot: 305deg; }
+.uniqueConfetti span:nth-child(14) { --x: 91%; --duration: 4.7s; --delay: -2.2s; --drift: 11px; --rot: -280deg; }
 
-.uniqueConfetti span:nth-child(2) {
-    --tx: -90px;
-    --ty: -220px;
-    --rot: 310deg;
-    --delay: 35ms;
-}
-
-.uniqueConfetti span:nth-child(3) {
-    --tx: -30px;
-    --ty: -195px;
-    --rot: -320deg;
-    --delay: 70ms;
-}
-
-.uniqueConfetti span:nth-child(4) {
-    --tx: 55px;
-    --ty: -210px;
-    --rot: 270deg;
-    --delay: 20ms;
-}
-
-.uniqueConfetti span:nth-child(5) {
-    --tx: 125px;
-    --ty: -165px;
-    --rot: -280deg;
-    --delay: 90ms;
-}
-
-.uniqueConfetti span:nth-child(6) {
-    --tx: 165px;
-    --ty: -80px;
-    --rot: 360deg;
-    --delay: 50ms;
-}
-
-.uniqueConfetti span:nth-child(7) {
-    --tx: 155px;
-    --ty: 35px;
-    --rot: -300deg;
-    --delay: 110ms;
-}
-
-.uniqueConfetti span:nth-child(8) {
-    --tx: 110px;
-    --ty: 145px;
-    --rot: 260deg;
-    --delay: 55ms;
-}
-
-.uniqueConfetti span:nth-child(9) {
-    --tx: 30px;
-    --ty: 185px;
-    --rot: -360deg;
-    --delay: 100ms;
-}
-
-.uniqueConfetti span:nth-child(10) {
-    --tx: -55px;
-    --ty: 175px;
-    --rot: 320deg;
-    --delay: 20ms;
-}
-
-.uniqueConfetti span:nth-child(11) {
-    --tx: -125px;
-    --ty: 125px;
-    --rot: -250deg;
-    --delay: 85ms;
-}
-
-.uniqueConfetti span:nth-child(12) {
-    --tx: -170px;
-    --ty: 45px;
-    --rot: 290deg;
-    --delay: 45ms;
-}
-
-.uniqueConfetti span:nth-child(13) {
-    --tx: -175px;
-    --ty: -70px;
-    --rot: -340deg;
-    --delay: 120ms;
-}
-
-.uniqueConfetti span:nth-child(14) {
-    --tx: 175px;
-    --ty: -10px;
-    --rot: 340deg;
-    --delay: 75ms;
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .uniqueCard {
-        overflow: visible;
-    }
-
-    .uniqueCard:hover {
-        z-index: 10;
-    }
-
-    .uniqueCard:hover .uniqueConfetti span {
-        animation:
-            uniqueConfettiBurst
-            920ms
-            cubic-bezier(0.16, 1, 0.3, 1)
-            var(--delay)
-            both;
-    }
-}
-
-@keyframes uniqueConfettiBurst {
+@keyframes uniqueGoldenFall {
     0% {
+        top: -12px;
         opacity: 0;
-
-        transform:
-            translate(-50%, -50%)
-            scale(0.2)
-            rotate(0deg);
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.65);
     }
-
-    12% {
-        opacity: 1;
-    }
-
-    45% {
-        opacity: 1;
-    }
-
+    10% { opacity: 0.95; }
+    82% { opacity: 0.8; }
     100% {
+        top: calc(100% + 12px);
         opacity: 0;
-
-        transform:
-            translate(
-                calc(-50% + var(--tx)),
-                calc(-50% + var(--ty))
-            )
-            scale(0.9)
-            rotate(var(--rot));
+        transform: translate3d(var(--drift, 0px), 0, 0) rotate(var(--rot, 290deg)) scale(0.85);
     }
+}
+
+@keyframes uniqueRibbonAura {
+    0%, 100% { opacity: 0.45; transform: scale(0.85); }
+    50% { opacity: 1; transform: scale(1.13); }
+}
+
+@keyframes uniqueRibbonShimmer {
+    0%, 100% { filter: brightness(0.94); transform: scaleY(1); }
+    50% { filter: brightness(1.22); transform: scaleY(1.07); }
+}
+
+@keyframes uniqueRibbonTwinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.6) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.15) rotate(45deg); }
 }
 
 @keyframes uniqueCardGlow {
@@ -617,18 +458,6 @@
             0 18px 42px rgba(0, 0, 0, 0.26),
             0 0 0 1px rgba(255, 218, 120, 0.2),
             0 0 38px rgba(245, 190, 60, 0.2);
-    }
-}
-
-@keyframes uniqueCardSweep {
-    0%,
-    22% {
-        background-position: 160% 0;
-    }
-
-    68%,
-    100% {
-        background-position: -70% 0;
     }
 }
 
@@ -682,6 +511,7 @@
 }
 
 .newBadge {
+    z-index: 4;
     position: absolute;
     top: 0.9rem;
     right: 0.9rem;
@@ -935,20 +765,6 @@
 }
 
 @media (max-width: 600px) {
-    .uniqueBadge {
-        top: 0.75rem;
-        left: 0.75rem;
-
-        min-height: 27px;
-
-        padding:
-            0.34rem
-            0.58rem;
-
-        font-size: 0.6rem;
-    }
-
-
     .heroSection {
         padding: 4.5rem 1rem 3.5rem;
     }
@@ -1069,9 +885,15 @@
 
     .skeletonPoster,
     .uniqueCard,
-    .uniqueCard::before,
+    .uniqueRibbons::before,
+    .uniqueRibbons::after,
+    .uniqueRibbon,
     .uniqueConfetti span {
         animation: none;
+    }
+
+    .uniqueConfetti {
+        display: none;
     }
 
     .gameCard:hover,

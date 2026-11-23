@@ -228,13 +228,7 @@ const Translations = () => {
                       game.isUnique ? styles.uniqueCard : ""
                     }`}
                   >
-                    {game.isUnique && (
-                      <div className={styles.uniqueConfetti} aria-hidden="true">
-                        {Array.from({ length: 14 }).map((_, pieceIndex) => (
-                          <span key={pieceIndex} />
-                        ))}
-                      </div>
-                    )}
+
 
                     <div className={styles.posterContainer}>
                       <img
@@ -247,16 +241,21 @@ const Translations = () => {
                       <div className={styles.posterGradient} />
 
                       {game.isUnique && (
-                        <span className={styles.uniqueBadge}>
-                          <svg
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                            aria-hidden="true"
+                        <>
+                          <span
+                            className={styles.uniqueRibbons}
+                            role="img"
+                            aria-label="تعريب مميز"
                           >
-                            <path d="m12 2.5 2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.52l-5.88 3.09 1.12-6.55-4.76-4.64 6.58-.96L12 2.5Z" />
-                          </svg>
-                          <span>مميز</span>
-                        </span>
+                            <span className={styles.uniqueRibbon} />
+                            <span className={styles.uniqueRibbon} />
+                          </span>
+                          <span className={styles.uniqueConfetti} aria-hidden="true">
+                            {Array.from({ length: 14 }, (_, pieceIndex) => (
+                              <span key={pieceIndex} />
+                            ))}
+                          </span>
+                        </>
                       )}
 
                       {index < 3 && !hasSearch && (
@@ -278,7 +277,7 @@ const Translations = () => {
 
                     <div className={styles.gameInfo}>
                       <span className={styles.translationLabel}>
-                        تعريب عربي
+                        تعريب
                       </span>
 
                       <h2 className={styles.gameTitle}>{game.title}</h2>
