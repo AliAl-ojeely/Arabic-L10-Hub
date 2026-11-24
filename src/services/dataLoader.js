@@ -667,7 +667,7 @@ export const fetchTranslationsData = async () => {
         "Phoenix Wright Modding",
       ],
       downloadUrl:
-        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/phoenix-wright-trilogy-ar-v1.1.1/Phoenix_Wright_Ace_Attorney_Trilogy_Arabic_v1.1.1.zip",
+        "https://github.com/AliAl-ojeely/Arabic-L10-Hub/releases/download/phoenix-wright-trilogy-ar-v1.1.2/Phoenix_Wright_Ace_Attorney_Trilogy_Arabic_v1.1.2.zip",
       addedDate: "2026-09-12",
       isUnique: true,
       trailerUrl: "https://www.youtube.com/watch?v=Et0EwbCXJTo",
